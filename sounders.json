@@ -11,20 +11,21 @@
     {
       "name": "wikidata",
       "values": [
-        {"year": 2009, "play": 30, "win": 12, "loss": 7,"draw": 11, "Goals for": 38, "Goals against": 29, "Points": 47, "Conference Position": 3, "OverallPosition": 4, "MLS Cup Playoffs": "Conference Semi-finals", "AdditionalHonors": "N/A", "US Open Cup": "Champions", "Champions League": "DNQ", "Leading Scorers": ["Fredy Montero"], "Goals by Leading Scorers": 12},
-        {"year": 2010, "play": 30, "win": 14, "loss": 10, "draw": 6, "Goals for": 39, "Goals against": 35, "Points": 48, "Conference Position": 4, "OverallPosition": 6, "MLS Cup Playoffs": "Conference Semi-finals", "AdditionalHonors": "N/A", "US Open Cup": "Champions", "Champions League": "Group Stage", "Leading Scorers": ["Fredy Montero", "Steve Zakuani"], "Goals by Leading Scorers": 10},
-        {"year": 2011, "play": 34, "win": 18, "loss": 7, "draw": 9, "Goals for": 56, "Goals against": 37, "Points": 63, "Conference Position": 2, "OverallPosition": 2, "MLS Cup Playoffs": "Conference Semi-finals", "AdditionalHonors": "Cascadia Cup", "US Open Cup":  "Champions", "Champions League": "Quarter Finals", "Leading Scorers": ["Fredy Montero"], "Goals by Leading Scorers": 12},
-        {"year": 2012, "play": 34, "win": 15, "loss": 8, "draw": 11, "Goals for": 51, "Goals against": 33, "Points": 56, "Conference Position": 3, "OverallPosition": 7, "MLS Cup Playoffs": "Conference Finals", "AdditionalHonors": "N/A", "US Open Cup": "Runners-Up", "Champions League":  "Semi-finals", "Leading Scorers": ["Eddie Johnson"], "Goals by Leading Scorers": 14},
-        {"year": 2013, "play": 34, "win": 15, "loss": 12, "draw": 7, "Goals for": 42, "Goals against": 42, "Points": 52, "Conference Position": 4, "OverallPosition": 6, "MLS Cup Playoffs": "Conference Semi-finals", "AdditionalHonors": "N/A", "US Open Cup": "3R", "Champions League":  "DNQ", "Leading Scorers": ["Eddie Johnson"], "Goals by Leading Scorers": 9},
-        {"year": 2014, "play": 34, "win": 20, "loss": 10, "draw": 4, "Goals for": 65, "Goals against": 50, "Points": 64, "Conference Position": 1, "OverallPosition": 1, "MLS Cup Playoffs": "Conference Finals", "AdditionalHonors": "N/A", "US Open Cup": "Champions", "Champions League": "DNQ", "Leading Scorers": ["Obafemi Martins"], "Goals by Leading Scorers": 17},
-        {"year": 2015, "play": 34, "win": 15, "loss": 13, "draw": 6, "Goals for": 44, "Goals against": 36, "Points": 51, "Conference Position": 4, "OverallPosition": 6, "MLS Cup Playoffs": "Conference Semi-finals", "AdditionalHonors": "Cascadia Cup", "US Open Cup": "4R", "Champions League": "Quarter Finals", "Leading Scorers": ["Obafemi Martins"], "Goals by Leading Scorers": 15}
+        {"year": 2009, "play": 30, "win": 12, "loss": 7,"draw": 11, "Goals for": 38, "Goals against": 29, "Points": 47, "Conference Position": 3, "Overall Position": 4, "MLS Cup Playoffs": "Conference Semi-finals", "Additional Honors": "N/A", "US Open Cup": "Champions", "Champions League": "DNQ", "Leading Scorers": ["Fredy Montero"], "Goals by Leading Scorers": 12},
+        {"year": 2010, "play": 30, "win": 14, "loss": 10, "draw": 6, "Goals for": 39, "Goals against": 35, "Points": 48, "Conference Position": 4, "Overall Position": 6, "MLS Cup Playoffs": "Conference Semi-finals", "Additional Honors": "N/A", "US Open Cup": "Champions", "Champions League": "Group Stage", "Leading Scorers": ["Fredy Montero", "Steve Zakuani"], "Goals by Leading Scorers": 10},
+        {"year": 2011, "play": 34, "win": 18, "loss": 7, "draw": 9, "Goals for": 56, "Goals against": 37, "Points": 63, "Conference Position": 2, "Overall Position": 2, "MLS Cup Playoffs": "Conference Semi-finals", "Additional Honors": "Cascadia Cup", "US Open Cup":  "Champions", "Champions League": "Quarter Finals", "Leading Scorers": ["Fredy Montero"], "Goals by Leading Scorers": 12},
+        {"year": 2012, "play": 34, "win": 15, "loss": 8, "draw": 11, "Goals for": 51, "Goals against": 33, "Points": 56, "Conference Position": 3, "Overall Position": 7, "MLS Cup Playoffs": "Conference Finals", "Additional Honors": "N/A", "US Open Cup": "Runners-Up", "Champions League":  "Semi-finals", "Leading Scorers": ["Eddie Johnson"], "Goals by Leading Scorers": 14},
+        {"year": 2013, "play": 34, "win": 15, "loss": 12, "draw": 7, "Goals for": 42, "Goals against": 42, "Points": 52, "Conference Position": 4, "Overall Position": 6, "MLS Cup Playoffs": "Conference Semi-finals", "Additional Honors": "N/A", "US Open Cup": "3R", "Champions League":  "DNQ", "Leading Scorers": ["Eddie Johnson"], "Goals by Leading Scorers": 9},
+        {"year": 2014, "play": 34, "win": 20, "loss": 10, "draw": 4, "Goals for": 65, "Goals against": 50, "Points": 64, "Conference Position": 1, "Overall Position": 1, "MLS Cup Playoffs": "Conference Finals", "Additional Honors": "N/A", "US Open Cup": "Champions", "Champions League": "DNQ", "Leading Scorers": ["Obafemi Martins"], "Goals by Leading Scorers": 17},
+        {"year": 2015, "play": 34, "win": 15, "loss": 13, "draw": 6, "Goals for": 44, "Goals against": 36, "Points": 51, "Conference Position": 4, "Overall Position": 6, "MLS Cup Playoffs": "Conference Semi-finals", "Additional Honors": "Cascadia Cup", "US Open Cup": "4R", "Champions League": "Quarter Finals", "Leading Scorers": ["Obafemi Martins"], "Goals by Leading Scorers": 15}
       ]
     },
     {
-      "name": "goals",
+      "name": "scaleData",
       "source": "wikidata",
       "transform": [
-        {"type": "fold", "fields": ["win", "loss", "draw"]}
+        {"type": "fold", "fields": ["win", "loss", "draw"]},
+        {"type": "filter", "test": "!indata('selectedPoints', datum.key, 'status')"}
       ]
     },
     {
@@ -274,16 +275,6 @@
       ]
     },
     {
-      "name": "megadata",
-      "source": "season-goals",
-      "transform": [
-        {"type": "filter", "test": "!indata('selectedPoints', datum.status, 'status')"}, 
-        {"type": "fold", "fields": ["goals for", "goals against"]},
-        {"type": "stack", "groupby": ["year", "key"], "sortby": ["status"], "field": "value"},
-        {"type": "facet", "groupby": ["year"]}
-      ]
-    },
-    {
       "name": "legend",
       "values": [
         {"name": "win", "x": 80, "y": 60},
@@ -292,33 +283,29 @@
       ]
     },
     {
-      "name": "test",
-      "source": "wikidata",
+      "name": "text",
+      "values": [
+        {"type": "default", "index": 1, "value": "Hover over an axis to see more"},
+        {"type": "default", "index": 2, "value": "information. Hover over the"},
+        {"type": "default", "index": 3, "value": "'Games Played' axis to see the"},
+        {"type": "default", "index": 4, "value": "number of goals for the given"},
+        {"type": "default", "index": 5, "value": "year and outcome. Hover over"},
+        {"type": "default", "index": 6, "value": "the 'Goals' axis to see the"},
+        {"type": "default", "index": 7, "value": "season's leading scorers. Filter"},
+        {"type": "default", "index": 8, "value": "the charts with the Venn Diagram."},
+        {"type": "scorers", "index": 1, "value": "Number of goals for (F) and"},
+        {"type": "scorers", "index": 2, "value": "against (A) per season."},        
+        {"type": "scorers", "index": 4, "value": "Hover over a year on the x-axis"},
+        {"type": "scorers", "index": 5, "value": "to see the leading scorer(s) for"},
+        {"type": "scorers", "index": 6, "value": "that year and the number of"},
+        {"type": "scorers", "index": 7, "value": "goals they scored."},
+        {"type": "honors", "index": 1, "value": "Hover over a year on the x-axis"},
+        {"type": "honors", "index": 2, "value": "to see additional honors for that"},
+        {"type": "honors", "index": 3, "value": "year in the info box and the"},
+        {"type": "honors", "index": 4, "value": "team's overall MLS Position."}
+      ],
       "transform": [
-        {"type": "filter", "test": "datum.year==scorers"},
-        {"type": "fold", "fields": ["Leading Scorers", "Goals by Leading Scorers"]}
-      ]
-    },
-    {
-      "name": "defaultText",
-      "values": [
-        {"index": 1, "value": "Hover over an axis to see more"},
-        {"index": 2, "value": "information. Hover over the"},
-        {"index": 3, "value": "'Games Played' axis to see the"},
-        {"index": 4, "value": "number of goals for the given"},
-        {"index": 5, "value": "year and outcome. Hover over"},
-        {"index": 6, "value": "the 'Goals' axis to see the"},
-        {"index": 7, "value": "season's leading scorers. Filter"},
-        {"index": 8, "value": "the charts with the Venn Diagram."}
-      ]
-    },
-    {
-      "name": "goalsText",
-      "values": [
-        {"index": 1, "value": "Hover over a year on the x-axis"},
-        {"index": 2, "value": "to see the leading scorer(s) for"},
-        {"index": 3, "value": "that year and the number of"},
-        {"index": 4, "value": "goals they scored."}
+        {"type": "filter", "test": "datum.type==group"}
       ]
     }
   ],
@@ -326,7 +313,11 @@
     {
       "name": "season",
       "streams": [
-        {"type": "@GamesPerSeason:mousemove", "expr": "eventX()", "scale": {"name": "x", "invert": true}},
+        {
+          "type": "@GamesPerSeason:mousemove", 
+          "expr": "eventX()", 
+          "scale": {"name": "years", "invert": true}
+        },
         {"type": "@GamesPerSeason:mouseout", "expr": "{}"}
       ]
     },
@@ -337,13 +328,24 @@
     },
     {
       "name": "honors",
-      "init": {"x": 0},
+      "init": 0,
       "streams":[
         {
           "type": "[@GamesPerSeason:mouseover, @GamesPerSeason:mouseout] > text:mousemove", 
-          "expr": "{'x': eventItem().x, 'year': eventItem().text}"
+          "expr": "eventItem().text"
         },
-        {"type": "@GamesPerSeason:mouseout", "expr": "{'x': 0}"}
+        {"type": "@GamesPerSeason:mouseout", "expr": "0"}
+      ]
+    },
+    {
+      "name": "labelPosition",
+      "init": 0,
+      "streams":[
+        {
+          "type": "[@GamesPerSeason:mouseover, @GamesPerSeason:mouseout] > text:mousemove", 
+          "expr": "eventItem().x"
+        },
+        {"type": "@GamesPerSeason:mouseout", "expr": "0"}
       ]
     },
     {
@@ -360,15 +362,20 @@
     {
       "name": "group",
       "init": "default",
-      "verbose": false,
       "streams":[
-        {"type": "[@GamesPerSeason:mouseover, @GamesPerSeason:mouseout] > text:mousemove", "expr": "'honors'"},
-        {"type": "[@GoalsPerSeason:mouseover, @GoalsPerSeason:mouseout] > text:mousemove", "expr": "'scorers'"},
-        {"type": "@GoalsPerSeason:mouseout, @GamesPerSeason:mouseout", "expr": "'default'"}
+        {"type": "honors", "expr": "if(honors==0, 'default', 'honors')"},
+        {"type": "scorers", "expr": "if(scorers==0, 'default', 'scorers')"}
       ]
     }
   ],
   "scales": [
+    {
+      "name": "years",
+      "type": "ordinal",
+      "range": [0, 400],
+      "domain": {"data": "wikidata", "field": "year"},
+      "points": true
+    },
     {
       "name": "c",
       "type": "ordinal",
@@ -376,23 +383,10 @@
       "domain": {"data": "legend", "field": "name"}
     },
     {
-      "name": "x",
+      "name": "textPosition",
       "type": "ordinal",
-      "range": [0, 400],
-      "domain": {"data": "wikidata", "field": "year"}
-    },
-    {
-      "name": "years",
-      "type": "time",
-      "range": [0, 400],
-      "domain": {"data": "wikidata", "field": "year"}
-    },
-    {
-        "name": "textPosition",
-        "type": "ordinal",
-        "range": [40, 54, 68, 82, 96, 110, 124, 138, 152],
-        "domain": {"data": "test", "field": "key"}
-      }
+      "range": [40, 54, 68, 82, 96, 110, 124, 138, 152]
+    }
   ],
   "marks": [
     {
@@ -415,9 +409,9 @@
         "enter": {
           "x": {"value": 0},
           "width": {"value": 400},
-          "y": {"value": 50},
+          "y": {"value": 65},
           "height": {"value": 150},
-          "fill": {"value": "#fff"}
+          "fill": {"value": "#ccc"}
         }
       },
       "scales": [
@@ -425,79 +419,30 @@
           "name": "games",
           "type": "linear",
           "range": "height",
-          "domain": {"data": "wikidata", "field": "play"}
+          "domain": {"data": "scaleData", "field": "value"}
         }
       ],
       "axes": [
-        {"name": "GamesYearScale", "type": "x", "scale": "x"},
-        {"type": "y", "scale": "games", "title": "Games Played"}
+        {"name": "GamesYearScale", "type": "x", "scale": "years"},
+        {
+          "type": "y", "scale": "games", 
+          "title": "Games Played",
+          "grid": true, "layer": "back",
+          "properties": {
+            "grid": {
+               "stroke": {"value": "white"},
+               "strokeWidth": {"value": 2}
+            }
+          }
+        }
       ],
       "marks": [
         {
-          "name": "bars",
-          "type": "rect",
-          "from": {"data": "wikidata"},
-          "properties": {
-            "enter": {
-              "x": {"scale": "x", "field": "year"},
-              "width": {"scale": "x", "band": true, "offset": -1},
-              "y": {"scale": "games", "field": "play"},
-              "y2": {"scale": "games", "value": 0},
-              "fill": {"value": "#ccc"}
-            }
-          }
-        },
-        {
-          "type": "symbol",
-          "from": {"data": "wikidata"},
-          "properties": {
-            "enter": {
-              "y": {"value": 25},
-              "fill": {"value": "black"},
-              "opacity": {"value": "0"},
-              "size": {"value": 500},
-              "shape": {
-                "value": "M 0.314,-0.457 C 0.314,-0.457 0.314,-0.386 0.314,-0.386 0.482,-0.455 0.444,-0.269 0.443,-0.157 0.442,-0.120 0.443,-0.052 0.407,-0.030 0.377,-0.010 0.342,-0.030 0.314,-0.043 0.280,0.106 0.226,0.180 0.086,0.243 0.086,0.243 0.229,0.500 0.229,0.500 0.229,0.500 -0.229,0.500 -0.229,0.500 -0.229,0.500 -0.086,0.243 -0.086,0.243 -0.229,0.178 -0.271,0.101 -0.314,-0.043 -0.341,-0.029 -0.374,-0.007 -0.404,-0.029 -0.439,-0.054 -0.442,-0.146 -0.443,-0.186 -0.443,-0.235 -0.451,-0.400 -0.394,-0.419 -0.369,-0.427 -0.337,-0.409 -0.314,-0.400 -0.314,-0.400 -0.314,-0.457 -0.314,-0.457 -0.314,-0.457 0.314,-0.457 0.314,-0.457 Z M -0.371,-0.086 C -0.354,-0.093 -0.341,-0.093 -0.325,-0.110 -0.308,-0.137 -0.310,-0.279 -0.325,-0.310 -0.331,-0.332 -0.342,-0.340 -0.357,-0.357 -0.404,-0.277 -0.387,-0.173 -0.371,-0.086 Z M 0.329,-0.308 C 0.309,-0.279 0.307,-0.139 0.329,-0.110 0.341,-0.093 0.354,-0.093 0.371,-0.086 0.371,-0.086 0.386,-0.343 0.386,-0.343 0.362,-0.334 0.345,-0.332 0.329,-0.308 Z"
-              }
-            },
-            "update": {
-              "x": {"signal": "honors.x"},
-              "fill": [
-                {"test": "datum.OverallPosition==1", "value": "orange"},
-                {"value": "black"}
-              ],
-              "opacity": [
-                {"test": "datum.year==honors.year", "value": 1},
-                {"value": 0}
-              ]
-            }
-          }
-        },
-        {
-          "type": "text",
-          "from": {"data": "wikidata"},
-          "properties": {
-            "enter": {
-              "y": {"value": 25},
-              "fill": {"value": "#ccc"},
-              "opacity": {"value": "0"},
-              "align": {"value": "center"}
-            },
-            "update": {
-              "x": {"signal": "honors.x"},
-              "text": {"field": "OverallPosition"},
-              "opacity": [
-                {"test": "datum.year==honors.year", "value": 1},
-                {"value": 0}
-              ]
-            }
-          }
-        },
-        {
           "type": "group",
           "from": {
-            "data": "goals",
+            "data": "wikidata",
             "transform": [
+              {"type": "fold", "fields": ["win", "loss", "draw"]},
               {"type": "facet", "groupby": ["key"]}
             ]
           },
@@ -507,13 +452,13 @@
               "properties": {
                 "enter": {
                   "interpolate": {"value": "monotone"},
-                  "x": {"scale": "years", "field": "year"},
-                  "y": {"scale": "games", "field": "value"},
-                  "y2": {"scale": "games", "value": 0},
                   "fill": {"scale": "c", "field": "key"},
                   "opacity": {"value": 0.5}
                 },
                 "update": {
+                  "x": {"scale": "years", "field": "year"},
+                  "y": {"scale": "games", "field": "value"},
+                  "y2": {"scale": "games", "value": 0},
                   "opacity": [
                     {"test": "indata('selectedPoints', datum.key, 'status')", "value": 0},
                     {"value": 0.5}
@@ -533,18 +478,70 @@
           },
           "properties": {
             "enter": {
-              "x": {"scale": "x", "field": "year"},
-              "y": {"scale": "games", "field": "value"},
+              "x": {"scale": "years", "field": "year"},
               "fill": {"scale": "c", "field": "key"},
               "size": {"value": 75},
               "opacity": {"value": 0}
             },
             "update": {
+              "y": {"scale": "games", "field": "value"},
               "opacity": [
                 {
-                  "test": "datum.year==season & !indata('selectedPoints', datum.key, 'status')", 
+                  "test": "datum.year==honors & !indata('selectedPoints', datum.key, 'status')", 
                   "value": 1
                 },
+                {
+                  "test": "datum.year==season & 0==honors & !indata('selectedPoints', datum.key, 'status')", 
+                  "value": 1
+                },
+                {"value": 0}
+              ]
+            }
+          }
+        },
+        {
+          "type": "symbol",
+          "from": {"data": "wikidata"},
+          "properties": {
+            "enter": {
+              "y": {"value": -15},
+              "fill": {"value": "black"},
+              "opacity": {"value": "0"},
+              "size": {"value": 500},
+              "shape": {
+                "value": "M 0.314,-0.457 C 0.314,-0.457 0.314,-0.386 0.314,-0.386 0.482,-0.455 0.444,-0.269 0.443,-0.157 0.442,-0.120 0.443,-0.052 0.407,-0.030 0.377,-0.010 0.342,-0.030 0.314,-0.043 0.280,0.106 0.226,0.180 0.086,0.243 0.086,0.243 0.229,0.500 0.229,0.500 0.229,0.500 -0.229,0.500 -0.229,0.500 -0.229,0.500 -0.086,0.243 -0.086,0.243 -0.229,0.178 -0.271,0.101 -0.314,-0.043 -0.341,-0.029 -0.374,-0.007 -0.404,-0.029 -0.439,-0.054 -0.442,-0.146 -0.443,-0.186 -0.443,-0.235 -0.451,-0.400 -0.394,-0.419 -0.369,-0.427 -0.337,-0.409 -0.314,-0.400 -0.314,-0.400 -0.314,-0.457 -0.314,-0.457 -0.314,-0.457 0.314,-0.457 0.314,-0.457 Z M -0.371,-0.086 C -0.354,-0.093 -0.341,-0.093 -0.325,-0.110 -0.308,-0.137 -0.310,-0.279 -0.325,-0.310 -0.331,-0.332 -0.342,-0.340 -0.357,-0.357 -0.404,-0.277 -0.387,-0.173 -0.371,-0.086 Z M 0.329,-0.308 C 0.309,-0.279 0.307,-0.139 0.329,-0.110 0.341,-0.093 0.354,-0.093 0.371,-0.086 0.371,-0.086 0.386,-0.343 0.386,-0.343 0.362,-0.334 0.345,-0.332 0.329,-0.308 Z"
+              }
+            },
+            "update": {
+              "x": {"scale": "years", "field": "year"},
+              "fill": [
+                {"test": "datum['Overall Position']==1", "value": "orange"},
+                {"value": "black"}
+              ],
+              "opacity": [
+                {"test": "honors=='Games Played'", "value": 1},
+                {"test": "datum.year==honors", "value": 1},
+                {"value": 0}
+              ]
+            }
+          }
+        },
+        {
+          "type": "text",
+          "from": {"data": "wikidata"},
+          "properties": {
+            "enter": {
+              "y": {"value": -15},
+              "fill": {"value": "white"},
+              "opacity": {"value": "0"},
+              "align": {"value": "center"}
+            },
+            "update": {
+              "x": {"scale": "years", "field": "year"},
+              "text": {"field": "Overall Position"},
+              "opacity": [
+                {"test": "honors=='Games Played'", "value": 1},
+                {"test": "datum.year==honors", "value": 1},
                 {"value": 0}
               ]
             }
@@ -559,7 +556,7 @@
         "enter": {
           "x": {"value": 410},
           "width": {"value": 190},
-          "y": {"value": 50},
+          "y": {"value": 65},
           "height": {"value": 150},
           "fill": {"value": "#ccc"}
         }
@@ -628,12 +625,18 @@
         "enter": {
           "x": {"value": 0},
           "width": {"value": 400},
-          "y": {"value": 250},
+          "y": {"value": 265},
           "height": {"value": 150},
           "fill": {"value": "#fff"}
         }
       },
       "scales": [
+        {
+          "name": "x",
+          "type": "ordinal",
+          "range": [0, 400],
+          "domain": {"data": "wikidata", "field": "year"}
+        },
         {
           "name": "goals",
           "type": "linear",
@@ -653,7 +656,13 @@
       "marks": [
         {
           "type": "group",
-          "from": {"data": "megadata"},
+          "from": {
+            "data": "stats",
+            "transform": [
+              {"type": "fold", "fields": ["sum_goals for", "sum_goals against"]},
+              {"type": "facet", "groupby": ["year"]}
+            ]
+          },
           "properties": {
             "enter": {
               "x": {"scale": "x", "field": "year"},
@@ -662,10 +671,8 @@
           },
           "scales": [
             {
-              "name": "pos",
-              "type": "ordinal",
-              "range": "width",
-              "domain": {"field": "key"}
+              "name": "pos", "type": "ordinal",
+              "domain": {"field": "key"}, "range": "width"
             }
           ],
           "marks": [
@@ -680,21 +687,73 @@
                 "update": {
                   "x": {"scale": "pos", "field": "key"},
                   "width": {"scale": "pos", "band": true, "offset": -2},
+                  "y": {"scale": "goals", "field": "value"},
+                  "y2": {"scale": "goals", "value": 0}
+                }
+              }
+            },
+            {
+              "type": "text",
+              "from": {"mark": "bars"},
+              "properties": {
+                "enter": {
+                  "x": {"field": "x"},
+                  "dx": {"field": "width", "mult": 0.5},  
+                  "fill": {"value": "white"},
+                  "align": {"value": "center"},
+                  "text": [
+                    {"test": "datum.datum.key=='sum_goals for'", "value": "F"},
+                    {"value": "A"}
+                  ]
+                },
+                "update": {
+                  "y": {"field": "y", "offset": 15}
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "from": {
+            "data": "season-goals",
+            "transform": [
+              {"type": "filter", "test": "!indata('selectedPoints', datum.status, 'status')"}, 
+              {"type": "fold", "fields": ["goals for", "goals against"]},
+              {"type": "stack", "groupby": ["year", "key"], "sortby": ["status"], "field": "value"},
+              {"type": "facet", "groupby": ["year"]}
+            ]
+          },
+          "properties": {
+            "enter": {
+              "x": {"scale": "x", "field": "year"},
+              "width": {"scale": "x", "band": true}
+            }
+          },
+          "scales": [
+            {
+              "name": "pos", "type": "ordinal",
+              "domain": {"field": "key"}, "range": "width"
+            }
+          ],
+          "marks": [
+            {
+              "name": "bars",
+              "type": "rect",
+              "properties": {
+                "enter": {
+                  "fill": {"scale": "c", "field": "status"},
+                  "stroke": {"scale": "c", "field": "status"},
+                  "x": {"scale": "pos", "field": "key"},
+                  "width": {"scale": "pos", "band": true, "offset": -2}
+                },
+                "update": {
                   "y": {"scale": "goals", "field": "layout_start"},
                   "y2": {"scale": "goals", "field": "layout_end"},
-                  "fill": [
-                    {
-                      "test": "datum.year==season",
-                      "scale": "c", "field": "status"
-                    },
-                    {"value": "#ccc"}
-                  ],
-                  "stroke": [
-                    {
-                      "test": "datum.year==season",
-                      "scale": "c", "field": "status"
-                    },
-                    {"value": "#ccc"}
+                  "opacity": [
+                    {"test": "datum.year==honors", "value": 1},
+                    {"test": "datum.year==season & honors==0", "value": 1},
+                    {"value": 0}
                   ]
                 }
               }
@@ -732,7 +791,7 @@
         "enter": {
           "x": {"value": 410},
           "width": {"value": 190},
-          "y": {"value": 250},
+          "y": {"value": 265},
           "height": {"value": 150},
           "fill": {"value": "#ccc"}
         }
@@ -765,10 +824,10 @@
         },
         {
           "type": "text",
-          "from": {"data": "defaultText"},
+          "from": {"data": "text"},
           "properties": {
             "enter": {
-              "fill": {"value": "black"},
+              "fill": {"value": "gray"},
               "x": {"value": 10},
               "fontSize": {"value": 12}
             },
@@ -777,25 +836,8 @@
               "text": {"field": "value"},
               "opacity": [
                 {"test": "group=='default'", "value": 1},
-                {"value": 0}
-              ]
-            }
-          }
-        },
-        {
-          "type": "text",
-          "from": {"data": "goalsText"},
-          "properties": {
-            "enter": {
-              "fill": {"value": "black"},
-              "x": {"value": 10},
-              "fontSize": {"value": 12}
-            },
-            "update": {
-              "y": {"scale": "textPosition", "field": "index"},
-              "text": {"field": "value"},
-              "opacity": [
                 {"test": "group=='scorers' & scorers=='Number of Goals'", "value": 1},
+                {"test": "group=='honors' & honors=='Games Played'", "value": 1},
                 {"value": 0}
               ]
             }
@@ -807,7 +849,8 @@
             "data": "wikidata",
             "transform": [
               {"type": "filter", "test": "datum.year==scorers"},
-              {"type": "fold", "fields": ["Leading Scorers", "Goals by Leading Scorers"]}
+              {"type": "fold", "fields": ["Leading Scorers", "Goals by Leading Scorers"]},
+              {"type": "formula", "field": "index", "expr": "indexof(['Leading Scorers', 'Goals by Leading Scorers'], datum.key) + 1"}
             ]
           },
           "properties": {
@@ -817,7 +860,7 @@
               "fontSize": {"value": 12}
             },
             "update": {
-              "y": {"scale": "textPosition", "field": "key"},
+              "y": {"scale": "textPosition", "field": "index"},
               "text": [
                 {
                   "test": "datum.key=='Goals by Leading Scorers'",
@@ -828,6 +871,36 @@
               "opacity": [
                 {"test": "group=='scorers'", "value": 1},
                 {"value": 1}
+              ]
+            }
+          }
+        },
+        {
+          "type": "text",
+          "from": {
+            "data": "wikidata",
+            "transform": [
+              {"type": "filter", "test": "datum.year==honors"},
+              {"type": "fold", "fields": ["play", "Conference Position", "Overall Position", "MLS Cup Playoffs", "US Open Cup", "Champions League", "Additional Honors"]},
+              {"type": "formula", "field": "index", "expr": "indexof(['play', 'Conference Position', 'Overall Position', 'MLS Cup Playoffs', 'US Open Cup', 'Champions League', 'Additional Honors'], datum.key) + 1"} 
+            ]
+          },
+          "properties": {
+            "enter": {
+              "fill": {"value": "black"},
+              "x": {"value": 10},
+              "fontSize": {"value": 10}
+            },
+            "update": {
+              "y": {"scale": "textPosition", "field": "index"},
+              "text": [
+                {"test": "datum.key=='play'", "template": "Games Played: {{datum.value}}"},
+                {"test": "datum.key=='MLS Cup Playoffs'", "field": "value"},
+                {"template": "{{datum.key}}: {{datum.value}}"}
+              ],
+              "opacity": [
+                {"test": "group=='honors'", "value": 1},
+                {"value": 0}
               ]
             }
           }
