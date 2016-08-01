@@ -31,236 +31,236 @@
     {
       "name": "season-goals",
       "values": [
-        {"year": 2009,"goals for": 3,"goals against": 0,"status": "win"},
-        {"year": 2009,"goals for": 2,"goals against": 0,"status": "win"},
-        {"year": 2009,"goals for": 2,"goals against": 0,"status": "win"},
-        {"year": 2009,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2009,"goals for": 0,"goals against": 2,"status": "loss"},
-        {"year": 2009,"goals for": 2,"goals against": 0,"status": "win"},
-        {"year": 2009,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2009,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2009,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2009,"goals for": 2,"goals against": 2,"status": "draw"},
-        {"year": 2009,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2009,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2009,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2009,"goals for": 3,"goals against": 3,"status": "draw"},
-        {"year": 2009,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2009,"goals for": 3,"goals against": 0,"status": "win"},
-        {"year": 2009,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2009,"goals for": 0,"goals against": 0,"status": "draw"},
-        {"year": 2009,"goals for": 0,"goals against": 4,"status": "loss"},
-        {"year": 2009,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2009,"goals for": 2,"goals against": 0,"status": "win"},
-        {"year": 2009,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2009,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2009,"goals for": 0,"goals against": 0,"status": "draw"},
-        {"year": 2009,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2009,"goals for": 0,"goals against": 0,"status": "draw"},
-        {"year": 2009,"goals for": 1,"goals against": 2,"status": "loss"},
-        {"year": 2009,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2009,"goals for": 3,"goals against": 2,"status": "win"},
-        {"year": 2009,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2010,"goals for": 2,"goals against": 0,"status": "win"},
-        {"year": 2010,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2010,"goals for": 2,"goals against": 2,"status": "draw"},
-        {"year": 2010,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2010,"goals for": 2,"goals against": 2,"status": "draw"},
-        {"year": 2010,"goals for": 0,"goals against": 2,"status": "loss"},
-        {"year": 2010,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2010,"goals for": 0,"goals against": 4,"status": "loss"},
-        {"year": 2010,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2010,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2010,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2010,"goals for": 3,"goals against": 0,"status": "win"},
-        {"year": 2010,"goals for": 2,"goals against": 3,"status": "loss"},
-        {"year": 2010,"goals for": 1,"goals against": 3,"status": "loss"},
-        {"year": 2010,"goals for": 1,"goals against": 3,"status": "loss"},
-        {"year": 2010,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2010,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2010,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2010,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2010,"goals for": 2,"goals against": 0,"status": "win"},
-        {"year": 2010,"goals for": 0,"goals against": 0,"status": "draw"},
-        {"year": 2010,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2010,"goals for": 1,"goals against": 3,"status": "loss"},
-        {"year": 2010,"goals for": 0,"goals against": 0,"status": "draw"},
-        {"year": 2010,"goals for": 4,"goals against": 0,"status": "win"},
-        {"year": 2010,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2010,"goals for": 3,"goals against": 2,"status": "win"},
-        {"year": 2010,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2010,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2010,"goals for": 1,"goals against": 2,"status": "loss"},
-        {"year": 2011,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2011,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2011,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2011,"goals for": 2,"goals against": 2,"status": "draw"},
-        {"year": 2011,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2011,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2011,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2011,"goals for": 3,"goals against": 0,"status": "win"},
-        {"year": 2011,"goals for": 1,"goals against": 2,"status": "loss"},
-        {"year": 2011,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2011,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2011,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2011,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2011,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2011,"goals for": 0,"goals against": 0,"status": "draw"},
-        {"year": 2011,"goals for": 2,"goals against": 2,"status": "draw"},
-        {"year": 2011,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2011,"goals for": 4,"goals against": 2,"status": "win"},
-        {"year": 2011,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2011,"goals for": 0,"goals against": 0,"status": "draw"},
-        {"year": 2011,"goals for": 3,"goals against": 2,"status": "win"},
-        {"year": 2011,"goals for": 4,"goals against": 3,"status": "win"},
-        {"year": 2011,"goals for": 1,"goals against": 3,"status": "loss"},
-        {"year": 2011,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2011,"goals for": 0,"goals against": 0,"status": "draw"},
-        {"year": 2011,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2011,"goals for": 6,"goals against": 2,"status": "win"},
-        {"year": 2011,"goals for": 1,"goals against": 2,"status": "loss"},
-        {"year": 2011,"goals for": 3,"goals against": 0,"status": "win"},
-        {"year": 2011,"goals for": 3,"goals against": 1,"status": "win"},
-        {"year": 2011,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2011,"goals for": 0,"goals against": 2,"status": "loss"},
-        {"year": 2011,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2011,"goals for": 3,"goals against": 1,"status": "win"},
-        {"year": 2012,"goals for": 3,"goals against": 1,"status": "win"},
-        {"year": 2012,"goals for": 2,"goals against": 0,"status": "win"},
-        {"year": 2012,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2012,"goals for": 0,"goals against": 0,"status": "draw"},
-        {"year": 2012,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2012,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2012,"goals for": 2,"goals against": 0,"status": "win"},
-        {"year": 2012,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2012,"goals for": 2,"goals against": 0,"status": "win"},
-        {"year": 2012,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2012,"goals for": 2,"goals against": 2,"status": "draw"},
-        {"year": 2012,"goals for": 0,"goals against": 2,"status": "loss"},
-        {"year": 2012,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2012,"goals for": 1,"goals against": 4,"status": "loss"},
-        {"year": 2012,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2012,"goals for": 1,"goals against": 2,"status": "loss"},
-        {"year": 2012,"goals for": 2,"goals against": 2,"status": "draw"},
-        {"year": 2012,"goals for": 0,"goals against": 0,"status": "draw"},
-        {"year": 2012,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2012,"goals for": 2,"goals against": 2,"status": "draw"},
-        {"year": 2012,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2012,"goals for": 4,"goals against": 0,"status": "win"},
-        {"year": 2012,"goals for": 1,"goals against": 2,"status": "loss"},
-        {"year": 2012,"goals for": 2,"goals against": 0,"status": "win"},
-        {"year": 2012,"goals for": 6,"goals against": 2,"status": "win"},
-        {"year": 2012,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2012,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2012,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2012,"goals for": 1,"goals against": 2,"status": "loss"},
-        {"year": 2012,"goals for": 0,"goals against": 0,"status": "draw"},
-        {"year": 2012,"goals for": 3,"goals against": 0,"status": "win"},
-        {"year": 2012,"goals for": 0,"goals against": 0,"status": "draw"},
-        {"year": 2012,"goals for": 3,"goals against": 1,"status": "win"},
-        {"year": 2012,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2013,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2013,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2013,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2013,"goals for": 1,"goals against": 2,"status": "loss"},
-        {"year": 2013,"goals for": 0,"goals against": 0,"status": "draw"},
-        {"year": 2013,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2013,"goals for": 2,"goals against": 2,"status": "draw"},
-        {"year": 2013,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2013,"goals for": 4,"goals against": 0,"status": "win"},
-        {"year": 2013,"goals for": 4,"goals against": 2,"status": "win"},
-        {"year": 2013,"goals for": 0,"goals against": 4,"status": "loss"},
-        {"year": 2013,"goals for": 2,"goals against": 0,"status": "win"},
-        {"year": 2013,"goals for": 3,"goals against": 2,"status": "win"},
-        {"year": 2013,"goals for": 0,"goals against": 2,"status": "loss"},
-        {"year": 2013,"goals for": 2,"goals against": 0,"status": "win"},
-        {"year": 2013,"goals for": 0,"goals against": 2,"status": "loss"},
-        {"year": 2013,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2013,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2013,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2013,"goals for": 3,"goals against": 0,"status": "win"},
-        {"year": 2013,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2013,"goals for": 1,"goals against": 3,"status": "loss"},
-        {"year": 2013,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2013,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2013,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2013,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2013,"goals for": 2,"goals against": 0,"status": "win"},
-        {"year": 2013,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2013,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2013,"goals for": 1,"goals against": 5,"status": "loss"},
-        {"year": 2013,"goals for": 1,"goals against": 4,"status": "loss"},
-        {"year": 2013,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2013,"goals for": 0,"goals against": 2,"status": "loss"},
-        {"year": 2013,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2014,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2014,"goals for": 1,"goals against": 2,"status": "loss"},
-        {"year": 2014,"goals for": 2,"goals against": 0,"status": "win"},
-        {"year": 2014,"goals for": 1,"goals against": 2,"status": "loss"},
-        {"year": 2014,"goals for": 4,"goals against": 4,"status": "draw"},
-        {"year": 2014,"goals for": 3,"goals against": 2,"status": "win"},
-        {"year": 2014,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2014,"goals for": 4,"goals against": 1,"status": "win"},
-        {"year": 2014,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2014,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2014,"goals for": 0,"goals against": 5,"status": "loss"},
-        {"year": 2014,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2014,"goals for": 2,"goals against": 2,"status": "draw"},
-        {"year": 2014,"goals for": 4,"goals against": 0,"status": "win"},
-        {"year": 2014,"goals for": 3,"goals against": 2,"status": "win"},
-        {"year": 2014,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2014,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2014,"goals for": 2,"goals against": 0,"status": "win"},
-        {"year": 2014,"goals for": 0,"goals against": 3,"status": "loss"},
-        {"year": 2014,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2014,"goals for": 2,"goals against": 0,"status": "win"},
-        {"year": 2014,"goals for": 1,"goals against": 2,"status": "loss"},
-        {"year": 2014,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2014,"goals for": 4,"goals against": 2,"status": "win"},
-        {"year": 2014,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2014,"goals for": 4,"goals against": 2,"status": "win"},
-        {"year": 2014,"goals for": 3,"goals against": 2,"status": "win"},
-        {"year": 2014,"goals for": 1,"goals against": 4,"status": "loss"},
-        {"year": 2014,"goals for": 1,"goals against": 3,"status": "loss"},
-        {"year": 2014,"goals for": 4,"goals against": 2,"status": "win"},
-        {"year": 2014,"goals for": 4,"goals against": 1,"status": "win"},
-        {"year": 2014,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2014,"goals for": 2,"goals against": 2,"status": "draw"},
-        {"year": 2014,"goals for": 2,"goals against": 0,"status": "win"},
-        {"year": 2015,"goals for": 3,"goals against": 0,"status": "win"},
-        {"year": 2015,"goals for": 2,"goals against": 3,"status": "loss"},
-        {"year": 2015,"goals for": 0,"goals against": 0,"status": "draw"},
-        {"year": 2015,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2015,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2015,"goals for": 3,"goals against": 1,"status": "win"},
-        {"year": 2015,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2015,"goals for": 3,"goals against": 1,"status": "win"},
-        {"year": 2015,"goals for": 2,"goals against": 3,"status": "loss"},
-        {"year": 2015,"goals for": 2,"goals against": 0,"status": "win"},
-        {"year": 2015,"goals for": 0,"goals against": 0,"status": "draw"},
-        {"year": 2015,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2015,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2015,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2015,"goals for": 3,"goals against": 0,"status": "win"},
-        {"year": 2015,"goals for": 0,"goals against": 2,"status": "loss"},
-        {"year": 2015,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2015,"goals for": 1,"goals against": 4,"status": "loss"},
-        {"year": 2015,"goals for": 1,"goals against": 0,"status": "win"},
-        {"year": 2015,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2015,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2015,"goals for": 0,"goals against": 1,"status": "loss"},
-        {"year": 2015,"goals for": 0,"goals against": 3,"status": "loss"},
-        {"year": 2015,"goals for": 1,"goals against": 3,"status": "loss"},
-        {"year": 2015,"goals for": 4,"goals against": 0,"status": "win"},
-        {"year": 2015,"goals for": 0,"goals against": 2,"status": "loss"},
-        {"year": 2015,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2015,"goals for": 2,"goals against": 1,"status": "win"},
-        {"year": 2015,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2015,"goals for": 3,"goals against": 0,"status": "win"},
-        {"year": 2015,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2015,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2015,"goals for": 1,"goals against": 1,"status": "draw"},
-        {"year": 2015,"goals for": 3,"goals against": 1,"status": "win"}
+        {"year": 2009,"Goals for": 3,"Goals against": 0,"status": "win"},
+        {"year": 2009,"Goals for": 2,"Goals against": 0,"status": "win"},
+        {"year": 2009,"Goals for": 2,"Goals against": 0,"status": "win"},
+        {"year": 2009,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2009,"Goals for": 0,"Goals against": 2,"status": "loss"},
+        {"year": 2009,"Goals for": 2,"Goals against": 0,"status": "win"},
+        {"year": 2009,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2009,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2009,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2009,"Goals for": 2,"Goals against": 2,"status": "draw"},
+        {"year": 2009,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2009,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2009,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2009,"Goals for": 3,"Goals against": 3,"status": "draw"},
+        {"year": 2009,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2009,"Goals for": 3,"Goals against": 0,"status": "win"},
+        {"year": 2009,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2009,"Goals for": 0,"Goals against": 0,"status": "draw"},
+        {"year": 2009,"Goals for": 0,"Goals against": 4,"status": "loss"},
+        {"year": 2009,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2009,"Goals for": 2,"Goals against": 0,"status": "win"},
+        {"year": 2009,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2009,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2009,"Goals for": 0,"Goals against": 0,"status": "draw"},
+        {"year": 2009,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2009,"Goals for": 0,"Goals against": 0,"status": "draw"},
+        {"year": 2009,"Goals for": 1,"Goals against": 2,"status": "loss"},
+        {"year": 2009,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2009,"Goals for": 3,"Goals against": 2,"status": "win"},
+        {"year": 2009,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2010,"Goals for": 2,"Goals against": 0,"status": "win"},
+        {"year": 2010,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2010,"Goals for": 2,"Goals against": 2,"status": "draw"},
+        {"year": 2010,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2010,"Goals for": 2,"Goals against": 2,"status": "draw"},
+        {"year": 2010,"Goals for": 0,"Goals against": 2,"status": "loss"},
+        {"year": 2010,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2010,"Goals for": 0,"Goals against": 4,"status": "loss"},
+        {"year": 2010,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2010,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2010,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2010,"Goals for": 3,"Goals against": 0,"status": "win"},
+        {"year": 2010,"Goals for": 2,"Goals against": 3,"status": "loss"},
+        {"year": 2010,"Goals for": 1,"Goals against": 3,"status": "loss"},
+        {"year": 2010,"Goals for": 1,"Goals against": 3,"status": "loss"},
+        {"year": 2010,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2010,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2010,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2010,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2010,"Goals for": 2,"Goals against": 0,"status": "win"},
+        {"year": 2010,"Goals for": 0,"Goals against": 0,"status": "draw"},
+        {"year": 2010,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2010,"Goals for": 1,"Goals against": 3,"status": "loss"},
+        {"year": 2010,"Goals for": 0,"Goals against": 0,"status": "draw"},
+        {"year": 2010,"Goals for": 4,"Goals against": 0,"status": "win"},
+        {"year": 2010,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2010,"Goals for": 3,"Goals against": 2,"status": "win"},
+        {"year": 2010,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2010,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2010,"Goals for": 1,"Goals against": 2,"status": "loss"},
+        {"year": 2011,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2011,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2011,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2011,"Goals for": 2,"Goals against": 2,"status": "draw"},
+        {"year": 2011,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2011,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2011,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2011,"Goals for": 3,"Goals against": 0,"status": "win"},
+        {"year": 2011,"Goals for": 1,"Goals against": 2,"status": "loss"},
+        {"year": 2011,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2011,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2011,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2011,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2011,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2011,"Goals for": 0,"Goals against": 0,"status": "draw"},
+        {"year": 2011,"Goals for": 2,"Goals against": 2,"status": "draw"},
+        {"year": 2011,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2011,"Goals for": 4,"Goals against": 2,"status": "win"},
+        {"year": 2011,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2011,"Goals for": 0,"Goals against": 0,"status": "draw"},
+        {"year": 2011,"Goals for": 3,"Goals against": 2,"status": "win"},
+        {"year": 2011,"Goals for": 4,"Goals against": 3,"status": "win"},
+        {"year": 2011,"Goals for": 1,"Goals against": 3,"status": "loss"},
+        {"year": 2011,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2011,"Goals for": 0,"Goals against": 0,"status": "draw"},
+        {"year": 2011,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2011,"Goals for": 6,"Goals against": 2,"status": "win"},
+        {"year": 2011,"Goals for": 1,"Goals against": 2,"status": "loss"},
+        {"year": 2011,"Goals for": 3,"Goals against": 0,"status": "win"},
+        {"year": 2011,"Goals for": 3,"Goals against": 1,"status": "win"},
+        {"year": 2011,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2011,"Goals for": 0,"Goals against": 2,"status": "loss"},
+        {"year": 2011,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2011,"Goals for": 3,"Goals against": 1,"status": "win"},
+        {"year": 2012,"Goals for": 3,"Goals against": 1,"status": "win"},
+        {"year": 2012,"Goals for": 2,"Goals against": 0,"status": "win"},
+        {"year": 2012,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2012,"Goals for": 0,"Goals against": 0,"status": "draw"},
+        {"year": 2012,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2012,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2012,"Goals for": 2,"Goals against": 0,"status": "win"},
+        {"year": 2012,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2012,"Goals for": 2,"Goals against": 0,"status": "win"},
+        {"year": 2012,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2012,"Goals for": 2,"Goals against": 2,"status": "draw"},
+        {"year": 2012,"Goals for": 0,"Goals against": 2,"status": "loss"},
+        {"year": 2012,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2012,"Goals for": 1,"Goals against": 4,"status": "loss"},
+        {"year": 2012,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2012,"Goals for": 1,"Goals against": 2,"status": "loss"},
+        {"year": 2012,"Goals for": 2,"Goals against": 2,"status": "draw"},
+        {"year": 2012,"Goals for": 0,"Goals against": 0,"status": "draw"},
+        {"year": 2012,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2012,"Goals for": 2,"Goals against": 2,"status": "draw"},
+        {"year": 2012,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2012,"Goals for": 4,"Goals against": 0,"status": "win"},
+        {"year": 2012,"Goals for": 1,"Goals against": 2,"status": "loss"},
+        {"year": 2012,"Goals for": 2,"Goals against": 0,"status": "win"},
+        {"year": 2012,"Goals for": 6,"Goals against": 2,"status": "win"},
+        {"year": 2012,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2012,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2012,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2012,"Goals for": 1,"Goals against": 2,"status": "loss"},
+        {"year": 2012,"Goals for": 0,"Goals against": 0,"status": "draw"},
+        {"year": 2012,"Goals for": 3,"Goals against": 0,"status": "win"},
+        {"year": 2012,"Goals for": 0,"Goals against": 0,"status": "draw"},
+        {"year": 2012,"Goals for": 3,"Goals against": 1,"status": "win"},
+        {"year": 2012,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2013,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2013,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2013,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2013,"Goals for": 1,"Goals against": 2,"status": "loss"},
+        {"year": 2013,"Goals for": 0,"Goals against": 0,"status": "draw"},
+        {"year": 2013,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2013,"Goals for": 2,"Goals against": 2,"status": "draw"},
+        {"year": 2013,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2013,"Goals for": 4,"Goals against": 0,"status": "win"},
+        {"year": 2013,"Goals for": 4,"Goals against": 2,"status": "win"},
+        {"year": 2013,"Goals for": 0,"Goals against": 4,"status": "loss"},
+        {"year": 2013,"Goals for": 2,"Goals against": 0,"status": "win"},
+        {"year": 2013,"Goals for": 3,"Goals against": 2,"status": "win"},
+        {"year": 2013,"Goals for": 0,"Goals against": 2,"status": "loss"},
+        {"year": 2013,"Goals for": 2,"Goals against": 0,"status": "win"},
+        {"year": 2013,"Goals for": 0,"Goals against": 2,"status": "loss"},
+        {"year": 2013,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2013,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2013,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2013,"Goals for": 3,"Goals against": 0,"status": "win"},
+        {"year": 2013,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2013,"Goals for": 1,"Goals against": 3,"status": "loss"},
+        {"year": 2013,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2013,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2013,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2013,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2013,"Goals for": 2,"Goals against": 0,"status": "win"},
+        {"year": 2013,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2013,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2013,"Goals for": 1,"Goals against": 5,"status": "loss"},
+        {"year": 2013,"Goals for": 1,"Goals against": 4,"status": "loss"},
+        {"year": 2013,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2013,"Goals for": 0,"Goals against": 2,"status": "loss"},
+        {"year": 2013,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2014,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2014,"Goals for": 1,"Goals against": 2,"status": "loss"},
+        {"year": 2014,"Goals for": 2,"Goals against": 0,"status": "win"},
+        {"year": 2014,"Goals for": 1,"Goals against": 2,"status": "loss"},
+        {"year": 2014,"Goals for": 4,"Goals against": 4,"status": "draw"},
+        {"year": 2014,"Goals for": 3,"Goals against": 2,"status": "win"},
+        {"year": 2014,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2014,"Goals for": 4,"Goals against": 1,"status": "win"},
+        {"year": 2014,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2014,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2014,"Goals for": 0,"Goals against": 5,"status": "loss"},
+        {"year": 2014,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2014,"Goals for": 2,"Goals against": 2,"status": "draw"},
+        {"year": 2014,"Goals for": 4,"Goals against": 0,"status": "win"},
+        {"year": 2014,"Goals for": 3,"Goals against": 2,"status": "win"},
+        {"year": 2014,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2014,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2014,"Goals for": 2,"Goals against": 0,"status": "win"},
+        {"year": 2014,"Goals for": 0,"Goals against": 3,"status": "loss"},
+        {"year": 2014,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2014,"Goals for": 2,"Goals against": 0,"status": "win"},
+        {"year": 2014,"Goals for": 1,"Goals against": 2,"status": "loss"},
+        {"year": 2014,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2014,"Goals for": 4,"Goals against": 2,"status": "win"},
+        {"year": 2014,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2014,"Goals for": 4,"Goals against": 2,"status": "win"},
+        {"year": 2014,"Goals for": 3,"Goals against": 2,"status": "win"},
+        {"year": 2014,"Goals for": 1,"Goals against": 4,"status": "loss"},
+        {"year": 2014,"Goals for": 1,"Goals against": 3,"status": "loss"},
+        {"year": 2014,"Goals for": 4,"Goals against": 2,"status": "win"},
+        {"year": 2014,"Goals for": 4,"Goals against": 1,"status": "win"},
+        {"year": 2014,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2014,"Goals for": 2,"Goals against": 2,"status": "draw"},
+        {"year": 2014,"Goals for": 2,"Goals against": 0,"status": "win"},
+        {"year": 2015,"Goals for": 3,"Goals against": 0,"status": "win"},
+        {"year": 2015,"Goals for": 2,"Goals against": 3,"status": "loss"},
+        {"year": 2015,"Goals for": 0,"Goals against": 0,"status": "draw"},
+        {"year": 2015,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2015,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2015,"Goals for": 3,"Goals against": 1,"status": "win"},
+        {"year": 2015,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2015,"Goals for": 3,"Goals against": 1,"status": "win"},
+        {"year": 2015,"Goals for": 2,"Goals against": 3,"status": "loss"},
+        {"year": 2015,"Goals for": 2,"Goals against": 0,"status": "win"},
+        {"year": 2015,"Goals for": 0,"Goals against": 0,"status": "draw"},
+        {"year": 2015,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2015,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2015,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2015,"Goals for": 3,"Goals against": 0,"status": "win"},
+        {"year": 2015,"Goals for": 0,"Goals against": 2,"status": "loss"},
+        {"year": 2015,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2015,"Goals for": 1,"Goals against": 4,"status": "loss"},
+        {"year": 2015,"Goals for": 1,"Goals against": 0,"status": "win"},
+        {"year": 2015,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2015,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2015,"Goals for": 0,"Goals against": 1,"status": "loss"},
+        {"year": 2015,"Goals for": 0,"Goals against": 3,"status": "loss"},
+        {"year": 2015,"Goals for": 1,"Goals against": 3,"status": "loss"},
+        {"year": 2015,"Goals for": 4,"Goals against": 0,"status": "win"},
+        {"year": 2015,"Goals for": 0,"Goals against": 2,"status": "loss"},
+        {"year": 2015,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2015,"Goals for": 2,"Goals against": 1,"status": "win"},
+        {"year": 2015,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2015,"Goals for": 3,"Goals against": 0,"status": "win"},
+        {"year": 2015,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2015,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2015,"Goals for": 1,"Goals against": 1,"status": "draw"},
+        {"year": 2015,"Goals for": 3,"Goals against": 1,"status": "win"}
       ]
     },
     {
@@ -270,7 +270,10 @@
         {"type": "filter", "test": "!indata('selectedPoints', datum.status, 'status')"}, 
         {
           "type": "aggregate", "groupby": ["year"],
-          "summarize": {"goals for": ["sum"], "goals against": ["sum"]}
+          "summarize": [
+            {"field": "Goals for", "ops": ["sum"], "as": ["Goals for"]},
+            {"field": "Goals against", "ops": ["sum"], "as": ["Goals against"]}
+          ]
         }
       ]
     },
@@ -288,12 +291,12 @@
         {"type": "default", "index": 1, "value": "Hover over an axis to see more"},
         {"type": "default", "index": 2, "value": "information. Hover over the"},
         {"type": "default", "index": 3, "value": "'Games Played' axis to see the"},
-        {"type": "default", "index": 4, "value": "number of goals for the given"},
+        {"type": "default", "index": 4, "value": "number of Goals for the given"},
         {"type": "default", "index": 5, "value": "year and outcome. Hover over"},
         {"type": "default", "index": 6, "value": "the 'Goals' axis to see the"},
         {"type": "default", "index": 7, "value": "season's leading scorers. Filter"},
         {"type": "default", "index": 8, "value": "the charts with the Venn Diagram."},
-        {"type": "scorers", "index": 1, "value": "Number of goals for (F) and"},
+        {"type": "scorers", "index": 1, "value": "Number of Goals for (F) and"},
         {"type": "scorers", "index": 2, "value": "against (A) per season."},        
         {"type": "scorers", "index": 4, "value": "Hover over a year on the x-axis"},
         {"type": "scorers", "index": 5, "value": "to see the leading scorer(s) for"},
@@ -366,6 +369,12 @@
         {"type": "honors", "expr": "if(honors==0, 'default', 'honors')"},
         {"type": "scorers", "expr": "if(scorers==0, 'default', 'scorers')"}
       ]
+    },
+    {
+      "name": "teststream",
+      "streams":[
+        {"type": "click", "expr": "eventItem()"}
+      ]
     }
   ],
   "scales": [
@@ -410,7 +419,7 @@
           "x": {"value": 0},
           "width": {"value": 400},
           "y": {"value": 65},
-          "height": {"value": 150},
+          "height": {"value": 75},
           "fill": {"value": "#ccc"}
         }
       },
@@ -448,11 +457,13 @@
           },
           "marks": [
             {
-              "type": "area",
+              "name": "lines",
+              "type": "line",
               "properties": {
                 "enter": {
                   "interpolate": {"value": "monotone"},
-                  "fill": {"scale": "c", "field": "key"},
+                  "stroke": {"scale": "c", "field": "key"},
+                  "strokeWidth": {"value": 3},
                   "opacity": {"value": 0.5}
                 },
                 "update": {
@@ -463,6 +474,19 @@
                     {"test": "indata('selectedPoints', datum.key, 'status')", "value": 0},
                     {"value": 0.5}
                   ]
+                }
+              }
+            },
+            {
+              "type": "text",
+              "from": {"mark": "lines"},
+              "properties": {
+                "enter": {
+                  "x": {"field": "datum.x", "offset": 2},
+                  "y": {"field": "datum.y"},
+                  "fill": {"scale": "c", "field": "datum.key"},
+                  "text": {"field": "datum.key"},
+                  "baseline": {"value": "middle"}
                 }
               }
             }
@@ -480,12 +504,13 @@
             "enter": {
               "x": {"scale": "years", "field": "year"},
               "fill": {"scale": "c", "field": "key"},
+              "stroke": {"scale": "c", "field": "key"},
               "size": {"value": 75},
-              "opacity": {"value": 0}
+              "fillOpacity": {"value": 0}
             },
             "update": {
               "y": {"scale": "games", "field": "value"},
-              "opacity": [
+              "fillOpacity": [
                 {
                   "test": "datum.year==honors & !indata('selectedPoints', datum.key, 'status')", 
                   "value": 1
@@ -625,8 +650,8 @@
         "enter": {
           "x": {"value": 0},
           "width": {"value": 400},
-          "y": {"value": 265},
-          "height": {"value": 150},
+          "y": {"value": 195},
+          "height": {"value": 275},
           "fill": {"value": "#fff"}
         }
       },
@@ -638,76 +663,74 @@
           "domain": {"data": "wikidata", "field": "year"}
         },
         {
-          "name": "goals",
-          "type": "linear",
-          "range": "height",
-          "domain": {
-            "fields": [
-              {"data": "stats", "field": "sum_goals for"},
-              {"data": "stats", "field": "sum_goals against"}
-             ]
-          }
+          "name": "g",
+          "type": "ordinal",
+          "domain": ["Goals for", "Goals against"],
+          "range": "height"
         }
       ],
-      "axes": [
-        {"type": "x", "scale": "x"},
-        {"type": "y", "scale": "goals", "title": "Number of Goals"}
-      ],
       "marks": [
+        {
+          "type": "text",
+          "from": {"data": "wikidata"},
+          "properties": {
+            "enter": {
+              "x": {"scale": "x", "field": "year"},
+              "dx": {"scale": "x", "band": true, "mult": 0.5},
+              "y": {"field": {"group": "height"}, "mult": 0.5, "offset": -10},
+              "text": {"field": "year"},
+              "align": {"value": "center"},
+              "fill": {"value": "#000"}
+            }
+          }
+        },
         {
           "type": "group",
           "from": {
             "data": "stats",
             "transform": [
-              {"type": "fold", "fields": ["sum_goals for", "sum_goals against"]},
-              {"type": "facet", "groupby": ["year"]}
+              {"type": "fold", "fields": ["Goals for", "Goals against"]},
+              {"type": "facet", "groupby": ["key"]},
+              {"type": "formula", "field": "reverse", "expr": "datum.key=='Goals against'"}
             ]
           },
           "properties": {
-            "enter": {
-              "x": {"scale": "x", "field": "year"},
-              "width": {"scale": "x", "band": true}
+            "update": {
+              "y": {"scale": "g", "field": "key"},
+              "x": {"value": 0},
+              "height": {"scale": "g", "band": true, "offset": -30},
+              "width": {"field": {"group": "width"}}
             }
           },
           "scales": [
             {
-              "name": "pos", "type": "ordinal",
-              "domain": {"field": "key"}, "range": "width"
+              "name": "y",
+              "type": "linear",
+              "range": "height",
+              "reverse": {"field": "reverse"},
+              "domain": {
+                "fields": [
+                  {"data": "stats", "field": "Goals for"},
+                  {"data": "stats", "field": "Goals against"}
+                ]
+              }
             }
+          ],
+          "axes": [
+            {"type": "y", "scale": "y", "ticks": 8, "title": "Goals"}
           ],
           "marks": [
             {
-              "name": "bars",
               "type": "rect",
               "properties": {
                 "enter": {
-                  "fill": {"value": "#ccc"},
-                  "stroke": {"value": "#ccc"}
+                  "x": {"scale": "x", "field": "year"},
+                  "width": {"scale": "x", "band": true, "offset": -1},
+                  "fill": {"value": "#ccc"}
                 },
                 "update": {
-                  "x": {"scale": "pos", "field": "key"},
-                  "width": {"scale": "pos", "band": true, "offset": -2},
-                  "y": {"scale": "goals", "field": "value"},
-                  "y2": {"scale": "goals", "value": 0}
-                }
-              }
-            },
-            {
-              "type": "text",
-              "from": {"mark": "bars"},
-              "properties": {
-                "enter": {
-                  "x": {"field": "x"},
-                  "dx": {"field": "width", "mult": 0.5},  
-                  "fill": {"value": "white"},
-                  "align": {"value": "center"},
-                  "text": [
-                    {"test": "datum.datum.key=='sum_goals for'", "value": "F"},
-                    {"value": "A"}
-                  ]
-                },
-                "update": {
-                  "y": {"field": "y", "offset": 15}
+                  "y": {"scale": "y", "field": "value"},
+                  "y2": {"scale": "y", "value": 0}
                 }
               }
             }
@@ -719,37 +742,47 @@
             "data": "season-goals",
             "transform": [
               {"type": "filter", "test": "!indata('selectedPoints', datum.status, 'status')"}, 
-              {"type": "fold", "fields": ["goals for", "goals against"]},
-              {"type": "stack", "groupby": ["year", "key"], "sortby": ["status"], "field": "value"},
-              {"type": "facet", "groupby": ["year"]}
+              {"type": "fold", "fields": ["Goals for", "Goals against"]},
+              {"type": "stack", "groupby": ["key", "year"], "sortby": ["status"], "field": "value"},
+              {"type": "facet", "groupby": ["key"]},
+              {"type": "formula", "field": "reverse", "expr": "datum.key=='Goals against'"}
             ]
           },
           "properties": {
-            "enter": {
-              "x": {"scale": "x", "field": "year"},
-              "width": {"scale": "x", "band": true}
+            "update": {
+              "y": {"scale": "g", "field": "key"},
+              "x": {"value": 0},
+              "height": {"scale": "g", "band": true, "offset": -30},
+              "width": {"field": {"group": "width"}}
             }
           },
           "scales": [
             {
-              "name": "pos", "type": "ordinal",
-              "domain": {"field": "key"}, "range": "width"
+              "name": "y",
+              "type": "linear",
+              "range": "height",
+              "reverse": {"field": "reverse"},
+              "domain": {
+                "fields": [
+                  {"data": "stats", "field": "Goals for"},
+                  {"data": "stats", "field": "Goals against"}
+                ]
+              }
             }
           ],
           "marks": [
             {
-              "name": "bars",
               "type": "rect",
               "properties": {
                 "enter": {
+                  "x": {"scale": "x", "field": "year"},
+                  "width": {"scale": "x", "band": true, "offset": -1},
                   "fill": {"scale": "c", "field": "status"},
-                  "stroke": {"scale": "c", "field": "status"},
-                  "x": {"scale": "pos", "field": "key"},
-                  "width": {"scale": "pos", "band": true, "offset": -2}
+                  "stroke": {"scale": "c", "field": "status"}
                 },
                 "update": {
-                  "y": {"scale": "goals", "field": "layout_start"},
-                  "y2": {"scale": "goals", "field": "layout_end"},
+                  "y2": {"scale": "y", "field": "layout_start"},
+                  "y": {"scale": "y", "field": "layout_end"},
                   "opacity": [
                     {"test": "datum.year==honors", "value": 1},
                     {"test": "datum.year==season & honors==0", "value": 1},
@@ -761,26 +794,54 @@
           ]
         },
         {
-          "type": "rect",
-          "from": {"data": "wikidata"},
+          "type": "group",
           "properties": {
-            "enter": {
-              "x": {"scale": "x", "field": "year"},
-              "width": {"scale": "x", "band": true, "offset": -1, "mult": 0.5},
-              "fill": {"value": "black"},
-              "stroke": {"value": "black"},
-              "opacity": {"value": 0}
-            },
             "update": {
-              "y": {"scale": "goals", "field": "Goals by Leading Scorers"},
-              "y2": {"scale": "goals", "value": 0},
-              "opacity": [
-                {"test": "scorers=='Number of Goals'", "value": 0.5},
-                {"test": "datum.year==scorers", "value": 0.5},
-                {"value": 0}
-              ]
+              "x": {"value": 0},
+              "y": {"scale": "g", "value": "Goals for"},
+              "width": {"field": {"group": "width"}},
+              "height": {"scale": "g", "band": true, "offset": -30}
             }
-          }
+          },
+          "scales": [
+            {
+              "name": "y",
+              "type": "linear",
+              "range": "height",
+              "domain": {
+                "fields": [
+                  {"data": "stats", "field": "Goals for"},
+                  {"data": "stats", "field": "Goals against"}
+                ]
+              }
+            }
+          ],
+          "axes": [
+            {"type": "y", "scale": "y", "ticks": 8, "title": "Goals"}
+          ],
+          "marks": [
+            {
+              "type": "rect",
+              "from": {"data": "wikidata"},
+              "properties": {
+                "enter": {
+                  "x": {"scale": "x", "field": "year"},
+                  "width": {"scale": "x", "band": true, "offset": -1},
+                  "fill": {"value": "black"},
+                  "opacity": {"value": 0}
+                },
+                "update": {
+                  "y": {"scale": "y", "field": "Goals by Leading Scorers"},
+                  "y2": {"scale": "y", "value": 0},
+                  "opacity": [
+                    {"test": "scorers=='Goals'", "value": 0.5},
+                    {"test": "datum.year==scorers", "value": 0.5},
+                    {"value": 0}
+                  ]
+                }
+              }
+            }
+          ]
         }
       ]
     },
