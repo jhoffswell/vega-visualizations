@@ -3,9 +3,16 @@
   "height": 450,
   "data": [
     {
-      "name": "selectedPoints",
+      "name": "selected",
       "modify": [
         {"type": "toggle", "signal": "clickedPoint", "field": "status"}
+      ]
+    },
+    {
+      "name": "selectedTest",
+      "modify": [
+        {"type": "toggle", "signal": "clickedPoint", "field": "status"},
+        {"type": "clear", "test": "indata('selected', 'win', 'status') & indata('selected', 'loss', 'status') & indata('selected', 'draw', 'status')"}
       ]
     },
     {
@@ -21,11 +28,17 @@
       ]
     },
     {
-      "name": "scaleData",
+      "name": "folded",
       "source": "wikidata",
       "transform": [
-        {"type": "fold", "fields": ["win", "loss", "draw"]},
-        {"type": "filter", "test": "!indata('selectedPoints', datum.key, 'status')"}
+        {"type": "fold", "fields": ["win", "loss", "draw"]}
+      ]
+    },
+    {
+      "name": "scaleData",
+      "source": "folded",
+      "transform": [
+        {"type": "filter", "test": "!indata('selected', datum.key, 'status')"}
       ]
     },
     {
@@ -267,48 +280,55 @@
       "name": "stats",
       "source": "season-goals",
       "transform": [
-        {"type": "filter", "test": "!indata('selectedPoints', datum.status, 'status')"}, 
+        {"type": "filter", "test": "!indata('selected', datum.status, 'status')"}, 
         {
           "type": "aggregate", "groupby": ["year"],
           "summarize": [
             {"field": "Goals for", "ops": ["sum"], "as": ["Goals for"]},
             {"field": "Goals against", "ops": ["sum"], "as": ["Goals against"]}
           ]
+        },
+        {
+          "type": "lookup",
+          "on": "wikidata",
+          "onKey": "year",
+          "keys": ["year"],
+          "as": ["match"],
+          "default": null
+        },
+        {
+          "type": "formula",
+          "field": "value",
+          "expr": "if(scorers=='Goals for', datum.match['Goals by Leading Scorers'], 0)"
         }
       ]
     },
     {
       "name": "legend",
-      "values": [
-        {"name": "win", "x": 80, "y": 60},
-        {"name": "loss", "x": 120, "y": 60},
-        {"name": "draw", "x": 100, "y": 95}
-      ]
-    },
-    {
-      "name": "text",
-      "values": [
-        {"type": "default", "index": 1, "value": "Hover over an axis to see more"},
-        {"type": "default", "index": 2, "value": "information. Hover over the"},
-        {"type": "default", "index": 3, "value": "'Games Played' axis to see the"},
-        {"type": "default", "index": 4, "value": "number of Goals for the given"},
-        {"type": "default", "index": 5, "value": "year and outcome. Hover over"},
-        {"type": "default", "index": 6, "value": "the 'Goals' axis to see the"},
-        {"type": "default", "index": 7, "value": "season's leading scorers. Filter"},
-        {"type": "default", "index": 8, "value": "the charts with the Venn Diagram."},
-        {"type": "scorers", "index": 1, "value": "Number of Goals for (F) and"},
-        {"type": "scorers", "index": 2, "value": "against (A) per season."},        
-        {"type": "scorers", "index": 4, "value": "Hover over a year on the x-axis"},
-        {"type": "scorers", "index": 5, "value": "to see the leading scorer(s) for"},
-        {"type": "scorers", "index": 6, "value": "that year and the number of"},
-        {"type": "scorers", "index": 7, "value": "goals they scored."},
-        {"type": "honors", "index": 1, "value": "Hover over a year on the x-axis"},
-        {"type": "honors", "index": 2, "value": "to see additional honors for that"},
-        {"type": "honors", "index": 3, "value": "year in the info box and the"},
-        {"type": "honors", "index": 4, "value": "team's overall MLS Position."}
-      ],
+      "source": "folded",
       "transform": [
-        {"type": "filter", "test": "datum.type==group"}
+        {
+          "type": "aggregate", "groupby": ["key"],
+          "summarize": {"year": ["max"]}
+        },
+        {
+          "type": "lookup",
+          "on": "folded",
+          "onKey": "key",
+          "keys": ["key"],
+          "as": ["match"],
+          "default": null
+        },
+        {
+          "type": "formula",
+          "field": "value",
+          "expr": "datum.match.value"
+        },
+        {
+          "type": "formula",
+          "field": "index",
+          "expr": "indexof(['win', 'loss', 'draw'], datum.key)"
+        }
       ]
     }
   ],
@@ -321,13 +341,14 @@
           "expr": "eventX()", 
           "scale": {"name": "years", "invert": true}
         },
-        {"type": "@GamesPerSeason:mouseout", "expr": "{}"}
+        {"type": "rect:mousemove", "expr": "datum.year"},
+        {"type": "mouseout", "expr": "{}"}
       ]
     },
     {
       "name": "clickedPoint",
       "verbose": true,
-      "streams": [{"type": "click", "expr": "datum.name"}]
+      "streams": [{"type": "@legend:click", "expr": "datum.key"}]
     },
     {
       "name": "honors",
@@ -381,7 +402,7 @@
     {
       "name": "years",
       "type": "ordinal",
-      "range": [0, 400],
+      "range": [0, 470],
       "domain": {"data": "wikidata", "field": "year"},
       "points": true
     },
@@ -389,12 +410,7 @@
       "name": "c",
       "type": "ordinal",
       "range": ["green", "red", "orange"],
-      "domain": {"data": "legend", "field": "name"}
-    },
-    {
-      "name": "textPosition",
-      "type": "ordinal",
-      "range": [40, 54, 68, 82, 96, 110, 124, 138, 152]
+      "domain": ["win", "loss", "draw"]
     }
   ],
   "marks": [
@@ -405,7 +421,7 @@
           "x": {"value": 0},
           "y": {"value": 25},
           "fill": {"value": "black"},
-          "text": {"value": "MLS Conference Season"},
+          "text": {"value": "Major League Soccer Season Records"},
           "fontSize": {"value": 20},
           "fontWeight": {"value": "bold"}
         }
@@ -416,11 +432,11 @@
       "type": "group",
       "properties": {
         "enter": {
-          "x": {"value": 0},
-          "width": {"value": 400},
+          "x": {"value": 65},
           "y": {"value": 65},
+          "width": {"value": 470},
           "height": {"value": 75},
-          "fill": {"value": "#ccc"}
+          "fill": {"value": "#fff"}
         }
       },
       "scales": [
@@ -432,15 +448,24 @@
         }
       ],
       "axes": [
-        {"name": "GamesYearScale", "type": "x", "scale": "years"},
         {
-          "type": "y", "scale": "games", 
+          "name": "GamesYearScale", 
+          "type": "x", 
+          "scale": "years",
+          "tickSizeEnd": 0
+        },
+        {
+          "type": "y", 
+          "scale": "games", 
+          "ticks": 5,
+          "subdivide": 2,
+          "grid": true, 
+          "layer": "back",
           "title": "Games Played",
-          "grid": true, "layer": "back",
           "properties": {
             "grid": {
-               "stroke": {"value": "white"},
-               "strokeWidth": {"value": 2}
+               "stroke": {"value": "black"},
+               "strokeWidth": {"value": 1}
             }
           }
         }
@@ -457,13 +482,12 @@
           },
           "marks": [
             {
-              "name": "lines",
               "type": "line",
               "properties": {
                 "enter": {
                   "interpolate": {"value": "monotone"},
                   "stroke": {"scale": "c", "field": "key"},
-                  "strokeWidth": {"value": 3},
+                  "strokeWidth": {"value": 10},
                   "opacity": {"value": 0.5}
                 },
                 "update": {
@@ -471,35 +495,60 @@
                   "y": {"scale": "games", "field": "value"},
                   "y2": {"scale": "games", "value": 0},
                   "opacity": [
-                    {"test": "indata('selectedPoints', datum.key, 'status')", "value": 0},
+                    {"test": "indata('selected', datum.key, 'status')", "value": 0},
                     {"value": 0.5}
                   ]
-                }
-              }
-            },
-            {
-              "type": "text",
-              "from": {"mark": "lines"},
-              "properties": {
-                "enter": {
-                  "x": {"field": "datum.x", "offset": 2},
-                  "y": {"field": "datum.y"},
-                  "fill": {"scale": "c", "field": "datum.key"},
-                  "text": {"field": "datum.key"},
-                  "baseline": {"value": "middle"}
                 }
               }
             }
           ]
         },
         {
+          "name": "legend",
+          "type": "text",
+          "from": {"data": "legend"},
+          "properties": {
+            "enter": {
+              "x": {"scale": "years", "field": "max_year"},
+              "fill": {"scale": "c", "field": "key"},
+              "text": {"field": "key"},
+              "baseline": {"value": "middle"}
+            },
+            "update": {
+              "dx": [
+                {
+                  "test": "indata('selected', datum.key, 'status')",
+                  "field": "index", "mult": -30
+                },
+                {"value": 10}
+              ],
+              "y": [
+                {
+                  "test": "indata('selected', datum.key, 'status')",
+                  "field": {"group": "height"}, "offset": -5
+                },
+                {"scale": "games", "field": "value"}
+              ],
+              "align": [
+                {
+                  "test": "indata('selected', datum.key, 'status')",
+                  "value": "right"
+                },
+                {"value": "left"}
+              ],
+              "fontWeight": [
+                {
+                  "test": "indata('selected', datum.key, 'status')",
+                  "value": "bold"
+                },
+                {"value": "normal"}
+              ]
+            }
+          }
+        },
+        {
           "type": "symbol",
-          "from": {
-            "data": "wikidata", 
-            "transform": [
-              {"type": "fold", "fields": ["win", "loss", "draw"]}
-            ]
-          },
+          "from": {"data": "folded"},
           "properties": {
             "enter": {
               "x": {"scale": "years", "field": "year"},
@@ -512,14 +561,18 @@
               "y": {"scale": "games", "field": "value"},
               "fillOpacity": [
                 {
-                  "test": "datum.year==honors & !indata('selectedPoints', datum.key, 'status')", 
+                  "test": "datum.year==honors & !indata('selected', datum.key, 'status')", 
                   "value": 1
                 },
                 {
-                  "test": "datum.year==season & 0==honors & !indata('selectedPoints', datum.key, 'status')", 
+                  "test": "datum.year==season & 0==honors & !indata('selected', datum.key, 'status')", 
                   "value": 1
                 },
                 {"value": 0}
+              ],
+              "opacity": [
+                {"test": "indata('selected', datum.key, 'status')", "value": 0},
+                {"value": 1}
               ]
             }
           }
@@ -575,82 +628,13 @@
       ]
     },
     {
-      "name": "VennLegend",
-      "type": "group",
-      "properties": {
-        "enter": {
-          "x": {"value": 410},
-          "width": {"value": 190},
-          "y": {"value": 65},
-          "height": {"value": 150},
-          "fill": {"value": "#ccc"}
-        }
-      },
-      "marks": [
-        {
-          "type": "symbol",
-          "from": {"data": "legend"},
-          "properties": {
-            "enter": {
-              "x": {"field": "x"},
-              "y": {"field": "y"},
-              "fill": {"scale": "c", "field": "name"},
-              "stroke": {"scale": "c", "field": "name"},
-              "strokeWidth": {"value": 2},
-              "fillOpacity": {"value": 0.5},
-              "size": {"value": 7000}
-            },
-            "update": {
-              "fillOpacity": [
-                {"test": "indata('selectedPoints', datum.name, 'status')", "value": 0},
-                {"value": 0.5}
-              ]
-            }
-          }
-        },
-        {
-          "type": "text",
-          "from": {"data": "legend"},
-          "properties": {
-            "enter": {
-              "x": [
-                {"test": "datum.name=='win'", "field": "x", "offset": -35},
-                {"test": "datum.name=='loss'", "field": "x", "offset": 35},
-                {"field": "x"}
-              ],
-              "y": [
-                {"test": "datum.name=='draw'", "field": "y", "offset": 30},
-                {"field": "y", "offset": -5}
-              ],
-              "align": [
-                {"test": "datum.name=='win'", "value": "left"},
-                {"test": "datum.name=='loss'", "value": "right"},
-                {"test": "datum.name=='draw'", "value": "center"}
-              ],
-              "fill": {"value": "black"},
-              "text": {"field": "name"}
-            },
-            "update": {
-              "fill": [
-                {
-                  "test": "indata('selectedPoints', datum.name, 'status')", 
-                  "scale": "c", "field": "name"
-                },
-                {"value": "black"}
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
       "name": "GoalsPerSeason",
       "type": "group",
       "properties": {
         "enter": {
-          "x": {"value": 0},
-          "width": {"value": 400},
+          "x": {"value": 25},
           "y": {"value": 195},
+          "width": {"value": 550},
           "height": {"value": 275},
           "fill": {"value": "#fff"}
         }
@@ -659,7 +643,7 @@
         {
           "name": "x",
           "type": "ordinal",
-          "range": [0, 400],
+          "range": [0, 550],
           "domain": {"data": "wikidata", "field": "year"}
         },
         {
@@ -671,6 +655,7 @@
       ],
       "marks": [
         {
+          "name": "BarChartYearAxis",
           "type": "text",
           "from": {"data": "wikidata"},
           "properties": {
@@ -685,6 +670,7 @@
           }
         },
         {
+          "name": "GoalsBarGroup",
           "type": "group",
           "from": {
             "data": "stats",
@@ -711,16 +697,34 @@
               "domain": {
                 "fields": [
                   {"data": "stats", "field": "Goals for"},
-                  {"data": "stats", "field": "Goals against"}
+                  {"data": "stats", "field": "Goals against"},
+                  {"data": "stats", "field": "value"}
                 ]
               }
             }
           ],
           "axes": [
-            {"type": "y", "scale": "y", "ticks": 8, "title": "Goals"}
+            {"type": "y", "scale": "y", "ticks": 8}
           ],
           "marks": [
             {
+              "name": "GoalsAxisTitle",
+              "type": "text",
+              "properties": {
+                "enter": {
+                  "x": {"value": 0, "offset": -32},
+                  "y": {"field": {"group": "height"}, "mult": 0.5},
+                  "fill": {"value": "black"},
+                  "text": {"field": "key"},
+                  "fontSize": {"value": 11},
+                  "align": {"value": "center"},
+                  "baseline": {"value": "middle"},
+                  "angle": {"value": 270}
+                }
+              }
+            },
+            {
+              "name": "SeasonGoalTotal",
               "type": "rect",
               "properties": {
                 "enter": {
@@ -733,15 +737,62 @@
                   "y2": {"scale": "y", "value": 0}
                 }
               }
+            },
+            {
+              "name": "LeadingScorersGoalTotal",
+              "type": "rect",
+              "from": {"data": "wikidata"},
+              "properties": {
+                "enter": {
+                  "x": {"scale": "x", "field": "year"},
+                  "width": {"scale": "x", "band": true, "offset": -1},
+                  "fill": {"value": "black"}
+                },
+                "update": {
+                  "y": {"scale": "y", "field": "Goals by Leading Scorers"},
+                  "y2": {"scale": "y", "value": 0},
+                  "opacity": [
+                    {"test": "parent.key=='Goals against'", "value": 0},
+                    {"test": "scorers=='Goals for'", "value": 0.5},
+                    {"test": "datum.year==scorers", "value": 0.5},
+                    {"value": 0}
+                  ]
+                }
+              }
+            },
+            {
+              "name": "LeadingScorersName",
+              "type": "text",
+              "from": {"data": "wikidata"},
+              "properties": {
+                "enter": {
+                  "x": {"scale": "x", "field": "year"},
+                  "dx": {"scale": "x", "band": true, "offset": -1, "mult": 0.5},
+                  "fill": {"value": "black"},
+                  "text": {"field": "Leading Scorers"},
+                  "fontSize": {"value": 10},
+                  "align": {"value": "center"}
+                },
+                "update": {
+                  "y": {"scale": "y", "field": "Goals by Leading Scorers", "offset": -2},
+                  "opacity": [
+                    {"test": "parent.key=='Goals against'", "value": 0},
+                    {"test": "scorers=='Goals for'", "value": 0.75},
+                    {"test": "datum.year==scorers", "value": 0.75},
+                    {"value": 0}
+                  ]
+                }
+              }
             }
           ]
         },
         {
+          "name": "SeasonGoalsBarGroup",
           "type": "group",
           "from": {
             "data": "season-goals",
             "transform": [
-              {"type": "filter", "test": "!indata('selectedPoints', datum.status, 'status')"}, 
+              {"type": "filter", "test": "!indata('selected', datum.status, 'status')"}, 
               {"type": "fold", "fields": ["Goals for", "Goals against"]},
               {"type": "stack", "groupby": ["key", "year"], "sortby": ["status"], "field": "value"},
               {"type": "facet", "groupby": ["key"]},
@@ -784,7 +835,6 @@
                   "y2": {"scale": "y", "field": "layout_start"},
                   "y": {"scale": "y", "field": "layout_end"},
                   "opacity": [
-                    {"test": "datum.year==honors", "value": 1},
                     {"test": "datum.year==season & honors==0", "value": 1},
                     {"value": 0}
                   ]
@@ -792,179 +842,6 @@
               }
             }
           ]
-        },
-        {
-          "type": "group",
-          "properties": {
-            "update": {
-              "x": {"value": 0},
-              "y": {"scale": "g", "value": "Goals for"},
-              "width": {"field": {"group": "width"}},
-              "height": {"scale": "g", "band": true, "offset": -30}
-            }
-          },
-          "scales": [
-            {
-              "name": "y",
-              "type": "linear",
-              "range": "height",
-              "domain": {
-                "fields": [
-                  {"data": "stats", "field": "Goals for"},
-                  {"data": "stats", "field": "Goals against"}
-                ]
-              }
-            }
-          ],
-          "axes": [
-            {"type": "y", "scale": "y", "ticks": 8, "title": "Goals"}
-          ],
-          "marks": [
-            {
-              "type": "rect",
-              "from": {"data": "wikidata"},
-              "properties": {
-                "enter": {
-                  "x": {"scale": "x", "field": "year"},
-                  "width": {"scale": "x", "band": true, "offset": -1},
-                  "fill": {"value": "black"},
-                  "opacity": {"value": 0}
-                },
-                "update": {
-                  "y": {"scale": "y", "field": "Goals by Leading Scorers"},
-                  "y2": {"scale": "y", "value": 0},
-                  "opacity": [
-                    {"test": "scorers=='Goals'", "value": 0.5},
-                    {"test": "datum.year==scorers", "value": 0.5},
-                    {"value": 0}
-                  ]
-                }
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "InfoBox",
-      "type": "group",
-      "properties": {
-        "enter": {
-          "x": {"value": 410},
-          "width": {"value": 190},
-          "y": {"value": 265},
-          "height": {"value": 150},
-          "fill": {"value": "#ccc"}
-        }
-      },
-      "marks": [
-        {
-          "type": "text",
-          "properties": {
-            "enter": {
-              "fill": {"value": "black"},
-              "x": {"value": 10},
-              "y": {"value": 20},
-              "fontSize": {"value": 14},
-              "fontWeight": {"value": "bold"}
-            },
-            "update": {
-              "text": [
-                {
-                  "test": "group=='honors'", 
-                  "value": "Additional Honors"
-                },
-                {
-                  "test": "group=='scorers'", 
-                  "value": "Leading Scorers"
-                },
-                {"value": "Interaction Instructions"}
-              ]
-            }
-          }
-        },
-        {
-          "type": "text",
-          "from": {"data": "text"},
-          "properties": {
-            "enter": {
-              "fill": {"value": "gray"},
-              "x": {"value": 10},
-              "fontSize": {"value": 12}
-            },
-            "update": {
-              "y": {"scale": "textPosition", "field": "index"},
-              "text": {"field": "value"},
-              "opacity": [
-                {"test": "group=='default'", "value": 1},
-                {"test": "group=='scorers' & scorers=='Number of Goals'", "value": 1},
-                {"test": "group=='honors' & honors=='Games Played'", "value": 1},
-                {"value": 0}
-              ]
-            }
-          }
-        },
-        {
-          "type": "text",
-          "from": {
-            "data": "wikidata",
-            "transform": [
-              {"type": "filter", "test": "datum.year==scorers"},
-              {"type": "fold", "fields": ["Leading Scorers", "Goals by Leading Scorers"]},
-              {"type": "formula", "field": "index", "expr": "indexof(['Leading Scorers', 'Goals by Leading Scorers'], datum.key) + 1"}
-            ]
-          },
-          "properties": {
-            "enter": {
-              "fill": {"value": "black"},
-              "x": {"value": 10},
-              "fontSize": {"value": 12}
-            },
-            "update": {
-              "y": {"scale": "textPosition", "field": "index"},
-              "text": [
-                {
-                  "test": "datum.key=='Goals by Leading Scorers'",
-                  "template": "Number of Goals: {{datum.value}}"
-                },
-                {"field": "value"}
-              ],
-              "opacity": [
-                {"test": "group=='scorers'", "value": 1},
-                {"value": 1}
-              ]
-            }
-          }
-        },
-        {
-          "type": "text",
-          "from": {
-            "data": "wikidata",
-            "transform": [
-              {"type": "filter", "test": "datum.year==honors"},
-              {"type": "fold", "fields": ["play", "Conference Position", "Overall Position", "MLS Cup Playoffs", "US Open Cup", "Champions League", "Additional Honors"]},
-              {"type": "formula", "field": "index", "expr": "indexof(['play', 'Conference Position', 'Overall Position', 'MLS Cup Playoffs', 'US Open Cup', 'Champions League', 'Additional Honors'], datum.key) + 1"} 
-            ]
-          },
-          "properties": {
-            "enter": {
-              "fill": {"value": "black"},
-              "x": {"value": 10},
-              "fontSize": {"value": 10}
-            },
-            "update": {
-              "y": {"scale": "textPosition", "field": "index"},
-              "text": [
-                {"test": "datum.key=='play'", "template": "Games Played: {{datum.value}}"},
-                {"test": "datum.key=='MLS Cup Playoffs'", "field": "value"},
-                {"template": "{{datum.key}}: {{datum.value}}"}
-              ],
-              "opacity": [
-                {"test": "group=='honors'", "value": 1},
-                {"value": 0}
-              ]
-            }
-          }
         }
       ]
     }
