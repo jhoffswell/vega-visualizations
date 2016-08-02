@@ -1,18 +1,12 @@
 {
   "width": 600,
   "height": 450,
+
   "data": [
     {
       "name": "selected",
       "modify": [
-        {"type": "toggle", "signal": "clickedPoint", "field": "status"}
-      ]
-    },
-    {
-      "name": "selectedTest",
-      "modify": [
-        {"type": "toggle", "signal": "clickedPoint", "field": "status"},
-        {"type": "clear", "test": "indata('selected', 'win', 'status') & indata('selected', 'loss', 'status') & indata('selected', 'draw', 'status')"}
+        {"type": "toggle", "signal": "clickedLegend", "field": "status"}
       ]
     },
     {
@@ -28,15 +22,15 @@
       ]
     },
     {
-      "name": "folded",
+      "name": "extract-status",
       "source": "wikidata",
       "transform": [
         {"type": "fold", "fields": ["win", "loss", "draw"]}
       ]
     },
     {
-      "name": "scaleData",
-      "source": "folded",
+      "name": "filtered",
+      "source": "extract-status",
       "transform": [
         {"type": "filter", "test": "!indata('selected', datum.key, 'status')"}
       ]
@@ -297,41 +291,30 @@
           "default": null
         },
         {
-          "type": "formula",
-          "field": "value",
-          "expr": "if(scorers=='Goals for', datum.match['Goals by Leading Scorers'], 0)"
+          "type": "formula", "field": "value",
+          "expr": "if(scorers=='Goals for' | scorers==datum.year, datum.match['Goals by Leading Scorers'], 0)"
         }
       ]
     },
     {
       "name": "legend",
-      "source": "folded",
+      "source": "extract-status",
       "transform": [
-        {
-          "type": "aggregate", "groupby": ["key"],
-          "summarize": {"year": ["max"]}
-        },
+        {"type": "aggregate", "groupby": ["key"], "summarize": {"year": ["max"]}},
         {
           "type": "lookup",
-          "on": "folded",
+          "on": "extract-status",
           "onKey": "key",
           "keys": ["key"],
           "as": ["match"],
           "default": null
         },
-        {
-          "type": "formula",
-          "field": "value",
-          "expr": "datum.match.value"
-        },
-        {
-          "type": "formula",
-          "field": "index",
-          "expr": "indexof(['win', 'loss', 'draw'], datum.key)"
-        }
+        {"type": "formula", "field": "value", "expr": "datum.match.value"},
+        {"type": "formula", "field": "index", "expr": "indexof(['win', 'loss', 'draw'], datum.key)"}
       ]
     }
   ],
+
   "signals": [
     {
       "name": "season",
@@ -346,8 +329,7 @@
       ]
     },
     {
-      "name": "clickedPoint",
-      "verbose": true,
+      "name": "clickedLegend", "verbose": true,
       "streams": [{"type": "@legend:click", "expr": "datum.key"}]
     },
     {
@@ -357,17 +339,6 @@
         {
           "type": "[@GamesPerSeason:mouseover, @GamesPerSeason:mouseout] > text:mousemove", 
           "expr": "eventItem().text"
-        },
-        {"type": "@GamesPerSeason:mouseout", "expr": "0"}
-      ]
-    },
-    {
-      "name": "labelPosition",
-      "init": 0,
-      "streams":[
-        {
-          "type": "[@GamesPerSeason:mouseover, @GamesPerSeason:mouseout] > text:mousemove", 
-          "expr": "eventItem().x"
         },
         {"type": "@GamesPerSeason:mouseout", "expr": "0"}
       ]
@@ -390,14 +361,9 @@
         {"type": "honors", "expr": "if(honors==0, 'default', 'honors')"},
         {"type": "scorers", "expr": "if(scorers==0, 'default', 'scorers')"}
       ]
-    },
-    {
-      "name": "teststream",
-      "streams":[
-        {"type": "click", "expr": "eventItem()"}
-      ]
     }
   ],
+
   "scales": [
     {
       "name": "years",
@@ -413,8 +379,11 @@
       "domain": ["win", "loss", "draw"]
     }
   ],
+
   "marks": [
+
     {
+      "name": "ChartTitle",
       "type": "text",
       "properties": {
         "enter": {
@@ -427,6 +396,7 @@
         }
       }
     },
+
     {
       "name": "GamesPerSeason",
       "type": "group",
@@ -444,16 +414,11 @@
           "name": "games",
           "type": "linear",
           "range": "height",
-          "domain": {"data": "scaleData", "field": "value"}
+          "domain": {"data": "filtered", "field": "value"}
         }
       ],
       "axes": [
-        {
-          "name": "GamesYearScale", 
-          "type": "x", 
-          "scale": "years",
-          "tickSizeEnd": 0
-        },
+        {"name": "GamesYearScale", "type": "x", "scale": "years","tickSizeEnd": 0},
         {
           "type": "y", 
           "scale": "games", 
@@ -472,6 +437,7 @@
       ],
       "marks": [
         {
+          "name": "lines",
           "type": "group",
           "from": {
             "data": "wikidata",
@@ -543,12 +509,15 @@
                 },
                 {"value": "normal"}
               ]
+            },
+            "hover": {
+              "cursor": {"value": "pointer"}
             }
           }
         },
         {
           "type": "symbol",
-          "from": {"data": "folded"},
+          "from": {"data": "extract-status"},
           "properties": {
             "enter": {
               "x": {"scale": "years", "field": "year"},
@@ -584,7 +553,6 @@
             "enter": {
               "y": {"value": -15},
               "fill": {"value": "black"},
-              "opacity": {"value": "0"},
               "size": {"value": 500},
               "shape": {
                 "value": "M 0.314,-0.457 C 0.314,-0.457 0.314,-0.386 0.314,-0.386 0.482,-0.455 0.444,-0.269 0.443,-0.157 0.442,-0.120 0.443,-0.052 0.407,-0.030 0.377,-0.010 0.342,-0.030 0.314,-0.043 0.280,0.106 0.226,0.180 0.086,0.243 0.086,0.243 0.229,0.500 0.229,0.500 0.229,0.500 -0.229,0.500 -0.229,0.500 -0.229,0.500 -0.086,0.243 -0.086,0.243 -0.229,0.178 -0.271,0.101 -0.314,-0.043 -0.341,-0.029 -0.374,-0.007 -0.404,-0.029 -0.439,-0.054 -0.442,-0.146 -0.443,-0.186 -0.443,-0.235 -0.451,-0.400 -0.394,-0.419 -0.369,-0.427 -0.337,-0.409 -0.314,-0.400 -0.314,-0.400 -0.314,-0.457 -0.314,-0.457 -0.314,-0.457 0.314,-0.457 0.314,-0.457 Z M -0.371,-0.086 C -0.354,-0.093 -0.341,-0.093 -0.325,-0.110 -0.308,-0.137 -0.310,-0.279 -0.325,-0.310 -0.331,-0.332 -0.342,-0.340 -0.357,-0.357 -0.404,-0.277 -0.387,-0.173 -0.371,-0.086 Z M 0.329,-0.308 C 0.309,-0.279 0.307,-0.139 0.329,-0.110 0.341,-0.093 0.354,-0.093 0.371,-0.086 0.371,-0.086 0.386,-0.343 0.386,-0.343 0.362,-0.334 0.345,-0.332 0.329,-0.308 Z"
@@ -594,6 +562,8 @@
               "x": {"scale": "years", "field": "year"},
               "fill": [
                 {"test": "datum['Overall Position']==1", "value": "orange"},
+                {"test": "datum['Overall Position']==2", "value": "#aaa"},
+                {"test": "datum['Overall Position']==3", "value": "#cc6600"},
                 {"value": "black"}
               ],
               "opacity": [
@@ -611,7 +581,6 @@
             "enter": {
               "y": {"value": -15},
               "fill": {"value": "white"},
-              "opacity": {"value": "0"},
               "align": {"value": "center"}
             },
             "update": {
@@ -627,6 +596,7 @@
         }
       ]
     },
+
     {
       "name": "GoalsPerSeason",
       "type": "group",
@@ -741,6 +711,7 @@
             {
               "name": "LeadingScorersGoalTotal",
               "type": "rect",
+              "interactive": false,
               "from": {"data": "wikidata"},
               "properties": {
                 "enter": {
@@ -763,6 +734,7 @@
             {
               "name": "LeadingScorersName",
               "type": "text",
+              "interactive": false,
               "from": {"data": "wikidata"},
               "properties": {
                 "enter": {
@@ -845,5 +817,6 @@
         }
       ]
     }
+    
   ]
 }
