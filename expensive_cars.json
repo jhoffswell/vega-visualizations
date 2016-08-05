@@ -1919,20 +1919,26 @@
 
   "signals": [
     {
-      "name": "point",
-      "init": 0,
-      "streams": [{
-        "type": "mousedown",
-        "expr": "{x: eventX(), y: eventY()}"
-      }]
+      "name": "brush_start",
+      "init": {},
+      "streams": [
+        {
+          "type": "mousedown",
+          "expr": "{x: iscale('x', clamp(eventX(), 0, width)), y: iscale('y', clamp(eventY(), 0, height))}"
+        },
+        {"type": "yMax", "expr": "{}"}
+      ]
     },
     {
-      "name": "delta",
-      "init": 0,
-      "streams": [{
-        "type": "[mousedown, window:mouseup] > window:mousemove",
-        "expr": "{x: point.x - eventX(), y: eventY() - point.y}"
-      }]
+      "name": "brush_end",
+      "init": {},
+      "streams": [
+        {
+          "type": "mousedown, [mousedown, window:mouseup] > window:mousemove",
+          "expr": "{x: iscale('x', clamp(eventX(), 0, width)), y: iscale('y', clamp(eventY(), 0, height))}"
+        },
+        {"type": "yMax", "expr": "{}"}
+      ]
     },
     {
       "name": "xAnchor",
@@ -1956,75 +1962,56 @@
       "name": "zoom",
       "init": 1.0,
       "verbose": true,
-      "streams": [
-        {"type": "wheel", "expr": "pow(1.001, event.deltaY*pow(16, event.deltaMode))"}
-      ]
+      "streams": [{
+        "type": "wheel", 
+        "expr": "if(pow(1.001, event.deltaY*pow(16, event.deltaMode)) < 1, 1, pow(1.001, event.deltaY*pow(16, event.deltaMode)))"
+      }]
     },
     {
       "name": "xs",
       "streams": [{
-        "type": "mousedown, mouseup, wheel",
-        "expr": "if(year(xMin) == year(xMax), {min: xMin, max: xMin+10}, {min: xMin, max: xMax})"
+        "type": "wheel",
+        "expr": "{min: xMin, max: xMax}"
       }]
     },
     {
       "name": "ys",
       "streams": [{
-        "type": "mousedown, mouseup, wheel",
-        "expr": "if(floor(yMin) == floor(yMax), {min: yMin, max: yMin+10}, {min: yMin, max: yMax})"}
+        "type": "wheel",
+        "expr": "{min: yMin, max: yMax}"}
       ]
     },
-    {
-      "name": "xMinFree",
-      "init": 315532800000,
-      "streams": [
-        {"type": "delta", "expr": "xs.min + (xs.max-xs.min)*delta.x/width"},
-        {"type": "zoom", "expr": "(xs.min-xAnchor)*zoom + xAnchor"}
-      ]
-    },
-    {
-      "name": "xMaxFree",
-      "init": 1483228800000,
-      "streams": [
-        {"type": "delta", "expr": "xs.max + (xs.max-xs.min)*delta.x/width"},
-        {"type": "zoom", "expr": "(xs.max-xAnchor)*zoom + xAnchor"}
-      ]
-    },
-    {
-      "name": "yMinFree",
-      "init": 1880,
-      "streams": [
-        {"type": "delta", "expr": "ys.min + (ys.max-ys.min)*delta.y/height"},
-        {"type": "zoom", "expr": "(ys.min-yAnchor)*zoom + yAnchor"}
-      ]
-    },
-    {
-      "name": "yMaxFree",
-      "init": 2010,
-      "streams": [
-        {"type": "delta", "expr": "ys.max + (ys.max-ys.min)*delta.y/height"},
-        {"type": "zoom", "expr": "(ys.max-yAnchor)*zoom + yAnchor"}
-      ]
-    },
-    {
+        {
       "name": "xMin",
       "init": 315532800000,
-      "streams": [{"type": "xMinFree", "expr": "clamp(xMinFree, 315532800000, 1451606400000)"}]
+      "streams": [
+        {"type": "mouseup", "expr": "min(brush_start.x, brush_end.x)"},
+        {"type": "zoom", "expr": "clamp((xs.min-xAnchor)*zoom + xAnchor, 315532800000, 1451606400000)"}
+      ]
     },
     {
       "name": "xMax",
       "init": 1483228800000,
-      "streams": [{"type": "xMaxFree", "expr": "clamp(xMaxFree, 631152000000, 1483228800000)"}]
+      "streams": [
+        {"type": "mouseup", "expr": "max(brush_start.x, brush_end.x)"},
+        {"type": "zoom", "expr": "clamp((xs.max-xAnchor)*zoom + xAnchor, 631152000000, 1483228800000)"}
+      ]
     },
     {
       "name": "yMin",
       "init": 1880,
-      "streams": [{"type": "yMinFree", "expr": "clamp(yMinFree, 1880, 2000)"}]
+      "streams": [
+        {"type": "mouseup", "expr": "min(brush_start.y, brush_end.y)"},
+        {"type": "zoom", "expr": "clamp((ys.min-yAnchor)*zoom + yAnchor, 1880, 2000)"}
+      ]
     },
     {
       "name": "yMax",
       "init": 2010,
-      "streams": [{"type": "yMaxFree", "expr": "clamp(yMaxFree, 1890, 2010)"}]
+      "streams": [
+        {"type": "mouseup", "expr": "max(brush_start.y, brush_end.y)"},
+        {"type": "zoom", "expr": "clamp((ys.max-yAnchor)*zoom + yAnchor, 1890, 2010)"}
+      ]
     }
   ],
 
@@ -2102,6 +2089,22 @@
               ],
               "opacity": {"value": 0.5},
               "size": {"scale": "size", "field": "Adjusted price"}
+            }
+          }
+        },
+
+        {
+          "type": "rect",
+          "properties": {
+            "enter": {
+              "fill": {"value": "grey"},
+              "fillOpacity": {"value": 0.2}
+            },
+            "update": {
+              "x": {"scale": "x", "signal": "brush_start.x"},
+              "x2": {"scale": "x", "signal": "brush_end.x"},
+              "y": {"scale": "y", "signal": "brush_start.y"},
+              "y2": {"scale": "y", "signal": "brush_end.y"}
             }
           }
         }
