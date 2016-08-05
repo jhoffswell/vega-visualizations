@@ -1941,77 +1941,36 @@
       ]
     },
     {
-      "name": "xAnchor",
-      "init": 0,
-      "streams": [{
-        "type": "mousemove",
-        "expr": "eventX()",
-        "scale": {"name":"x", "invert":true}
-      }]
-    },
-    {
-      "name": "yAnchor",
-      "init": 0,
-      "streams": [{
-        "type": "mousemove",
-        "expr": "eventY()",
-        "scale": {"name":"y", "invert":true}
-      }]
-    },
-    {
-      "name": "zoom",
-      "init": 1.0,
-      "verbose": true,
-      "streams": [{
-        "type": "wheel", 
-        "expr": "if(pow(1.001, event.deltaY*pow(16, event.deltaMode)) < 1, 1, pow(1.001, event.deltaY*pow(16, event.deltaMode)))"
-      }]
-    },
-    {
-      "name": "xs",
-      "streams": [{
-        "type": "wheel",
-        "expr": "{min: xMin, max: xMax}"
-      }]
-    },
-    {
-      "name": "ys",
-      "streams": [{
-        "type": "wheel",
-        "expr": "{min: yMin, max: yMax}"}
-      ]
-    },
-        {
       "name": "xMin",
       "init": 315532800000,
-      "streams": [
-        {"type": "mouseup", "expr": "min(brush_start.x, brush_end.x)"},
-        {"type": "zoom", "expr": "clamp((xs.min-xAnchor)*zoom + xAnchor, 315532800000, 1451606400000)"}
-      ]
+      "streams": [{
+        "type": "mouseup", 
+        "expr": "if(brush_start.x==brush_end.x, 315532800000, min(brush_start.x, brush_end.x))"
+      }]
     },
     {
       "name": "xMax",
       "init": 1483228800000,
-      "streams": [
-        {"type": "mouseup", "expr": "max(brush_start.x, brush_end.x)"},
-        {"type": "zoom", "expr": "clamp((xs.max-xAnchor)*zoom + xAnchor, 631152000000, 1483228800000)"}
-      ]
+      "streams": [{
+        "type": "mouseup", 
+        "expr": "if(brush_start.x==brush_end.x, 1483228800000, max(brush_start.x, brush_end.x))"
+      }]
     },
     {
       "name": "yMin",
       "init": 1880,
-      "streams": [
-        {"type": "mouseup", "expr": "min(brush_start.y, brush_end.y)"},
-        {"type": "zoom", "expr": "clamp((ys.min-yAnchor)*zoom + yAnchor, 1880, 2000)"}
-      ]
+      "streams": [{
+        "type": "mouseup", 
+        "expr": "if(brush_start.y==brush_end.y, 1880, min(brush_start.y, brush_end.y))"
+      }]
     },
     {
       "name": "yMax",
       "init": 2010,
-      "streams": [
-        {"type": "mouseup", "expr": "max(brush_start.y, brush_end.y)"},
-        {"type": "zoom", "expr": "clamp((ys.max-yAnchor)*zoom + yAnchor, 1890, 2010)"}
-      ]
+      "streams": [{
+        "type": "mouseup", 
+        "expr": "if(brush_start.y==brush_end.y, 2010, max(brush_start.y, brush_end.y))"
+      }]
     }
   ],
 
