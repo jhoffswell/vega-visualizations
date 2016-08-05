@@ -1,11 +1,11 @@
 {
   "width": 500,
   "height": 300,
-  "padding": {"top": 25, "left": 60, "bottom": 50, "right": 25},
+  "padding": {"top": 25, "left": 60, "bottom": 50, "right": 150},
 
   "data": [
     {
-      "name": "points",
+      "name": "cars",
       "format": {"type":"json", "parse": { "Date": "date"} },
       "values": [
         {
@@ -1906,18 +1906,54 @@
           "Original price": 4475072,
           "Adjusted price": 4707000
         }
-      ],
+      ]
+    },
+    {
+      "name": "visible-cars",
+      "source": "cars",
       "transform": [
-        {"type": "formula", "field": "year", "expr": "datum.Date"}
+        {"type": "filter", "test": "if(selectedModel=='', true, datum.Type==selectedModel)"}
+      ]
+    },
+    {
+      "name": "stats",
+      "source": "visible-cars",
+      "transform": [
+        {"type": "aggregate", "summarize": {"Date": ["min", "max"], "Model year":["min", "max"]}},
+        {"type": "formula", "field": "xMin", "expr": "if(clicked, utc(year(datetime(datum.min_Date)) - 1, 0), xMin)"},
+        {"type": "formula", "field": "xMax", "expr": "if(clicked, utc(year(datetime(datum.max_Date)) + 1, 0), xMax)"},
+        {"type": "formula", "field": "yMin", "expr": "if(clicked, datum['min_Model year'] - 5, yMin)"},
+        {"type": "formula", "field": "yMax", "expr": "if(clicked, datum['max_Model year'] + 5, yMax)"}
       ]
     },
     {
       "name": "popular-models",
-      "values": ["Bentley", "Bugatti", "Ferrari", "Mercedes-Benz"]
+      "values": ["Bentley", "Bugatti", "Ferrari", "Mercedes-Benz"],
+      "transform": [
+        {"type": "formula", "field": "index", "expr": "indexof(['Bentley', 'Bugatti', 'Ferrari', 'Mercedes-Benz'], datum.data) + 1"}
+      ]
     }
   ],
 
   "signals": [
+    {
+      "name": "selectedModel",
+      "init": "",
+      "streams": [
+        {"type": "@ModelLegend:click", "expr": "if(datum.data, datum.data, '')"}
+      ]
+    },
+    {
+      "name": "dragging",
+      "init": false,
+      "streams": [
+        {
+          "type": "mousedown, [mousedown, window:mouseup] > window:mousemove",
+          "expr": "true"
+        },
+        {"type": "mouseup", "expr": "false"}
+      ]
+    },
     {
       "name": "brush_start",
       "init": {},
@@ -1925,8 +1961,7 @@
         {
           "type": "mousedown",
           "expr": "{x: iscale('x', clamp(eventX(), 0, width)), y: iscale('y', clamp(eventY(), 0, height))}"
-        },
-        {"type": "yMax", "expr": "{}"}
+        }
       ]
     },
     {
@@ -1936,16 +1971,15 @@
         {
           "type": "mousedown, [mousedown, window:mouseup] > window:mousemove",
           "expr": "{x: iscale('x', clamp(eventX(), 0, width)), y: iscale('y', clamp(eventY(), 0, height))}"
-        },
-        {"type": "yMax", "expr": "{}"}
+        }
       ]
     },
     {
       "name": "xMin",
-      "init": 315532800000,
+      "init": 473385600000,
       "streams": [{
         "type": "mouseup", 
-        "expr": "if(brush_start.x==brush_end.x, 315532800000, min(brush_start.x, brush_end.x))"
+        "expr": "if(brush_start.x==brush_end.x, 473385600000, min(brush_start.x, brush_end.x))"
       }]
     },
     {
@@ -1971,6 +2005,14 @@
         "type": "mouseup", 
         "expr": "if(brush_start.y==brush_end.y, 2010, max(brush_start.y, brush_end.y))"
       }]
+    },
+    {
+      "name": "clicked",
+      "init": "false",
+      "streams": [
+        {"type": "mouseup", "expr": "false"},
+        {"type": "selectedModel", "expr": "true"}
+      ]
     }
   ],
 
@@ -1979,20 +2021,20 @@
       "name": "x",
       "type": "linear",
       "range": "width", "zero": false,
-      "domainMin": {"signal": "xMin"},
-      "domainMax": {"signal": "xMax"}
+      "domainMin": {"data": "stats", "field": "xMin"},
+      "domainMax": {"data": "stats", "field": "xMax"}
     },
     {
       "name": "y",
       "type": "linear",
       "range": "height", "zero": false,
-      "domainMin": {"signal": "yMin"},
-      "domainMax": {"signal": "yMax"}
+      "domainMin": {"data": "stats", "field": "yMin"},
+      "domainMax": {"data": "stats", "field": "yMax"}
     },
     {
       "name": "size",
       "type": "linear",
-      "domain": {"data": "points", "field": "Adjusted price"},
+      "domain": {"data": "cars", "field": "Adjusted price"},
       "range": [10, 550]
     },
     {
@@ -2002,6 +2044,7 @@
       "range": "category10"
     }
   ],
+  
   "axes": [
     {
       "title": "Date of Sale",
@@ -2022,8 +2065,10 @@
       }
     }
   ],
+  
   "marks": [
     {
+      "name": "chart",
       "type": "group",
       "properties": {
         "enter": {
@@ -2037,33 +2082,105 @@
       "marks": [
         {
           "type": "symbol",
-          "from": {"data": "points"},
+          "from": {"data": "cars"},
           "properties": {
             "update": {
-              "x": {"scale": "x", "field": "year"},
+              "x": {"scale": "x", "field": "Date"},
               "y": {"scale": "y", "field": "Model year"},
               "fill": [
                 {"test": "indexof(['Bentley', 'Bugatti', 'Ferrari', 'Mercedes-Benz'], datum.Type) != -1", "scale":  "color", "field": "Type"},
                 {"value": "#aaa"}
               ],
-              "opacity": {"value": 0.5},
+              "opacity": [
+                {"test": "datum.Type==selectedModel | selectedModel==''", "value": 0.5},
+                {"value": 0.1}
+              ],
               "size": {"scale": "size", "field": "Adjusted price"}
             }
           }
+        }
+      ]
+    },
+    {
+      "name": "brush",
+      "type": "rect",
+      "properties": {
+        "enter": {
+          "fill": {"value": "grey"},
+          "fillOpacity": {"value": 0.2}
         },
-
+        "update": {
+          "x": {"scale": "x", "signal": "brush_start.x"},
+          "x2": {"scale": "x", "signal": "brush_end.x"},
+          "y": {"scale": "y", "signal": "brush_start.y"},
+          "y2": {"scale": "y", "signal": "brush_end.y"},
+          "opacity": [
+            {"test": "dragging", "value": 1},
+            {"value": 0}
+          ]
+        }
+      }
+    },
+    {
+      "name": "ModelLegend",
+      "type": "group",
+      "properties": {
+        "enter": {
+          "x": {"value": 515},
+          "y": {"value": 0},
+          "width": {"value": 125},
+          "height": {"value": 80},
+          "stroke": {"value": "#ddd"},
+          "stroke-width": {"value": 2},
+          "fill": {"value": "white"}
+        }
+      },
+      "marks": [
         {
-          "type": "rect",
+          "type": "text",
+          "from": {"data": "popular-models"},
           "properties": {
             "enter": {
-              "fill": {"value": "grey"},
-              "fillOpacity": {"value": 0.2}
+              "align": {"value": "left"},
+              "baseline": {"value": "top"},
+              "fill": {"value": "black"},
+              "x": {"value": 25},
+              "y": {"field": "index", "mult": 14, "offset": 8},
+              "fontSize": {"value": 11},
+              "text": {"field": "data"}
             },
             "update": {
-              "x": {"scale": "x", "signal": "brush_start.x"},
-              "x2": {"scale": "x", "signal": "brush_end.x"},
-              "y": {"scale": "y", "signal": "brush_start.y"},
-              "y2": {"scale": "y", "signal": "brush_end.y"}
+              "opacity": [
+                {"test": "datum.data == selectedModel", "value": 1},
+                {"test": "selectedModel == ''", "value": 1},
+                {"value": 0.15}
+              ]
+            }
+          }
+        },
+        {
+          "type": "symbol",
+          "from": {"data": "popular-models"},
+          "properties": {
+            "enter": {
+              "size": {"value": 75},
+              "fill": {"scale": "color", "field": "data"},
+              "x": {"value": 12},
+              "y": {"field": "index", "mult": 14, "offset": 13}
+            }
+          }
+        },
+        {
+          "type": "text",
+          "properties": {
+            "enter": {
+              "align": {"value": "left"},
+              "fill": {"value": "black"},
+              "x": {"value": 7},
+              "y": {"value": 15},
+              "fontSize": {"value": 11},
+              "fontStyle": {"value": "bold"},
+              "text": {"value": "Most Popular Models"}
             }
           }
         }
