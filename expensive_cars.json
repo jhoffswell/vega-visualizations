@@ -1946,10 +1946,10 @@
       "source": "visible-cars",
       "transform": [
         {"type": "aggregate", "summarize": {"Date": ["min", "max"], "Model year":["min", "max"]}},
-        {"type": "formula", "field": "xMin", "expr": "if(clicked, utc(year(datetime(datum.min_Date)) - 1, 0), xMin)"},
-        {"type": "formula", "field": "xMax", "expr": "if(clicked, utc(year(datetime(datum.max_Date)) + 1, 0), xMax)"},
-        {"type": "formula", "field": "yMin", "expr": "if(clicked, datum['min_Model year'] - 5, yMin)"},
-        {"type": "formula", "field": "yMax", "expr": "if(clicked, datum['max_Model year'] + 5, yMax)"}
+        {"type": "formula", "field": "xMin", "expr": "if(autoZoom, utc(year(datetime(datum.min_Date)) - 1, 0), xMin)"},
+        {"type": "formula", "field": "xMax", "expr": "if(autoZoom, utc(year(datetime(datum.max_Date)) + 1, 0), xMax)"},
+        {"type": "formula", "field": "yMin", "expr": "if(autoZoom, datum['min_Model year'] - 5, yMin)"},
+        {"type": "formula", "field": "yMax", "expr": "if(autoZoom, datum['max_Model year'] + 5, yMax)"}
       ]
     }
   ],
@@ -1964,6 +1964,20 @@
       ]
     },
     {
+      "name": "clearPrev",
+      "init": "false",
+      "streams": [{"type": "clearSelected", "expr": "clearSelected"}]
+    },
+    {
+      "name": "clearSelected",
+      "init": false,
+      "streams": [
+        {"type": "@ModelLegend:click", "expr": "true"},
+        {"type": "@ShowAll:click", "expr": "clearPrev"},
+        {"type": "@ModelLegendPopular:click, @ModelLegendAll:click", "expr": "false"}
+      ]
+    },
+    {
       "name": "showAllModels",
       "init": "hide",
       "streams": [
@@ -1975,7 +1989,7 @@
       "init": false,
       "streams": [
         {
-          "type": "mousedown, [mousedown, window:mouseup] > window:mousemove",
+          "type": "@chart:mousedown, [mousedown, window:mouseup] > window:mousemove",
           "expr": "true"
         },
         {"type": "mouseup", "expr": "false"}
@@ -1986,7 +2000,7 @@
       "init": {},
       "streams": [
         {
-          "type": "mousedown",
+          "type": "@chart:mousedown",
           "expr": "{x: iscale('x', clamp(eventX(), 0, width)), y: iscale('y', clamp(eventY(), 0, height))}"
         }
       ]
@@ -1996,7 +2010,7 @@
       "init": {},
       "streams": [
         {
-          "type": "mousedown, [mousedown, window:mouseup] > window:mousemove",
+          "type": "@chart:mousedown, [mousedown, window:mouseup] > window:mousemove",
           "expr": "{x: iscale('x', clamp(eventX(), 0, width)), y: iscale('y', clamp(eventY(), 0, height))}"
         }
       ]
@@ -2034,12 +2048,21 @@
       }]
     },
     {
-      "name": "clicked",
+      "name": "context",
+      "init": "none",
+      "streams": [
+        {"type": "@ModelLegendPopular:click, @ModelLegendAll:click", "expr": "'legend'"},
+        {"type": "dragging", "expr": "'other'"}
+      ]
+    },
+    {
+      "name": "autoZoom",
       "init": "false",
       "streams": [
-        {"type": "showAllModels", "expr": "true"},
         {"type": "mouseup", "expr": "false"},
-        {"type": "selectedModel", "expr": "true"}
+        {"type": "@ModelLegend:click", "expr": "if(context=='legend', true, false)"},
+        {"type": "@ModelLegendPopular:click, @ModelLegendAll:click", "expr": "true"}
+        
       ]
     }
   ],
@@ -2083,7 +2106,7 @@
     {
       "title": "Date of Sale",
       "type": "x", "scale": "x", 
-      "grid": true, "layer": "back", 
+      "grid": true, "layer": "front", 
       "formatType": "time", "format": "%Y",
       "properties": {
         "labels": { "fontSize": {"value": 10} }
@@ -2092,7 +2115,7 @@
     {
       "title": "Model Year",
       "type": "y", "scale": "y", 
-      "grid": true, "layer": "back", 
+      "grid": true, "layer": "front", 
       "formatType": "string",
       "properties": {
         "labels": { "fontSize": {"value": 10} }
@@ -2110,6 +2133,7 @@
           "width": {"field": {"group": "width"}},
           "y": {"value": 0},
           "height": {"field": {"group": "height"}},
+          "fill": {"value": "white"},
           "clip": {"value": true}
         }
       },
@@ -2126,6 +2150,7 @@
                 {"value": "#4d4d4d"}
               ],
               "opacity": [
+                {"test": "clearSelected==true", "value": 0.5},
                 {"test": "datum.Type==selectedModel | selectedModel==''", "value": 0.5},
                 {"value": 0.1}
               ],
@@ -2138,6 +2163,7 @@
     {
       "name": "brush",
       "type": "rect",
+      "interactive": false,
       "properties": {
         "enter": {
           "fill": {"value": "grey"},
@@ -2176,6 +2202,7 @@
       },
       "marks": [
         {
+          "name": "ModelLegendTitle",
           "type": "text",
           "properties": {
             "enter": {
@@ -2208,6 +2235,7 @@
                 },
                 "update": {
                   "opacity": [
+                    {"test": "clearSelected==true", "value": 1},
                     {"test": "datum.data == selectedModel", "value": 1},
                     {"test": "selectedModel == ''", "value": 1},
                     {"value": 0.15}
@@ -2227,6 +2255,7 @@
                 },
                 "update": {
                   "opacity": [
+                    {"test": "clearSelected==true", "value": 1},
                     {"test": "datum.data == selectedModel", "value": 1},
                     {"test": "selectedModel == ''", "value": 1},
                     {"value": 0.15}
@@ -2277,6 +2306,7 @@
                 "update": {
                   "opacity": [
                     {"test": "showAllModels=='hide'", "value": 0},
+                    {"test": "clearSelected==true", "value": 1},
                     {"test": "datum.data == selectedModel", "value": 1},
                     {"test": "selectedModel == ''", "value": 1},
                     {"value": 0.15}
@@ -2297,6 +2327,7 @@
                 "update": {
                   "opacity": [
                     {"test": "showAllModels=='hide'", "value": 0},
+                    {"test": "clearSelected==true", "value": 1},
                     {"test": "datum.data == selectedModel", "value": 1},
                     {"test": "selectedModel == ''", "value": 1},
                     {"value": 0.15}
