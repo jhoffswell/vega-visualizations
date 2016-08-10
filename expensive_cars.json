@@ -1968,6 +1968,14 @@
 
   "signals": [
     {
+      "name": "car",
+      "init": {},
+      "streams": [
+        {"type": "@points:mouseover", "expr": "datum"},
+        {"type": "mouseout", "expr": "''"}
+      ]
+    },
+    {
       "name": "selectedPriceType",
       "init": "greater",
       "streams": [
@@ -1998,7 +2006,7 @@
     },
     {
       "name": "clearSelected",
-      "init": false,
+      "init": true,
       "streams": [
         {"type": "@ModelLegend:click", "expr": "true"},
         {"type": "@ShowAll:click", "expr": "clearPrev"},
@@ -2173,6 +2181,7 @@
       },
       "marks": [
         {
+          "name": "points",
           "type": "symbol",
           "from": {"data": "visible-cars"},
           "properties": {
@@ -2183,14 +2192,104 @@
                 {"test": "indexof(['Bentley', 'Bugatti', 'Ferrari', 'Mercedes-Benz'], datum.Type) != -1", "scale":  "color", "field": "Type"},
                 {"value": "#4d4d4d"}
               ],
-              "opacity": [
+              "fillOpacity": [
                 {"test": "clearSelected==true", "value": 0.5},
                 {"test": "datum.Type==selectedModel | selectedModel==''", "value": 0.5},
                 {"value": 0.1}
               ],
-              "size": {"scale": "size", "field": "Adjusted price"}
+              "size": {"scale": "size", "field": "Adjusted price"},
+              "stroke": {"value": "white"},
+              "strokeWidth": [
+                {"test": "clearSelected==false & selectedModel != datum.Type", "value": 0},
+                {"test": "!dragging & datum.Car == car.Car", "value": 4},
+                {"value": 0}
+              ],
+              "strokeOpacity": {"value": 0.75}
             }
           }
+        },
+        {
+          "name": "tooltip",
+          "type": "group",
+          "marks": [
+            {
+              "name": "labels",
+              "type": "text",
+              "interactive": false,
+              "from": {"data": "visible-cars"},
+              "properties": {
+                "enter": {
+                  "fill": {"value": "black"},
+                  "text": {"field": "Car"},
+                  "baseline": {"value": "middle"},
+                  "opacity": {"value": 0}
+                },
+                "update": {
+                  "x": {"scale": "x", "field": "Date"},
+                  "dx": [
+                    {"test": "scale('x', datum.Date) > 250", "value": -14},
+                    {"value": 14}
+                  ],
+                  "y": {"scale": "y", "field": "Model year"},
+                  "align": [
+                    {"test": "scale('x', datum.Date) > 250", "value": "right"},
+                    {"value": "left"}
+                  ]
+                }
+              }
+            },
+            {
+              "type": "rect",
+              "interactive": false,
+              "from": {"mark": "labels"},
+              "properties": {
+                "enter": {
+                  "fill": {"value": "white"}
+                },
+                "update": {
+                  "x": {"field": "bounds.x1", "offset": -2},
+                  "x2": {"field": "bounds.x2", "offset": 2},
+                  "y": {"field": "bounds.y1", "offset": -2},
+                  "y2": {"field": "bounds.y2", "offset": 2},
+                  "opacity": [
+                    {"test": "clearSelected==false & selectedModel != datum.datum.Type", "value": 0},
+                    {"test": "!dragging & datum.datum._id == car._id", "value": 0.85},
+                    {"value": 0}
+                  ]
+                }
+              }
+            },
+            {
+              "name": "labels",
+              "type": "text",
+              "interactive": false,
+              "from": {"data": "visible-cars"},
+              "properties": {
+                "enter": {
+                  "fill": {"value": "black"},
+                  "text": {"field": "Car"},
+                  "baseline": {"value": "middle"}
+                },
+                "update": {
+                  "x": {"scale": "x", "field": "Date"},
+                  "dx": [
+                    {"test": "scale('x', datum.Date) > 250", "value": -12},
+                    {"value": 12}
+                  ],
+                  "y": {"scale": "y", "field": "Model year"},
+                  "opacity": [
+                    {"test": "clearSelected==false & selectedModel != datum.Type", "value": 0},
+                    {"test": "!dragging & datum._id == car._id", "value": 1},
+                    {"value": 0}
+                  ],
+                  "align": [
+                    {"test": "scale('x', datum.Date) > 250", "value": "right"},
+                    {"value": "left"}
+                  ]
+                }
+              }
+            }
+          ]
         }
       ]
     },
@@ -2401,7 +2500,6 @@
           "name": "ModelLegendAll",
           "type": "group",
           "marks": [
-            
             {
               "type": "text",
               "from": {"data": "other-models"},
