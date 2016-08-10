@@ -1958,7 +1958,7 @@
       "name": "axesDomain",
       "source": "visible-cars",
       "transform": [
-        {"type": "filter", "test": "if(selectedModel=='', true, datum.Type==selectedModel)"},
+        {"type": "filter", "test": "if(!autoZoom, true, datum.Type==selectedModel)"},
         {"type": "aggregate", "summarize": {"Date": ["min", "max"], "Model year":["min", "max"]}},
         {"type": "formula", "field": "xMin", "expr": "if(autoZoom, utc(year(datetime(datum.min_Date)) - 1, 0), xMin)"},
         {"type": "formula", "field": "xMax", "expr": "if(autoZoom, utc(year(datetime(datum.max_Date)) + 1, 0), xMax)"},
@@ -2098,13 +2098,14 @@
       "name": "context",
       "init": "none",
       "streams": [
+        {"type": "@AdjustedPriceLegend:click", "expr": "'other'"},
         {"type": "@ModelLegendPopular:click, @ModelLegendAll:click", "expr": "'legend'"},
         {"type": "dragging", "expr": "'other'"}
       ]
     },
     {
       "name": "autoZoom",
-      "init": "false",
+      "init": false,
       "streams": [
         {"type": "mouseup", "expr": "false"},
         {"type": "@ModelLegend:click", "expr": "if(context=='legend', true, false)"},
