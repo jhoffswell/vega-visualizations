@@ -2341,7 +2341,8 @@
           "height": {"value": 70},
           "stroke": {"value": "#ddd"},
           "stroke-width": {"value": 2},
-          "fill": {"value": "white"}
+          "fill": {"value": "white"},
+          "cursor": {"value": "pointer"}
         }
       },
       "marks": [
@@ -2355,7 +2356,8 @@
               "y": {"value": 15},
               "fontSize": {"value": 11},
               "fontStyle": {"value": "bold"},
-              "text": {"value": "Adjusted Price (US$)"}
+              "text": {"value": "Adjusted Price (US$)"},
+              "cursor": {"value": "pointer"}
             }
           }
         },
@@ -2374,7 +2376,8 @@
                   "x": {"field": "index", "mult": 30, "offset": 18},
                   "y": {"value": 50},
                   "fontSize": {"value": 11},
-                  "text": {"template": "{{datum.value | number:'$.2s'}}"}
+                  "text": {"template": "{{datum.value | number:'$.2s'}}"},
+                  "cursor": {"value": "pointer"}
                 },
                 "update": {
                   "opacity": [
@@ -2393,7 +2396,8 @@
                   "fill": {"value": "black"},
                   "x": {"field": "index", "mult": 30, "offset": 18},
                   "y": {"value": 35},
-                  "size": {"scale": "size", "field": "value"}
+                  "size": {"scale": "size", "field": "value"},
+                  "cursor": {"value": "pointer"}
                 },
                 "update": {
                   "opacity": [
@@ -2418,7 +2422,8 @@
           "width": {"value": 125},
           "stroke": {"value": "#ddd"},
           "stroke-width": {"value": 2},
-          "fill": {"value": "white"}
+          "fill": {"value": "white"},
+          "cursor": {"value": "pointer"}
         },
         "update": {
           "height": [
@@ -2439,7 +2444,8 @@
               "y": {"value": 15},
               "fontSize": {"value": 11},
               "fontStyle": {"value": "bold"},
-              "text": {"value": "Most Popular Models"}
+              "text": {"value": "Most Popular Models"},
+              "cursor": {"value": "pointer"}
             }
           }
         },
@@ -2457,7 +2463,8 @@
                   "fill": {"value": "black"},
                   "x": {"value": 25},
                   "y": {"field": "index", "mult": 14, "offset": 8},
-                  "fontSize": {"value": 11}
+                  "fontSize": {"value": 11},
+                  "cursor": {"value": "pointer"}
                 },
                 "update": {
                   "text": {"field": "data"},
@@ -2481,7 +2488,8 @@
                   "size": {"value": 75},
                   "fill": {"scale": "color", "field": "data"},
                   "x": {"value": 12},
-                  "y": {"field": "index", "mult": 14, "offset": 13}
+                  "y": {"field": "index", "mult": 14, "offset": 13},
+                  "cursor": {"value": "pointer"}
                 },
                 "update": {
                   "opacity": [
@@ -2505,7 +2513,8 @@
               "x": {"value": 7},
               "y": {"value": 6, "mult": 14, "offset": 8},
               "fontSize": {"value": 11},
-              "fontStyle": {"value": "bold"}
+              "fontStyle": {"value": "bold"},
+              "cursor": {"value": "pointer"}
             },
             "update": {
               "text": [
@@ -2529,7 +2538,8 @@
                   "fill": {"value": "black"},
                   "x": {"value": 25},
                   "y": {"scale": "textPosition", "field": "Type", "offset": 105},
-                  "fontSize": {"value": 11}
+                  "fontSize": {"value": 11},
+                  "cursor": {"value": "pointer"}
                 },
                 "update": {
                   "text": {"field": "Type"},
@@ -2554,7 +2564,8 @@
                   "size": {"value": 75},
                   "fill": {"value": "#4d4d4d"},
                   "x": {"value": 12},
-                  "y": {"scale": "textPosition", "field": "Type", "offset": 105}
+                  "y": {"scale": "textPosition", "field": "Type", "offset": 105},
+                  "cursor": {"value": "pointer"}
                 },
                 "update": {
                   "opacity": [
