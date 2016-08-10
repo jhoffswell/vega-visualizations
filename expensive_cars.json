@@ -1,6 +1,6 @@
 {
   "width": 500,
-  "height": 300,
+  "height": 400,
   "padding": {"top": 25, "left": 60, "bottom": 50, "right": 150},
 
   "data": [
@@ -1922,14 +1922,16 @@
           "keys": ["Type"],
           "as": ["match"],
           "default": "false"
-        }
+        },
+        {"type": "bin", "field": "Adjusted price", "step": 10000000}
       ]
     },
     {
       "name": "visible-cars",
       "source": "cars",
       "transform": [
-        {"type": "filter", "test": "if(selectedModel=='', true, datum.Type==selectedModel)"}
+        {"type": "filter", "test": "datum['Adjusted price'] >= selectedPrice"},
+        {"type": "filter", "test": "if(selectedPriceType=='greater', true, if(selectedPrice==0, if(datum.bin_start==0 & datum['Adjusted price']<5000000, true, false), if(selectedPrice==5000000, if(datum.bin_start==0 & datum['Adjusted price']>=5000000, true, false), if(selectedPrice==datum.bin_start, true, false))))"}
       ]
     },
     {
@@ -1945,6 +1947,7 @@
       "name": "axesDomain",
       "source": "visible-cars",
       "transform": [
+        {"type": "filter", "test": "if(selectedModel=='', true, datum.Type==selectedModel)"},
         {"type": "aggregate", "summarize": {"Date": ["min", "max"], "Model year":["min", "max"]}},
         {"type": "formula", "field": "xMin", "expr": "if(autoZoom, utc(year(datetime(datum.min_Date)) - 1, 0), xMin)"},
         {"type": "formula", "field": "xMax", "expr": "if(autoZoom, utc(year(datetime(datum.max_Date)) + 1, 0), xMax)"},
@@ -1955,15 +1958,31 @@
     {
       "name": "stats",
       "values": [
-        {"value": "5000000", "index": 0},
-        {"value": "15000000", "index": 1},
-        {"value": "25000000", "index": 2},
-        {"value": "35000000", "index": 3}
+        {"value": 5000000, "index": 0},
+        {"value": 10000000, "index": 1},
+        {"value": 20000000, "index": 2},
+        {"value": 30000000, "index": 3}
       ]
     }
   ],
 
   "signals": [
+    {
+      "name": "selectedPriceType",
+      "init": "greater",
+      "streams": [
+        {"type": "@AdjustedPriceLegend:click", "expr": "if(selectedPrice==0, 'greater', 'equal')"},
+        {"type": "@AdjustedPriceLegendItems:click", "expr": "if(selectedPrice==datum.value, 'greater', 'equal')"}
+      ]
+    },
+    {
+      "name": "selectedPrice",
+      "init": 0,
+      "streams": [
+        {"type": "@AdjustedPriceLegend:click", "expr": "0"},
+        {"type": "@AdjustedPriceLegendItems:click", "expr": "datum.value"}
+      ]
+    },
     {
       "name": "selectedModel",
       "init": "",
@@ -2155,7 +2174,7 @@
       "marks": [
         {
           "type": "symbol",
-          "from": {"data": "cars"},
+          "from": {"data": "visible-cars"},
           "properties": {
             "update": {
               "x": {"scale": "x", "field": "Date"},
@@ -2202,7 +2221,7 @@
       "properties": {
         "enter": {
           "x": {"value": 515},
-          "y": {"value": 105},
+          "y": {"value": 0},
           "width": {"value": 125},
           "height": {"value": 70},
           "stroke": {"value": "#ddd"},
@@ -2226,6 +2245,7 @@
           }
         },
         {
+          "name": "AdjustedPriceLegendItems",
           "type": "group",
           "marks": [
             {
@@ -2240,6 +2260,13 @@
                   "y": {"value": 50},
                   "fontSize": {"value": 11},
                   "text": {"template": "{{datum.value | number:'$.2s'}}"}
+                },
+                "update": {
+                  "opacity": [
+                    {"test": "selectedPriceType=='greater' & datum.value>=selectedPrice", "value": 1},
+                    {"test": "selectedPriceType=='equal' & datum.value==selectedPrice", "value": 1},
+                    {"value": 0.5}
+                  ]
                 }
               }
             },
@@ -2251,8 +2278,14 @@
                   "fill": {"value": "black"},
                   "x": {"field": "index", "mult": 30, "offset": 18},
                   "y": {"value": 35},
-                  "size": {"scale": "size", "field": "value"},
-                  "opacity": {"value": 0.5}
+                  "size": {"scale": "size", "field": "value"}
+                },
+                "update": {
+                  "opacity": [
+                    {"test": "selectedPriceType=='greater' & datum.value>=selectedPrice", "value": 0.5},
+                    {"test": "selectedPriceType=='equal' & datum.value==selectedPrice", "value": 0.5},
+                    {"value": 0.1}
+                  ]
                 }
               }
             }
@@ -2266,7 +2299,7 @@
       "properties": {
         "enter": {
           "x": {"value": 515},
-          "y": {"value": 0},
+          "y": {"value": 75},
           "width": {"value": 125},
           "stroke": {"value": "#ddd"},
           "stroke-width": {"value": 2},
