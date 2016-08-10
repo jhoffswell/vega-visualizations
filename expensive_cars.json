@@ -5,13 +5,6 @@
 
   "data": [
     {
-      "name": "popular-models",
-      "values": ["Bentley", "Bugatti", "Ferrari", "Mercedes-Benz"],
-      "transform": [
-        {"type": "formula", "field": "index", "expr": "indexof(['Bentley', 'Bugatti', 'Ferrari', 'Mercedes-Benz'], datum.data) + 1"}
-      ]
-    },
-    {
       "name": "cars",
       "format": {"type":"json", "parse": { "Date": "date"} },
       "values": [
@@ -1914,16 +1907,13 @@
           "Adjusted price": 4707000
         }
       ],
+      "transform": [{"type": "bin", "field": "Adjusted price", "step": 10000000}]
+    },
+    {
+      "name": "count",
+      "source": "cars",
       "transform": [
-        {
-          "type": "lookup",
-          "on": "popular-models",
-          "onKey": "data",
-          "keys": ["Type"],
-          "as": ["match"],
-          "default": "false"
-        },
-        {"type": "bin", "field": "Adjusted price", "step": 10000000}
+        {"type": "aggregate", "groupby": ["Type"], "summarize": {"*": "count"}}
       ]
     },
     {
@@ -1935,12 +1925,33 @@
       ]
     },
     {
-      "name": "other-models",
-      "source": "cars",
+      "name": "popular-models",
+      "values": ["Ferrari", "Mercedes-Benz", "Bentley", "Bugatti"],
       "transform": [
-        {"type": "filter", "test": "datum.match=='false'"},
-        {"type": "facet", "groupby": ["Type"]},
-        {"type": "formula", "field": "data", "expr": "datum.Type"}
+        {"type": "formula", "field": "index", "expr": "indexof(['Ferrari', 'Mercedes-Benz', 'Bentley', 'Bugatti'], datum.data) + 1"},
+        {
+          "type": "lookup",
+          "on": "count",
+          "onKey": "Type",
+          "keys": ["data"],
+          "as": "match"
+        },
+        {"type": "formula", "field": "count", "expr": "datum.match.count"}
+      ]
+    },
+    {
+      "name": "other-models",
+      "source": "count",
+      "transform": [
+        {
+          "type": "lookup",
+          "on": "popular-models",
+          "onKey": "data",
+          "keys": ["Type"],
+          "as": ["match"],
+          "default": "false"
+        },
+        {"type": "filter", "test": "datum.match=='false'"}
       ]
     },
     {
@@ -2139,7 +2150,12 @@
     {
       "name": "textPosition",
       "type": "ordinal",
-      "domain": {"data": "other-models", "field": "Type"},
+      "domain": {
+        "data": "other-models", 
+        "field": "Type", 
+        "sort": {"field": "count", "op": "min"}
+      },
+      "reverse": true,
       "range": [0, 225]
     }
   ],
@@ -2441,16 +2457,19 @@
                   "fill": {"value": "black"},
                   "x": {"value": 25},
                   "y": {"field": "index", "mult": 14, "offset": 8},
-                  "fontSize": {"value": 11},
-                  "text": {"field": "data"}
+                  "fontSize": {"value": 11}
                 },
                 "update": {
+                  "text": {"field": "data"},
                   "opacity": [
                     {"test": "clearSelected==true", "value": 1},
                     {"test": "datum.data == selectedModel", "value": 1},
                     {"test": "selectedModel == ''", "value": 1},
                     {"value": 0.15}
                   ]
+                },
+                "hover": {
+                  "text": {"template": "{{datum.data}} ({{datum.count}})"}
                 }
               }
             },
@@ -2510,17 +2529,20 @@
                   "fill": {"value": "black"},
                   "x": {"value": 25},
                   "y": {"scale": "textPosition", "field": "Type", "offset": 105},
-                  "fontSize": {"value": 11},
-                  "text": {"field": "Type"}
+                  "fontSize": {"value": 11}
                 },
                 "update": {
+                  "text": {"field": "Type"},
                   "opacity": [
                     {"test": "showAllModels=='hide'", "value": 0},
                     {"test": "clearSelected==true", "value": 1},
-                    {"test": "datum.data == selectedModel", "value": 1},
+                    {"test": "datum.Type == selectedModel", "value": 1},
                     {"test": "selectedModel == ''", "value": 1},
                     {"value": 0.15}
                   ]
+                },
+                "hover": {
+                  "text": {"template": "{{datum.Type}} ({{datum.count}})"}
                 }
               }
             },
