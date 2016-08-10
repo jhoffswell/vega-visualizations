@@ -1,7 +1,7 @@
 {
   "width": 500,
   "height": 400,
-  "padding": {"top": 25, "left": 60, "bottom": 50, "right": 150},
+  "padding": {"top": 50, "left": 60, "bottom": 50, "right": 150},
 
   "data": [
     {
@@ -1974,6 +1974,23 @@
         {"value": 20000000, "index": 2},
         {"value": 30000000, "index": 3}
       ]
+    },
+    {
+      "name": "count-stats",
+      "values": [1],
+      "transform": [
+        {"type": "cross", "with": "cars"},
+        {"type": "aggregate", "summarize": {"*": "count"}},
+        {"type": "cross", "with": "visible-cars"},
+        {"type": "formula", "field": "total", "expr": "datum.a.count"},
+        {
+          "type": "aggregate", 
+          "summarize": [
+            {"field": "total", "ops": ["average"], "as": ["total"]},
+            {"field": "*", "ops": ["count"], "as": ["visible"]}
+          ]
+        }
+      ]
     }
   ],
 
@@ -2183,6 +2200,33 @@
   ],
   
   "marks": [
+    {
+      "type": "text",
+      "properties": {
+        "enter": {
+          "x": {"value": -35},
+          "y": {"value": -20},
+          "fill": {"value": "black"},
+          "text": {"value": "The Most Expensive Cars Sold at Auction"},
+          "fontSize": {"value": 24}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "count-stats"},
+      "properties": {
+        "enter": {
+          "x": {"field": {"group": "width"}, "offset": 15},
+          "y": {"value": -20},
+          "fill": {"value": "black"},
+          "opacity": {"value": 0.5}
+        },
+        "update": {
+          "text": {"template": "Showing {{datum.visible}} of {{datum.total}} cars."}
+        }
+      }
+    },
     {
       "name": "chart",
       "type": "group",
