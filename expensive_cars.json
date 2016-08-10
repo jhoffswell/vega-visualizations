@@ -1942,7 +1942,7 @@
       ]
     },
     {
-      "name": "stats",
+      "name": "axesDomain",
       "source": "visible-cars",
       "transform": [
         {"type": "aggregate", "summarize": {"Date": ["min", "max"], "Model year":["min", "max"]}},
@@ -1950,6 +1950,15 @@
         {"type": "formula", "field": "xMax", "expr": "if(autoZoom, utc(year(datetime(datum.max_Date)) + 1, 0), xMax)"},
         {"type": "formula", "field": "yMin", "expr": "if(autoZoom, datum['min_Model year'] - 5, yMin)"},
         {"type": "formula", "field": "yMax", "expr": "if(autoZoom, datum['max_Model year'] + 5, yMax)"}
+      ]
+    },
+    {
+      "name": "stats",
+      "values": [
+        {"value": "5000000", "index": 0},
+        {"value": "15000000", "index": 1},
+        {"value": "25000000", "index": 2},
+        {"value": "35000000", "index": 3}
       ]
     }
   ],
@@ -1960,7 +1969,7 @@
       "init": "",
       "streams": [
         {"type": "@ModelLegendPopular:click", "expr": "datum.data"},
-        {"type": "@ModelLegendAll:click", "expr": "datum.Type"}
+        {"type": "@ModelLegendAll:click", "expr": "if(showAllModels=='show', datum.Type, '')"}
       ]
     },
     {
@@ -1989,7 +1998,7 @@
       "init": false,
       "streams": [
         {
-          "type": "@chart:mousedown, [mousedown, window:mouseup] > window:mousemove",
+          "type": "@chart:mousedown, [@chart:mousedown, window:mouseup] > window:mousemove",
           "expr": "true"
         },
         {"type": "mouseup", "expr": "false"}
@@ -2010,7 +2019,7 @@
       "init": {},
       "streams": [
         {
-          "type": "@chart:mousedown, [mousedown, window:mouseup] > window:mousemove",
+          "type": "@chart:mousedown, [@chart:mousedown, window:mouseup] > window:mousemove",
           "expr": "{x: iscale('x', clamp(eventX(), 0, width)), y: iscale('y', clamp(eventY(), 0, height))}"
         }
       ]
@@ -2072,15 +2081,21 @@
       "name": "x",
       "type": "linear",
       "range": "width", "zero": false,
-      "domainMin": {"data": "stats", "field": "xMin"},
-      "domainMax": {"data": "stats", "field": "xMax"}
+      "domainMin": {"data": "axesDomain", "field": "xMin"},
+      "domainMax": {"data": "axesDomain", "field": "xMax"}
     },
     {
       "name": "y",
       "type": "linear",
       "range": "height", "zero": false,
-      "domainMin": {"data": "stats", "field": "yMin"},
-      "domainMax": {"data": "stats", "field": "yMax"}
+      "domainMin": {"data": "axesDomain", "field": "yMin"},
+      "domainMax": {"data": "axesDomain", "field": "yMax"}
+    },
+    {
+      "name": "adjusted",
+      "type": "linear",
+      "range": "height", "zero": false,
+      "domain": {"data": "cars", "field": "Adjusted price"}
     },
     {
       "name": "size",
@@ -2180,6 +2195,70 @@
           ]
         }
       }
+    },
+    {
+      "name": "AdjustedPriceLegend",
+      "type": "group",
+      "properties": {
+        "enter": {
+          "x": {"value": 515},
+          "y": {"value": 105},
+          "width": {"value": 125},
+          "height": {"value": 70},
+          "stroke": {"value": "#ddd"},
+          "stroke-width": {"value": 2},
+          "fill": {"value": "white"}
+        }
+      },
+      "marks": [
+        {
+          "type": "text",
+          "properties": {
+            "enter": {
+              "align": {"value": "left"},
+              "fill": {"value": "black"},
+              "x": {"value": 7},
+              "y": {"value": 15},
+              "fontSize": {"value": 11},
+              "fontStyle": {"value": "bold"},
+              "text": {"value": "Adjusted Price (US$)"}
+            }
+          }
+        },
+        {
+          "type": "group",
+          "marks": [
+            {
+              "type": "text",
+              "from": {"data": "stats"},
+              "properties": {
+                "enter": {
+                  "align": {"value": "center"},
+                  "baseline": {"value": "top"},
+                  "fill": {"value": "black"},
+                  "x": {"field": "index", "mult": 30, "offset": 18},
+                  "y": {"value": 50},
+                  "fontSize": {"value": 11},
+                  "text": {"template": "{{datum.value | number:'$.2s'}}"}
+                }
+              }
+            },
+            {
+              "type": "symbol",
+              "from": {"data": "stats"},
+              "properties": {
+                "enter": {
+                  "fill": {"value": "black"},
+                  "x": {"field": "index", "mult": 30, "offset": 18},
+                  "y": {"value": 35},
+                  "size": {"scale": "size", "field": "value"},
+                  "opacity": {"value": 0.5}
+                }
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "ModelLegend",
