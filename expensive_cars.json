@@ -2126,7 +2126,8 @@
       "streams": [
         {"type": "mouseup", "expr": "false"},
         {"type": "@ModelLegend:click", "expr": "if(context=='legend', true, false)"},
-        {"type": "@ModelLegendPopular:click, @ModelLegendAll:click", "expr": "true"}
+        {"type": "@ModelLegendPopular:click", "expr": "true"},
+        {"type": "@ModelLegendAll:click", "expr": "if(showAllModels=='hide', false, true)"}
         
       ]
     }
