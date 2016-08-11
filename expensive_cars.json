@@ -2084,7 +2084,7 @@
       "init": 473385600000,
       "streams": [{
         "type": "mouseup", 
-        "expr": "if(brush_start.x==brush_end.x, 473385600000, min(brush_start.x, brush_end.x))"
+        "expr": "if(brush_start.x==null, 473385600000, if(time(brush_start.x)==time(brush_end.x), 473385600000, min(brush_start.x, brush_end.x)))"
       }]
     },
     {
@@ -2092,7 +2092,7 @@
       "init": 1483228800000,
       "streams": [{
         "type": "mouseup", 
-        "expr": "if(brush_start.x==brush_end.x, 1483228800000, max(brush_start.x, brush_end.x))"
+        "expr": "if(brush_start.x==null, 1483228800000, if(time(brush_start.x)==time(brush_end.x), 1483228800000, max(brush_start.x, brush_end.x)))"
       }]
     },
     {
@@ -2136,7 +2136,7 @@
   "scales": [
     {
       "name": "x",
-      "type": "linear",
+      "type": "time",
       "range": "width", "zero": false,
       "domainMin": {"data": "axesDomain", "field": "xMin"},
       "domainMax": {"data": "axesDomain", "field": "xMax"}
@@ -2184,7 +2184,7 @@
       "title": "Date of Sale",
       "type": "x", "scale": "x", 
       "grid": true, "layer": "front", 
-      "formatType": "time", "format": "%Y",
+      "formatType": "time",
       "properties": {
         "labels": { "fontSize": {"value": 10} }
       }
@@ -2219,9 +2219,10 @@
       "properties": {
         "enter": {
           "x": {"field": {"group": "width"}, "offset": 15},
-          "y": {"value": -20},
+          "y": {"value": -8},
           "fill": {"value": "black"},
-          "opacity": {"value": 0.5}
+          "opacity": {"value": 0.5},
+          "fontWeight": {"value": "italic"}
         },
         "update": {
           "text": {"template": "Showing {{datum.visible}} of {{datum.total}} cars."}
@@ -2584,11 +2585,14 @@
                   "fill": {"value": "black"},
                   "x": {"value": 25},
                   "y": {"scale": "textPosition", "field": "Type", "offset": 105},
-                  "fontSize": {"value": 11},
-                  "cursor": {"value": "pointer"}
+                  "fontSize": {"value": 11}
                 },
                 "update": {
                   "text": {"field": "Type"},
+                  "cursor": [
+                    {"test": "showAllModels=='show'", "value": "pointer"},
+                    {"value": "default"}
+                  ],
                   "opacity": [
                     {"test": "showAllModels=='hide'", "value": 0},
                     {"test": "clearSelected==true", "value": 1},
@@ -2610,10 +2614,13 @@
                   "size": {"value": 75},
                   "fill": {"value": "#4d4d4d"},
                   "x": {"value": 12},
-                  "y": {"scale": "textPosition", "field": "Type", "offset": 105},
-                  "cursor": {"value": "pointer"}
+                  "y": {"scale": "textPosition", "field": "Type", "offset": 105}
                 },
                 "update": {
+                  "cursor": [
+                    {"test": "showAllModels=='show'", "value": "pointer"},
+                    {"value": "default"}
+                  ],
                   "opacity": [
                     {"test": "showAllModels=='hide'", "value": 0},
                     {"test": "clearSelected==true", "value": 1},
