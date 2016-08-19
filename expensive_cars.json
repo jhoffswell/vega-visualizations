@@ -6,7 +6,7 @@
   "data": [
     {
       "name": "cars",
-      "format": {"type":"json", "parse": { "Date": "date"} },
+      "format": {"type":"json", "parse": {"Date": "date:'%d-%b-%y'"} },
       "values": [
         {
           "Date": "28-Aug-99",
@@ -141,7 +141,7 @@
         {
           "Date": "16-Aug-13",
           "Model year": 1931,
-          "Car": "Bentley 4Â_ Litre Supercharged Le Mans",
+          "Car": "Bentley 4 1/2 Litre Supercharged Le Mans",
           "Brand": "Bentley",
           "Vehicle Identification Number": "MS 3944",
           "Auctioneer": "Bonhams",
@@ -167,7 +167,7 @@
         {
           "Date": "15-Aug-15",
           "Model year": 1931,
-          "Car": "Bentley 4Â_-Litre Supercharged Torpedo",
+          "Car": "Bentley 4 1/2 Litre Supercharged Torpedo",
           "Brand": "Bentley",
           "Vehicle Identification Number": "MS3929",
           "Auctioneer": "RM Auctions",
@@ -180,7 +180,7 @@
         {
           "Date": "19-Aug-12",
           "Model year": 1928,
-          "Car": "Bentley 4Â_ Litre Le Mans Sports 'Bobtail'",
+          "Car": "Bentley 4 1/2 Litre Le Mans Sports 'Bobtail'",
           "Brand": "Bentley",
           "Vehicle Identification Number": "KM3088",
           "Auctioneer": "Gooding & Company",
@@ -193,7 +193,7 @@
         {
           "Date": "19-Aug-07",
           "Model year": 1931,
-          "Car": "Bentley 4 Litre \"The Green Hornet",
+          "Car": "Bentley 4 Litre 'The Green Hornet'",
           "Brand": "Bentley",
           "Vehicle Identification Number": "SM3916",
           "Auctioneer": "Gooding & Company",
@@ -206,7 +206,7 @@
         {
           "Date": "29-Jun-12",
           "Model year": 1929,
-          "Car": "4Â_-Litre Supercharged 'Blower' Bentley Single-Seater",
+          "Car": "4 1/2 -Litre Supercharged 'Blower' Bentley Single-Seater",
           "Brand": "Bentley",
           "Vehicle Identification Number": "HB 3402",
           "Auctioneer": "Bonhams",
@@ -297,7 +297,7 @@
         {
           "Date": "7-Oct-11",
           "Model year": 1884,
-          "Car": "De Dion, Bouton et TrÃ©pardoux Dos-Ã -Dos Steam Runabout \"La Marquise",
+          "Car": "De Dion, Bouton et Trépardoux Dos-à-Dos Steam Runabout 'La Marquise'",
           "Brand": "De Dion",
           "Vehicle Identification Number": 6,
           "Auctioneer": "RM Auctions",
@@ -349,7 +349,7 @@
         {
           "Date": "15-May-04",
           "Model year": 1935,
-          "Car": "Duesenberg SJ Speedster \"Mormon Meteor",
+          "Car": "Duesenberg SJ Speedster 'Mormon Meteor'",
           "Brand": "Duesenberg",
           "Vehicle Identification Number": "N/A",
           "Auctioneer": "Gooding & Company",
@@ -960,7 +960,7 @@
         {
           "Date": "21-Nov-13",
           "Model year": 1959,
-          "Car": "Ferrari 250 GT SWB \"Competition\" Berlinetta Speciale",
+          "Car": "Ferrari 250 GT SWB 'Competition' Berlinetta Speciale",
           "Brand": "Ferrari",
           "Vehicle Identification Number": "1739GT",
           "Auctioneer": "RM Auctions & Sotheby's",
@@ -1129,7 +1129,7 @@
         {
           "Date": "15-Aug-10",
           "Model year": 1961,
-          "Car": "Ferrari 250 SWB Competizione \"SEFAC Hot Rod",
+          "Car": "Ferrari 250 SWB Competizione 'SEFAC Hot Rod'",
           "Brand": "Ferrari",
           "Vehicle Identification Number": "2845 GT",
           "Auctioneer": "Gooding & Company",
