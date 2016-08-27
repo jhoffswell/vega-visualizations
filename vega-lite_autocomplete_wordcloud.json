@@ -1,0 +1,451 @@
+{
+  "parameters": [
+    {
+      "name": "keywords", "signal": "keyword", "type": "text",
+      "value": "", "placeholder": "search", "autocomplete": "false"
+    }
+  ],
+  "spec": {
+    "width": 650,
+    "height": 550,
+    "padding": {"top":50, "bottom":0, "left":0, "right":0},
+    
+    "signals": [
+      {
+        "name": "mouseover",
+        "init": false,
+        "streams": [{"type": "mouseover", "expr": "if(datum.word, true, false)"}]
+      },
+      {
+        "name": "keyword",
+        "init": "",
+        "streams": [
+          {"type": "mouseover", "expr": "if(datum.word, datum.word, '')"}
+        ]
+      },
+      {
+        "name": "scopes",
+        "init": "",
+        "streams": [
+          {"type": "mouseover", "expr": "if(datum.scopes, datum.scopes, '')"}
+        ]
+      },
+      {
+        "name": "shift",
+        "init": false,
+        "streams": [{"type": "mousemove", "expr": "event.shiftKey"}]
+      },
+      {
+        "name": "alt",
+        "init": false,
+        "streams": [{"type": "mousemove", "expr": "event.altKey"}]
+      }
+    ],
+    
+    "data": [
+      {
+        "name": "words",
+        "values":[
+          {"word": "mark","length": 3,"scopes": ["spec","config","layers"]},
+          {"word": "area","length": 2,"scopes": ["spec","overlay"]},
+          {"word": "bar","length": 1,"scopes": ["spec"]},
+          {"word": "line","length": 2,"scopes": ["spec","overlay"]},
+          {"word": "point","length": 1,"scopes": ["spec"]},
+          {"word": "text","length": 3,"scopes": ["spec","encoding","mark"]},
+          {"word": "tick","length": 1,"scopes": ["spec"]},
+          {"word": "rule","length": 1,"scopes": ["spec"]},
+          {"word": "circle","length": 2,"scopes": ["spec","mark"]},
+          {"word": "square","length": 2,"scopes": ["spec","mark"]},
+          {"word": "errorBar","length": 1,"scopes": ["spec"]},
+          {"word": "encoding","length": 2,"scopes": ["spec","layers"]},
+          {"word": "row","length": 2,"scopes": ["encoding","facet"]},
+          {"word": "axis","length": 3,"scopes": ["row","config","facet"]},
+          {"word": "true","length": 18,"scopes": ["axis","grid","labels","shortTimeLabels","round","clamp","nice","zero","useRawDomain","value","bin","equal","in","filterInvalid","clip","filled","applyColorToBackground","line"]},
+          {"word": "false","length": 18,"scopes": ["axis","grid","labels","shortTimeLabels","round","clamp","nice","zero","useRawDomain","value","bin","equal","in","filterInvalid","clip","filled","applyColorToBackground","line"]},
+          {"word": "labelAngle","length": 1,"scopes": ["axis"]},
+          {"word": "format","length": 4,"scopes": ["axis","legend","data","mark"]},
+          {"word": "orient","length": 3,"scopes": ["axis","legend","mark"]},
+          {"word": "top","length": 2,"scopes": ["axis","mark"]},
+          {"word": "right","length": 2,"scopes": ["axis","mark"]},
+          {"word": "left","length": 2,"scopes": ["axis","mark"]},
+          {"word": "bottom","length": 2,"scopes": ["axis","mark"]},
+          {"word": "title","length": 6,"scopes": ["axis","row","legend","color","detail","path"]},
+          {"word": "values","length": 4,"scopes": ["axis","sort","legend","data"]},
+          {"word": "axisWidth","length": 1,"scopes": ["axis"]},
+          {"word": "layer","length": 1,"scopes": ["axis"]},
+          {"word": "offset","length": 3,"scopes": ["axis","legend","grid"]},
+          {"word": "axisColor","length": 1,"scopes": ["axis"]},
+          {"word": "grid","length": 2,"scopes": ["axis","facet"]},
+          {"word": "gridColor","length": 1,"scopes": ["axis"]},
+          {"word": "gridDash","length": 1,"scopes": ["axis"]},
+          {"word": "gridOpacity","length": 1,"scopes": ["axis"]},
+          {"word": "gridWidth","length": 1,"scopes": ["axis"]},
+          {"word": "labels","length": 1,"scopes": ["axis"]},
+          {"word": "labelAlign","length": 2,"scopes": ["axis","legend"]},
+          {"word": "labelBaseline","length": 2,"scopes": ["axis","legend"]},
+          {"word": "labelMaxLength","length": 1,"scopes": ["axis"]},
+          {"word": "shortTimeLabels","length": 3,"scopes": ["axis","legend","mark"]},
+          {"word": "subdivide","length": 1,"scopes": ["axis"]},
+          {"word": "ticks","length": 1,"scopes": ["axis"]},
+          {"word": "tickColor","length": 1,"scopes": ["axis"]},
+          {"word": "tickLabelColor","length": 1,"scopes": ["axis"]},
+          {"word": "tickLabelFont","length": 1,"scopes": ["axis"]},
+          {"word": "tickLabelFontSize","length": 1,"scopes": ["axis"]},
+          {"word": "tickPadding","length": 1,"scopes": ["axis"]},
+          {"word": "tickSize","length": 2,"scopes": ["axis","mark"]},
+          {"word": "tickSizeMajor","length": 1,"scopes": ["axis"]},
+          {"word": "tickSizeMinor","length": 1,"scopes": ["axis"]},
+          {"word": "tickSizeEnd","length": 1,"scopes": ["axis"]},
+          {"word": "tickWidth","length": 1,"scopes": ["axis"]},
+          {"word": "titleColor","length": 2,"scopes": ["axis","legend"]},
+          {"word": "titleFont","length": 2,"scopes": ["axis","legend"]},
+          {"word": "titleFontSize","length": 2,"scopes": ["axis","legend"]},
+          {"word": "titleFontWeight","length": 2,"scopes": ["axis","legend"]},
+          {"word": "titleOffset","length": 1,"scopes": ["axis"]},
+          {"word": "titleMaxLength","length": 1,"scopes": ["axis"]},
+          {"word": "characterWidth","length": 1,"scopes": ["axis"]},
+          {"word": "properties","length": 2,"scopes": ["axis","legend"]},
+          {"word": "scale","length": 4,"scopes": ["row","color","config","facet"]},
+          {"word": "type","length": 6,"scopes": ["scale","row","color","detail","path","format"]},
+          {"word": "linear","length": 2,"scopes": ["scale","mark"]},
+          {"word": "log","length": 1,"scopes": ["scale"]},
+          {"word": "pow","length": 1,"scopes": ["scale"]},
+          {"word": "sqrt","length": 1,"scopes": ["scale"]},
+          {"word": "quantile","length": 1,"scopes": ["scale"]},
+          {"word": "quantize","length": 1,"scopes": ["scale"]},
+          {"word": "ordinal","length": 2,"scopes": ["scale","row"]},
+          {"word": "time","length": 1,"scopes": ["scale"]},
+          {"word": "utc","length": 1,"scopes": ["scale"]},
+          {"word": "domain","length": 1,"scopes": ["scale"]},
+          {"word": "range","length": 2,"scopes": ["scale","filter"]},
+          {"word": "round","length": 1,"scopes": ["scale"]},
+          {"word": "bandSize","length": 1,"scopes": ["scale"]},
+          {"word": "padding","length": 2,"scopes": ["scale","legend"]},
+          {"word": "clamp","length": 1,"scopes": ["scale"]},
+          {"word": "nice","length": 1,"scopes": ["scale"]},
+          {"word": "second","length": 1,"scopes": ["scale"]},
+          {"word": "minute","length": 1,"scopes": ["scale"]},
+          {"word": "hour","length": 1,"scopes": ["scale"]},
+          {"word": "day","length": 3,"scopes": ["scale","row","equal"]},
+          {"word": "week","length": 1,"scopes": ["scale"]},
+          {"word": "month","length": 3,"scopes": ["scale","row","equal"]},
+          {"word": "year","length": 3,"scopes": ["scale","row","equal"]},
+          {"word": "exponent","length": 1,"scopes": ["scale"]},
+          {"word": "zero","length": 2,"scopes": ["scale","mark"]},
+          {"word": "useRawDomain","length": 1,"scopes": ["scale"]},
+          {"word": "sort","length": 3,"scopes": ["row","color","path"]},
+          {"word": "field","length": 7,"scopes": ["sort","row","color","detail","path","filter","calculate"]},
+          {"word": "op","length": 1,"scopes": ["sort"]},
+          {"word": "count","length": 1,"scopes": ["sort"]},
+          {"word": "valid","length": 1,"scopes": ["sort"]},
+          {"word": "missing","length": 1,"scopes": ["sort"]},
+          {"word": "distinct","length": 1,"scopes": ["sort"]},
+          {"word": "sum","length": 1,"scopes": ["sort"]},
+          {"word": "mean","length": 1,"scopes": ["sort"]},
+          {"word": "average","length": 1,"scopes": ["sort"]},
+          {"word": "variance","length": 1,"scopes": ["sort"]},
+          {"word": "variancep","length": 1,"scopes": ["sort"]},
+          {"word": "stdev","length": 1,"scopes": ["sort"]},
+          {"word": "stdevp","length": 1,"scopes": ["sort"]},
+          {"word": "median","length": 1,"scopes": ["sort"]},
+          {"word": "q1","length": 1,"scopes": ["sort"]},
+          {"word": "q3","length": 1,"scopes": ["sort"]},
+          {"word": "modeskew","length": 1,"scopes": ["sort"]},
+          {"word": "min","length": 2,"scopes": ["sort","bin"]},
+          {"word": "max","length": 2,"scopes": ["sort","bin"]},
+          {"word": "argmin","length": 1,"scopes": ["sort"]},
+          {"word": "argmax","length": 1,"scopes": ["sort"]},
+          {"word": "order","length": 2,"scopes": ["sort","encoding"]},
+          {"word": "ascending","length": 1,"scopes": ["sort"]},
+          {"word": "descending","length": 1,"scopes": ["sort"]},
+          {"word": "none","length": 3,"scopes": ["sort","mark","overlay"]},
+          {"word": "quantitative","length": 1,"scopes": ["row"]},
+          {"word": "temporal","length": 1,"scopes": ["row"]},
+          {"word": "nominal","length": 1,"scopes": ["row"]},
+          {"word": "value","length": 4,"scopes": ["row","color","detail","path"]},
+          {"word": "timeUnit","length": 5,"scopes": ["row","color","detail","path","filter"]},
+          {"word": "date","length": 2,"scopes": ["row","equal"]},
+          {"word": "hours","length": 2,"scopes": ["row","equal"]},
+          {"word": "minutes","length": 2,"scopes": ["row","equal"]},
+          {"word": "seconds","length": 2,"scopes": ["row","equal"]},
+          {"word": "milliseconds","length": 2,"scopes": ["row","equal"]},
+          {"word": "yearmonth","length": 1,"scopes": ["row"]},
+          {"word": "yearmonthdate","length": 1,"scopes": ["row"]},
+          {"word": "yearmonthdatehours","length": 1,"scopes": ["row"]},
+          {"word": "yearmonthdatehoursminutes","length": 1,"scopes": ["row"]},
+          {"word": "yearmonthdatehoursminutesseconds","length": 1,"scopes": ["row"]},
+          {"word": "hoursminutes","length": 1,"scopes": ["row"]},
+          {"word": "hoursminutesseconds","length": 1,"scopes": ["row"]},
+          {"word": "minutesseconds","length": 1,"scopes": ["row"]},
+          {"word": "secondsmilliseconds","length": 1,"scopes": ["row"]},
+          {"word": "quarter","length": 2,"scopes": ["row","equal"]},
+          {"word": "yearquarter","length": 1,"scopes": ["row"]},
+          {"word": "quartermonth","length": 1,"scopes": ["row"]},
+          {"word": "yearquartermonth","length": 1,"scopes": ["row"]},
+          {"word": "bin","length": 4,"scopes": ["row","color","detail","path"]},
+          {"word": "base","length": 1,"scopes": ["bin"]},
+          {"word": "step","length": 2,"scopes": ["bin","mark"]},
+          {"word": "steps","length": 1,"scopes": ["bin"]},
+          {"word": "minstep","length": 1,"scopes": ["bin"]},
+          {"word": "div","length": 1,"scopes": ["bin"]},
+          {"word": "maxbins","length": 1,"scopes": ["bin"]},
+          {"word": "aggregate","length": 4,"scopes": ["row","color","detail","path"]},
+          {"word": "column","length": 2,"scopes": ["encoding","facet"]},
+          {"word": "x","length": 1,"scopes": ["encoding"]},
+          {"word": "y","length": 1,"scopes": ["encoding"]},
+          {"word": "x2","length": 1,"scopes": ["encoding"]},
+          {"word": "y2","length": 1,"scopes": ["encoding"]},
+          {"word": "color","length": 3,"scopes": ["encoding","mark","grid"]},
+          {"word": "legend","length": 2,"scopes": ["color","config"]},
+          {"word": "margin","length": 1,"scopes": ["legend"]},
+          {"word": "gradientStrokeColor","length": 1,"scopes": ["legend"]},
+          {"word": "gradientStrokeWidth","length": 1,"scopes": ["legend"]},
+          {"word": "gradientHeight","length": 1,"scopes": ["legend"]},
+          {"word": "gradientWidth","length": 1,"scopes": ["legend"]},
+          {"word": "labelColor","length": 1,"scopes": ["legend"]},
+          {"word": "labelFont","length": 1,"scopes": ["legend"]},
+          {"word": "labelFontSize","length": 1,"scopes": ["legend"]},
+          {"word": "labelOffset","length": 1,"scopes": ["legend"]},
+          {"word": "symbolColor","length": 1,"scopes": ["legend"]},
+          {"word": "symbolShape","length": 1,"scopes": ["legend"]},
+          {"word": "symbolSize","length": 1,"scopes": ["legend"]},
+          {"word": "symbolStrokeWidth","length": 1,"scopes": ["legend"]},
+          {"word": "opacity","length": 4,"scopes": ["encoding","mark","scale","grid"]},
+          {"word": "size","length": 2,"scopes": ["encoding","mark"]},
+          {"word": "shape","length": 2,"scopes": ["encoding","mark"]},
+          {"word": "detail","length": 1,"scopes": ["encoding"]},
+          {"word": "label","length": 1,"scopes": ["encoding"]},
+          {"word": "path","length": 1,"scopes": ["encoding"]},
+          {"word": "name","length": 2,"scopes": ["spec","layers"]},
+          {"word": "description","length": 2,"scopes": ["spec","layers"]},
+          {"word": "data","length": 2,"scopes": ["spec","layers"]},
+          {"word": "json","length": 1,"scopes": ["format"]},
+          {"word": "csv","length": 1,"scopes": ["format"]},
+          {"word": "tsv","length": 1,"scopes": ["format"]},
+          {"word": "topojson","length": 1,"scopes": ["format"]},
+          {"word": "property","length": 1,"scopes": ["format"]},
+          {"word": "feature","length": 1,"scopes": ["format"]},
+          {"word": "mesh","length": 1,"scopes": ["format"]},
+          {"word": "url","length": 1,"scopes": ["data"]},
+          {"word": "transform","length": 2,"scopes": ["spec","layers"]},
+          {"word": "filter","length": 1,"scopes": ["transform"]},
+          {"word": "equal","length": 1,"scopes": ["filter"]},
+          {"word": "in","length": 1,"scopes": ["filter"]},
+          {"word": "filterInvalid","length": 1,"scopes": ["transform"]},
+          {"word": "calculate","length": 1,"scopes": ["transform"]},
+          {"word": "expr","length": 1,"scopes": ["calculate"]},
+          {"word": "config","length": 2,"scopes": ["spec","layers"]},
+          {"word": "viewport","length": 1,"scopes": ["config"]},
+          {"word": "background","length": 1,"scopes": ["config"]},
+          {"word": "numberFormat","length": 1,"scopes": ["config"]},
+          {"word": "timeFormat","length": 1,"scopes": ["config"]},
+          {"word": "countTitle","length": 1,"scopes": ["config"]},
+          {"word": "cell","length": 2,"scopes": ["config","facet"]},
+          {"word": "width","length": 1,"scopes": ["cell"]},
+          {"word": "height","length": 1,"scopes": ["cell"]},
+          {"word": "clip","length": 1,"scopes": ["cell"]},
+          {"word": "fill","length": 2,"scopes": ["cell","mark"]},
+          {"word": "fillOpacity","length": 2,"scopes": ["cell","mark"]},
+          {"word": "stroke","length": 2,"scopes": ["cell","mark"]},
+          {"word": "strokeOpacity","length": 2,"scopes": ["cell","mark"]},
+          {"word": "strokeWidth","length": 2,"scopes": ["cell","mark"]},
+          {"word": "strokeDash","length": 2,"scopes": ["cell","mark"]},
+          {"word": "strokeDashOffset","length": 2,"scopes": ["cell","mark"]},
+          {"word": "filled","length": 1,"scopes": ["mark"]},
+          {"word": "stacked","length": 1,"scopes": ["mark"]},
+          {"word": "center","length": 1,"scopes": ["mark"]},
+          {"word": "normalize","length": 1,"scopes": ["mark"]},
+          {"word": "horizontal","length": 1,"scopes": ["mark"]},
+          {"word": "vertical","length": 1,"scopes": ["mark"]},
+          {"word": "interpolate","length": 1,"scopes": ["mark"]},
+          {"word": "linear-closed","length": 1,"scopes": ["mark"]},
+          {"word": "step-before","length": 1,"scopes": ["mark"]},
+          {"word": "step-after","length": 1,"scopes": ["mark"]},
+          {"word": "basis","length": 1,"scopes": ["mark"]},
+          {"word": "basis-open","length": 1,"scopes": ["mark"]},
+          {"word": "basis-closed","length": 1,"scopes": ["mark"]},
+          {"word": "cardinal","length": 1,"scopes": ["mark"]},
+          {"word": "cardinal-open","length": 1,"scopes": ["mark"]},
+          {"word": "cardinal-closed","length": 1,"scopes": ["mark"]},
+          {"word": "bundle","length": 1,"scopes": ["mark"]},
+          {"word": "monotone","length": 1,"scopes": ["mark"]},
+          {"word": "tension","length": 1,"scopes": ["mark"]},
+          {"word": "lineSize","length": 1,"scopes": ["mark"]},
+          {"word": "ruleSize","length": 1,"scopes": ["mark"]},
+          {"word": "barSize","length": 1,"scopes": ["mark"]},
+          {"word": "barThinSize","length": 1,"scopes": ["mark"]},
+          {"word": "cross","length": 1,"scopes": ["mark"]},
+          {"word": "diamond","length": 1,"scopes": ["mark"]},
+          {"word": "triangle-up","length": 1,"scopes": ["mark"]},
+          {"word": "triangle-down","length": 1,"scopes": ["mark"]},
+          {"word": "tickThickness","length": 1,"scopes": ["mark"]},
+          {"word": "align","length": 1,"scopes": ["mark"]},
+          {"word": "angle","length": 1,"scopes": ["mark"]},
+          {"word": "baseline","length": 1,"scopes": ["mark"]},
+          {"word": "middle","length": 1,"scopes": ["mark"]},
+          {"word": "dx","length": 1,"scopes": ["mark"]},
+          {"word": "dy","length": 1,"scopes": ["mark"]},
+          {"word": "radius","length": 1,"scopes": ["mark"]},
+          {"word": "theta","length": 1,"scopes": ["mark"]},
+          {"word": "font","length": 1,"scopes": ["mark"]},
+          {"word": "fontSize","length": 1,"scopes": ["mark"]},
+          {"word": "fontStyle","length": 1,"scopes": ["mark"]},
+          {"word": "normal","length": 1,"scopes": ["mark"]},
+          {"word": "italic","length": 1,"scopes": ["mark"]},
+          {"word": "fontWeight","length": 1,"scopes": ["mark"]},
+          {"word": "bold","length": 1,"scopes": ["mark"]},
+          {"word": "applyColorToBackground","length": 1,"scopes": ["mark"]},
+          {"word": "overlay","length": 1,"scopes": ["config"]},
+          {"word": "linepoint","length": 1,"scopes": ["overlay"]},
+          {"word": "pointStyle","length": 1,"scopes": ["overlay"]},
+          {"word": "lineStyle","length": 1,"scopes": ["overlay"]},
+          {"word": "textBandWidth","length": 1,"scopes": ["scale"]},
+          {"word": "nominalColorRange","length": 1,"scopes": ["scale"]},
+          {"word": "sequentialColorRange","length": 1,"scopes": ["scale"]},
+          {"word": "shapeRange","length": 1,"scopes": ["scale"]},
+          {"word": "barSizeRange","length": 1,"scopes": ["scale"]},
+          {"word": "fontSizeRange","length": 1,"scopes": ["scale"]},
+          {"word": "ruleSizeRange","length": 1,"scopes": ["scale"]},
+          {"word": "tickSizeRange","length": 1,"scopes": ["scale"]},
+          {"word": "pointSizeRange","length": 1,"scopes": ["scale"]},
+          {"word": "facet","length": 2,"scopes": ["config","spec"]},
+          {"word": "layers","length": 1,"scopes": ["spec"]},
+          {"word": "spec", "length": 5, "scopes": []}
+        ],
+        "transform": [
+          {
+            "type": "formula", "field": "angle",
+            "expr": "[-45, 0, 45][~~(random() * 3)]"
+          },
+          {
+            "type": "wordcloud",
+            "size": [600, 550],
+            "text": {"field": "word"},
+            "rotate": {"field": "angle"},
+            "font": {"value": "Helvetica Neue"},
+            "fontSize": {"field": "length"},
+            "fontScale": [8, 56]
+          }
+        ]
+      }
+    ],
+    
+    "scales": [
+      {
+        "name": "color",
+        "type": "ordinal",
+        "range": ["#d5a928", "#652c90", "#939597"]
+      }
+    ],
+    
+    "marks": [
+      
+      {
+        "type": "text",
+        "properties": {
+          "enter": {
+            "fill": {"value": "black"},
+            "x": {"value": 15},
+            "y": {"value": -20},
+            "fontSize": {"value": 25},
+            "fontWeight": {"value": "bold"}
+          },
+          "update": {
+            "text": [
+              {"test": "alt && keyword != ''", "template": "\"{{keyword}}\" supports the properties:"},
+              {"test": "shift && scopes != ''", "template": "\"{{keyword}}\" can be used in:"},
+              {"value": "Vega Lite's Keywords"}
+            ]
+          }
+        }
+      },
+      
+      {
+        "type": "text",
+        "properties": {
+          "enter": {
+            "x": {"value": 15},
+            "y": {"value": -5},
+            "fill": {"value": "#aaa"},
+            "fontStyle": {"value": "italic"},
+            "text": {"value": "(based on the current version of autocomplete - Aug. 26th)"}
+          },
+          "update": {
+            "opacity": [
+              {"test": "alt || shift", "value": 0},
+              {"value": 1}
+            ]
+          }  
+        }
+      },
+      
+      {
+        "type": "text",
+        "properties": {
+          "enter": {
+            "x": {"value": 645},
+            "y": {"value": 545},
+            "align": {"value": "right"},
+            "fill": {"value": "#ccc"},
+            "fontStyle": {"value": "italic"},
+            "fontSize": {"value": 10},
+            "text": {"value": "Press 'shift' or 'alt' to view connections."}
+          },
+          "update": {
+            "opacity": [
+              {"test": "alt || shift", "value": 0},
+              {"value": 1}
+            ]
+          }  
+        }
+      },
+      
+      {
+        "type": "text",
+        "from": {"data": "words"},
+        "properties": {
+          "enter": {
+            "x": {"field": "layout_x"},
+            "y": {"field": "layout_y"},
+            "angle": {"field": "layout_rotate"},
+            "font": {"field": "layout_font"},
+            "fontSize": {"field": "layout_fontSize"},
+            "fontStyle": {"field": "layout_fontStyle"},
+            "text": {"field": "word"},
+            "align": {"value": "center"},
+            "baseline": {"value": "alphabetic"}
+          },
+          "update": {
+            "stroke": [
+              {"test": "datum.word=='spec'", "value": "#ccc"},
+              {"value": "black"}
+            ],
+            "strokeWidth": [
+              {"test": "datum.word=='spec'", "value": "1"},
+              {"value": 0}
+            ],
+            "fill": [
+              {"test": "datum.word=='spec'", "value": "white"},
+              {"scale": "color", "field": "word"}
+            ],
+            "opacity": [
+              {"test": "keyword == datum.word", "value": 1},
+              {"test": "!mouseover && (indexof(datum.word, keyword) != -1)", "value": 1},
+              {"test": "!mouseover && (indexof(datum.word, keyword) == -1)", "value": 0.1},
+              {"test": "shift && indexof(scopes, datum.word) == -1", "value": 0.1},
+              {"test": "alt && indexof(datum.scopes, keyword) == -1", "value": 0.1},
+              {"value": 1}
+            ],
+            "fontWeight": [
+              {"test": "datum.word=='spec'", "value": "bold"},
+              {"value": "normal"}
+            ]
+          },
+          "hover": {
+            "opacity": {"value": 0.75}
+          }
+        }
+      }
+    ]
+  }
+}
