@@ -1,0 +1,65 @@
+{
+  "width": 400,
+  "height": 400,
+  "data": [
+    {
+      "name": "table",
+      "values": [
+        {"g": 1,"c": 0,"r": 12}, {"g": 1,"c": 1,"r": 20}, {"g": 1,"c": 2,"r": 10},
+        {"g": 2,"c": 0,"r": 23}, {"g": 2,"c": 1,"r": 38}, {"g": 2,"c": 2,"r": 32},
+        {"g": 3,"c": 0,"r": 47}, {"g": 3,"c": 1,"r": 64}, {"g": 3,"c": 2,"r": 27},
+        {"g": 4,"c": 0,"r": 6}, {"g": 4,"c": 1,"r": 27}, {"g": 4, "c": 2,"r": 16},
+        {"g": 5,"c": 0,"r": 52}, {"g": 5,"c": 1,"r": 79}, {"g": 5,"c": 2,"r": 38},
+        {"g": 6,"c": 0,"r": 19}, {"g": 6,"c": 1,"r": 83}, {"g": 6,"c": 2,"r": 5}
+      ]
+    },
+    {
+      "name": "stack",
+      "source": "table",
+      "transform": [{
+        "type": "stack",
+        "groupby": ["g"], "sortby": ["c"], 
+        "field": "r"
+      }]
+    },
+    {
+      "name": "facets",
+      "source": "stack",
+      "transform":[
+        {"type": "facet", "groupby": ["g"]},
+        {"type": "pie"}
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "color",
+      "type": "ordinal",
+      "range": "category10",
+      "domain": {"data": "table", "field": "c"}
+    }
+  ],
+  "marks": [
+    {
+      "type": "group",
+      "from": {"data": "facets"},
+      "marks": [
+        {
+          "type": "arc",
+          "properties": {
+            "enter": {
+              "x": {"value": 200},
+              "y": {"value": 200},
+              "startAngle": {"field": {"group": "datum.layout_start"}},
+              "endAngle": {"field": {"group": "datum.layout_end"}},
+              "innerRadius": {"field": "layout_start"},
+              "outerRadius": {"field": "layout_end"},
+              "stroke": {"value": "#fff"},
+              "fill": {"scale": "color", "field": "c"}
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
