@@ -5,7 +5,7 @@
   "signals": [
     {
       "name": "brushedScale",
-      "init": "mpg",
+      "init": "Cylinders",
       "streams": [
         {"type": "@filterRect:click", "expr": "datum.id"},
         {"type": "@brushRegion:mousedown", "expr": "datum.id"}
@@ -16,7 +16,7 @@
       "init": 0,
       "streams": [{
         "type": "@brushRegion:mousedown", 
-        "expr": "brushedScale == 'cyl' ? eventY() : cylStart"
+        "expr": "brushedScale == 'Cylinders' ? eventY() : cylStart"
       }]
     },
     {
@@ -24,19 +24,20 @@
       "init": 400,
       "streams": [{
         "type": "@brushRegion:mousedown, [@brushRegion:mousedown, window:mouseup] > window:mousemove",
-        "expr": "brushedScale == 'cyl' ? clamp(eventY(), 0, 400) : cylEnd"      }]
+        "expr": "brushedScale == 'Cylinders' ? clamp(eventY(), 0, 400) : cylEnd"
+      }]
     },
     {
       "name": "cylMin", 
       "init": 8,
       "expr": "cylStart == cylEnd ? 0 : min(cylStart, cylEnd)",
-      "scale": {"name": "cyl", "invert": true}
+      "scale": {"name": "Cylinders", "invert": true}
     },
     {
       "name": "cylMax",
       "init": 3,
       "expr": "cylStart == cylEnd ? 400 : max(cylStart, cylEnd)",
-      "scale": {"name": "cyl", "invert": true}
+      "scale": {"name": "Cylinders", "invert": true}
     },
     {
       "name": "cylMiddle",
@@ -48,7 +49,7 @@
       "init": 0,
       "streams": [{
         "type": "@brushRegion:mousedown", 
-        "expr": "brushedScale == 'dsp' ? eventY() : dspStart"
+        "expr": "brushedScale == 'Displacement' ? eventY() : dspStart"
       }]
     },
     {
@@ -56,24 +57,24 @@
       "init": 400,
       "streams": [{
         "type": "@brushRegion:mousedown, [@brushRegion:mousedown, window:mouseup] > window:mousemove",
-        "expr": "brushedScale == 'dsp' ? clamp(eventY(), 0, 400) : dspEnd"
+        "expr": "brushedScale == 'Displacement' ? clamp(eventY(), 0, 400) : dspEnd"
       }]
     },
     {
       "name": "dspMin",
       "init": 500,
       "expr": "dspStart == dspEnd ? 0 : min(dspStart, dspEnd)",
-      "scale": {"name": "dsp", "invert": "true"}
+      "scale": {"name": "Displacement", "invert": "true"}
     },
     {
       "name": "dspMax",
       "init": 50,
       "expr": "dspStart == dspEnd ? 400 : max(dspStart, dspEnd)",
-      "scale": {"name": "dsp", "invert": "true"}
+      "scale": {"name": "Displacement", "invert": "true"}
     },
     {
       "name": "dspMiddle",
-      "init": 5.5,
+      "init": 275,
       "expr": "( dspMin + dspMax ) / 2"
     },
     {
@@ -81,7 +82,7 @@
       "init": 0,
       "streams": [{
         "type": "@brushRegion:mousedown", 
-        "expr": "brushedScale == 'lbs' ? eventY() : lbsStart"
+        "expr": "brushedScale == 'Weight_in_lbs' ? eventY() : lbsStart"
       }]
     },
     {
@@ -89,24 +90,24 @@
       "init": 400,
       "streams": [{
         "type": "@brushRegion:mousedown, [@brushRegion:mousedown, window:mouseup] > window:mousemove",
-        "expr": "brushedScale == 'lbs' ? clamp(eventY(), 0, 400) : lbsEnd"
+        "expr": "brushedScale == 'Weight_in_lbs' ? clamp(eventY(), 0, 400) : lbsEnd"
       }]
     },
     {
       "name": "lbsMin",
       "init": 5500,
       "expr": "lbsStart == lbsEnd ? 0 : min(lbsStart, lbsEnd)",
-      "scale": {"name": "lbs", "invert": true}
+      "scale": {"name": "Weight_in_lbs", "invert": true}
     },
     {
       "name": "lbsMax",
       "init": 1500,
       "expr": "lbsStart == lbsEnd ? 400 : max(lbsStart, lbsEnd)",
-      "scale": {"name": "lbs", "invert": true}
+      "scale": {"name": "Weight_in_lbs", "invert": true}
     },
     {
       "name": "lbsMiddle",
-      "init": 5.5,
+      "init": 3500,
       "expr": "( lbsMin + lbsMax ) / 2"
     },
     {
@@ -114,7 +115,7 @@
       "init": 0,
       "streams": [{
         "type": "@brushRegion:mousedown", 
-        "expr": "brushedScale == 'hp' ? eventY() : hpStart"
+        "expr": "brushedScale == 'Horsepower' ? eventY() : hpStart"
       }]
     },
     {
@@ -122,24 +123,24 @@
       "init": 400,
       "streams": [{
         "type": "@brushRegion:mousedown, [@brushRegion:mousedown, window:mouseup] > window:mousemove",
-        "expr": "brushedScale == 'hp' ? clamp(eventY(), 0, 400) : hpEnd"
+        "expr": "brushedScale == 'Horsepower' ? clamp(eventY(), 0, 400) : hpEnd"
       }]
     },
     {
       "name": "hpMin",
       "init": 240,
       "expr": "hpStart == hpEnd ? 0 : min(hpStart, hpEnd)",
-      "scale": {"name": "hp", "invert": true}
+      "scale": {"name": "Horsepower", "invert": true}
     },
     {
       "name": "hpMax",
-      "init": -20,
+      "init": 40,
       "expr": "hpStart == hpEnd ? 400 : max(hpStart, hpEnd)",
-      "scale": {"name": "hp", "invert": true}
+      "scale": {"name": "Horsepower", "invert": true}
     },
     {
       "name": "hpMiddle",
-      "init": 5.5,
+      "init": 140,
       "expr": "( hpMin + hpMax ) / 2"
     },
     {
@@ -147,7 +148,7 @@
       "init": 0,
       "streams": [{
         "type": "@brushRegion:mousedown", 
-        "expr": "brushedScale == 'acc' ? eventY() : accStart"
+        "expr": "brushedScale == 'Acceleration' ? eventY() : accStart"
       }]
     },
     {
@@ -155,24 +156,24 @@
       "init": 400,
       "streams": [{
         "type": "@brushRegion:mousedown, [@brushRegion:mousedown, window:mouseup] > window:mousemove",
-        "expr": "brushedScale == 'acc' ? clamp(eventY(), 0, 400) : accEnd"
+        "expr": "brushedScale == 'Acceleration' ? clamp(eventY(), 0, 400) : accEnd"
       }]
     },
     { 
       "name": "accMin",
       "init": 26,
       "expr": "accStart == accEnd ? 0 : min(accStart, accEnd)",
-      "scale": {"name": "acc", "invert": true}
+      "scale": {"name": "Acceleration", "invert": true}
     },
     { 
       "name": "accMax",
       "init": 8,
       "expr": "accStart == accEnd ? 400 : max(accStart, accEnd)",
-      "scale": {"name": "acc", "invert": true}
+      "scale": {"name": "Acceleration", "invert": true}
     },
     {
       "name": "accMiddle",
-      "init": 5.5,
+      "init": 17,
       "expr": "( accMin + accMax ) / 2"
     },
     {
@@ -180,7 +181,7 @@
       "init": 0,
       "streams": [{
         "type": "@brushRegion:mousedown", 
-        "expr": "brushedScale == 'mpg' ? eventY() : mpgStart"
+        "expr": "brushedScale == 'Miles_per_Gallon' ? eventY() : mpgStart"
       }]
     },
     {
@@ -188,24 +189,24 @@
       "init": 400,
       "streams": [{
         "type": "@brushRegion:mousedown, [@brushRegion:mousedown, window:mouseup] > window:mousemove",
-        "expr": "brushedScale == 'mpg' ? clamp(eventY(), 0, 400) : mpgEnd"
+        "expr": "brushedScale == 'Miles_per_Gallon' ? clamp(eventY(), 0, 400) : mpgEnd"
       }]
     },
     {
       "name": "mpgMin",
       "init": 50,
       "expr": "mpgStart == mpgEnd ? 0 : min(mpgStart, mpgEnd)",
-      "scale": {"name": "mpg", "invert": true}
+      "scale": {"name": "Miles_per_Gallon", "invert": true}
     },
     {
       "name": "mpgMax",
-      "init": -5,
+      "init": 5,
       "expr": "mpgStart == mpgEnd ? 400 : max(mpgStart, mpgEnd)",
-      "scale": {"name": "mpg", "invert": true}
+      "scale": {"name": "Miles_per_Gallon", "invert": true}
     },
     {
       "name": "mpgMiddle",
-      "init": 5.5,
+      "init": 27.5,
       "expr": "( mpgMin + mpgMax ) / 2"
     },
     {
@@ -213,7 +214,7 @@
       "init": 0,
       "streams": [{
         "type": "@brushRegion:mousedown", 
-        "expr": "brushedScale == 'year' ? eventY() : yearStart"
+        "expr": "brushedScale == 'Year' ? eventY() : yearStart"
       }]
     },
     {
@@ -221,326 +222,201 @@
       "init": 400,
       "streams": [{
         "type": "@brushRegion:mousedown, [@brushRegion:mousedown, window:mouseup] > window:mousemove",
-        "expr": "brushedScale == 'year' ? clamp(eventY(), 0, 400) : yearEnd"
+        "expr": "brushedScale == 'Year' ? clamp(eventY(), 0, 400) : yearEnd"
       }]
     },
     {
       "name": "yearMin", 
-      "init": 82,
+      "init": 400000000000,
       "expr": "yearStart == yearEnd ? 0 : min(yearStart, yearEnd)",
-      "scale": {"name": "year", "invert": true}
+      "scale": {"name": "Year", "invert": true}
     },
     {
       "name": "yearMax", 
-      "init": 70,
+      "init": 0,
       "expr": "yearStart == yearEnd ? 400 : max(yearStart, yearEnd)",
-      "scale": {"name": "year", "invert": true}
+      "scale": {"name": "Year", "invert": true}
     },
     {
       "name": "yearMiddle",
-      "init": 5.5,
+      "init": 82,
       "expr": "( yearMin + yearMax ) / 2"
-    }
-  ],
-  
-  "predicates": [
-    {
-      "name": "isCyl",
-      "type": "==",
-      "operands": [{"arg": "id"}, {"value": "cyl"}]
-    },
-    {
-      "name": "isDsp",
-      "type": "==",
-      "operands": [{"arg": "id"}, {"value": "dsp"}]
-    },
-    {
-      "name": "isLbs",
-      "type": "==",
-      "operands": [{"arg": "id"}, {"value": "lbs"}]
-    },
-    {
-      "name": "isHp",
-      "type": "==",
-      "operands": [{"arg": "id"}, {"value": "hp"}]
-    },
-    {
-      "name": "isAcc",
-      "type": "==",
-      "operands": [{"arg": "id"}, {"value": "acc"}]
-    },
-    {
-      "name": "isMpg",
-      "type": "==",
-      "operands": [{"arg": "id"}, {"value": "mpg"}]
-    },
-    {
-      "name": "isYear",
-      "type": "==",
-      "operands": [{"arg": "id"}, {"value": "year"}]
-    },
-    {
-      "name": "isBrushed",
-      "type": "==",
-      "operands": [{"signal": "brushedScale"}, {"arg": "id"}]
-    },
-    {
-      "name": "isBrushedCyl",
-      "type": "and",
-      "operands": [{"predicate": "isBrushed"}, {"predicate": "isCyl"}]
-    },
-    {
-      "name": "isBrushedDsp",
-      "type": "and",
-      "operands": [{"predicate": "isBrushed"}, {"predicate": "isDsp"}]
-    },
-    {
-      "name": "isBrushedLbs",
-      "type": "and",
-      "operands": [{"predicate": "isBrushed"}, {"predicate": "isLbs"}]
-    },
-    {
-      "name": "isBrushedHp",
-      "type": "and",
-      "operands": [{"predicate": "isBrushed"}, {"predicate": "isHp"}]
-    },
-    {
-      "name": "isBrushedAcc",
-      "type": "and",
-      "operands": [{"predicate": "isBrushed"}, {"predicate": "isAcc"}]
-    },
-    {
-      "name": "isBrushedMpg",
-      "type": "and",
-      "operands": [{"predicate": "isBrushed"}, {"predicate": "isMpg"}]
-    },
-    {
-      "name": "isBrushedYear",
-      "type": "and",
-      "operands": [{"predicate": "isBrushed"}, {"predicate": "isYear"}]
-    },
-    {
-      "name": "cylRange",
-      "type": "in",
-      "item": {"arg": "cylValue"},
-      "range": [{"signal": "cylMin"}, {"signal": "cylMax"}]
-    },
-    {
-      "name": "dspRange",
-      "type": "in",
-      "item": {"arg": "dspValue"},
-      "range": [{"signal": "dspMin"}, {"signal": "dspMax"}]
-    },
-    {
-      "name": "lbsRange",
-      "type": "in",
-      "item": {"arg": "lbsValue"},
-      "range": [{"signal": "lbsMin"}, {"signal": "lbsMax"}]
-    },
-    {
-      "name": "hpRange",
-      "type": "in",
-      "item": {"arg": "hpValue"},
-      "range": [{"signal": "hpMin"}, {"signal": "hpMax"}]
-    },
-    {
-      "name": "accRange",
-      "type": "in",
-      "item": {"arg": "accValue"},
-      "range": [{"signal": "accMin"}, {"signal": "accMax"}]
-    },
-    {
-      "name": "mpgRange",
-      "type": "in",
-      "item": {"arg": "mpgValue"},
-      "range": [{"signal": "mpgMin"}, {"signal": "mpgMax"}]
-    },
-    {
-      "name": "yearRange",
-      "type": "in",
-      "item": {"arg": "yearValue"},
-      "range": [{"signal": "yearMin"}, {"signal": "yearMax"}]
-    },
-    {
-      "name": "inRange",
-      "type": "and",
-      "operands": [{"predicate": "cylRange"}, {"predicate": "dspRange"},
-                   {"predicate": "lbsRange"}, {"predicate": "hpRange"},
-                   {"predicate": "accRange"}, {"predicate": "mpgRange"},
-                   {"predicate": "yearRange"}]
-    },
-    {
-      "name": "inRangeCyl",
-      "type": "and",
-      "operands": [{"predicate": "inRange"}, {"predicate": "isCyl"}]
-    },
-    {
-      "name": "inRangeDsp",
-      "type": "and",
-      "operands": [{"predicate": "inRange"}, {"predicate": "isDsp"}]
-    },
-    {
-      "name": "inRangeLbs",
-      "type": "and",
-      "operands": [{"predicate": "inRange"}, {"predicate": "isLbs"}]
-    },
-    {
-      "name": "inRangeHp",
-      "type": "and",
-      "operands": [{"predicate": "inRange"}, {"predicate": "isHp"}]
-    },
-    {
-      "name": "inRangeAcc",
-      "type": "and",
-      "operands": [{"predicate": "inRange"}, {"predicate": "isAcc"}]
-    },
-    {
-      "name": "inRangeMpg",
-      "type": "and",
-      "operands": [{"predicate": "inRange"}, {"predicate": "isMpg"}]
-    },
-    {
-      "name": "inRangeYear",
-      "type": "and",
-      "operands": [{"predicate": "inRange"}, {"predicate": "isYear"}]
     }
   ],
   
   "data": [
     {
       "name": "cars",
-      "url": "data/cars.json"
+      "url": "data/cars.json",
+      "format": {"type":"json", "parse": {"Year": "date:'%Y-%M-%d'"} },
+      "transform": [
+        {"type": "filter", "test": "datum.Horsepower && datum.Miles_per_Gallon"}  
+      ]
     },
     {
       "name": "fields",
-      "values": ["cyl", "dsp", "lbs", "hp", "acc", "mpg", "year"]
+      "values": [
+        "Cylinders",
+        "Displacement",
+        "Weight_in_lbs",
+        "Horsepower",
+        "Acceleration",
+        "Miles_per_Gallon",
+        "Year"
+      ]
     },
     {
       "name": "units",
-      "values": [{"id": "cyl",  "name": "cylinders",    "unit": ""},
-                 {"id": "dsp",  "name": "displacement", "unit": " sq in"},
-                 {"id": "lbs",  "name": "weight",       "unit": " lbs"},
-                 {"id": "hp",   "name": "horsepower",   "unit": " hp"},
-                 {"id": "acc",  "name": "acceleration (0-60 mph)", "unit": " sec"},
-                 {"id": "mpg",  "name": "mileage",      "unit": " mpg"},
-                 {"id": "year", "name": "year",         "unit": ""}]
+      "values": [
+        {"id": "Cylinders",     "name": "cylinders",    "unit": ""},
+        {"id": "Displacement",  "name": "displacement", "unit": " sq in"},
+        {"id": "Weight_in_lbs", "name": "weight",       "unit": " lbs"},
+        {"id": "Horsepower",    "name": "horsepower",   "unit": " hp"},
+        {"id": "Acceleration",  "name": "acceleration (0-60 mph)", "unit": " sec"},
+        {"id": "Miles_per_Gallon", "name": "mileage",      "unit": " mpg"},
+        {"id": "Year",          "name": "year",         "unit": ""}]
     }
-  ],
+  ], 
+  
   "scales": [
     {
       "name": "ord",
       "type": "ordinal",
       "range": "width", "points": true,
-      "domain": {"data": "fields", "field": "data"}
-    },    
-    {
-      "name": "cyl", "type": "linear",
-      "range": "height", "zero": false, "nice": true,
-      "domain": {"data": "cars", "field": "cyl"}
+      "domain": ["Cylinders", "Displacement", "Weight_in_lbs", "Horsepower",
+                 "Acceleration", "Miles_per_Gallon", "Year"]
     },
     {
-      "name": "dsp", "type": "linear",
+      "name": "Cylinders", "type": "linear",
       "range": "height", "zero": false, "nice": true,
-      "domain": {"data": "cars", "field": "dsp"}
+      "domain": {"data": "cars", "field": "Cylinders"}
     },
     {
-      "name": "lbs", "type": "linear",
+      "name": "Displacement", "type": "linear",
       "range": "height", "zero": false, "nice": true,
-      "domain": {"data": "cars", "field": "lbs"}
+      "domain": {"data": "cars", "field": "Displacement"}
     },
     {
-      "name": "hp", "type": "linear",
+      "name": "Weight_in_lbs", "type": "linear",
       "range": "height", "zero": false, "nice": true,
-      "domain": {"data": "cars", "field": "hp"}
+      "domain": {"data": "cars", "field": "Weight_in_lbs"}
     },
     {
-      "name": "acc", "type": "linear",
+      "name": "Horsepower", "type": "linear",
       "range": "height", "zero": false, "nice": true,
-      "domain": {"data": "cars", "field": "acc"}
+      "domain": {"data": "cars", "field": "Horsepower"}
     },
     {
-      "name": "mpg", "type": "linear",
+      "name": "Acceleration", "type": "linear",
       "range": "height", "zero": false, "nice": true,
-      "domain": {"data": "cars", "field": "mpg"}
+      "domain": {"data": "cars", "field": "Acceleration"}
     },
     {
-      "name": "year", "type": "linear",
+      "name": "Miles_per_Gallon", "type": "linear",
       "range": "height", "zero": false, "nice": true,
-      "domain": {"data": "cars", "field": "year"}
+      "domain": {"data": "cars", "field": "Miles_per_Gallon"}
+    },
+    {
+      "name": "Year", "type": "linear",
+      "range": "height", "zero": false, "nice": true,
+      "domain": {"data": "cars", "field": "Year"}
     },
     {
       "name": "cylColor", "type": "linear",
       "zero": false, "nice": true,
       "range": [0,255],
-      "domain": {"data": "cars", "field": "cyl"}
+      "domain": {"data": "cars", "field": "Cylinders"}
     },
     {
       "name": "dspColor", "type": "linear",
       "zero": false, "nice": true,
       "range": [0,255],
-      "domain": {"data": "cars", "field": "dsp"}
+      "domain": {"data": "cars", "field": "Displacement"}
     },
     {
       "name": "lbsColor", "type": "linear",
       "zero": false, "nice": true,
       "range": [0,255],
-      "domain": {"data": "cars", "field": "lbs"}
+      "domain": {"data": "cars", "field": "Weight_in_lbs"}
     },
     {
       "name": "hpColor", "type": "linear",
       "zero": false, "nice": true,
       "range": [0,255],
-      "domain": {"data": "cars", "field": "hp"}
+      "domain": {"data": "cars", "field": "Horsepower"}
     },
     {
       "name": "accColor", "type": "linear",
       "zero": false, "nice": true,
       "range": [0,255],
-      "domain": {"data": "cars", "field": "acc"}
+      "domain": {"data": "cars", "field": "Acceleration"}
     },
     {
       "name": "mpgColor", "type": "linear",
       "zero": false, "nice": true,
       "range": [0,255],
-      "domain": {"data": "cars", "field": "mpg"}
+      "domain": {"data": "cars", "field": "Miles_per_Gallon"}
     },
     {
-      "name": "yearColor", "type": "linear",
+      "name": "yearColor", "type": "time",
       "zero": false, "nice": true,
       "range": [0,255],
-      "domain": {"data": "cars", "field": "year"}
+      "domain": {"data": "cars", "field": "Year"}
     }
   ],
+  
   "axes": [
-    { "type":"y", "scale":"cyl",  "tickSize":0, 
-      "offset":{"scale":"ord", "value":"cyl"},
+    { 
+      "type":"y", 
+      "scale":"Cylinders", 
+      "tickSize":0, 
+      "offset": {"scale":"ord", "value":"Cylinders"},
       "properties": {"labels": {"fill": "none"}}
     },
-    { "type":"y", "scale":"dsp",  "tickSize":0, 
-      "offset":{"scale":"ord", "value":"dsp"},
+    { 
+      "type":"y", 
+      "scale":"Displacement", 
+      "tickSize":0, 
+      "offset": {"scale":"ord", "value":"Displacement"},
       "properties": {"labels": {"fill": "none"}}
     },
-    { "type":"y", "scale":"lbs",  "tickSize":0, 
-      "offset":{"scale":"ord", "value":"lbs"},
+    { 
+      "type":"y", 
+      "scale":"Weight_in_lbs", 
+      "tickSize":0, 
+      "offset":{"scale":"ord", "value":"Weight_in_lbs"},
       "properties": {"labels": {"fill": "none"}}
     },
-    { "type":"y", "scale":"hp",   "tickSize":0, 
-      "offset":{"scale":"ord", "value":"hp"},
+    { 
+      "type":"y",
+      "scale":"Horsepower",
+      "tickSize":0, 
+      "offset":{"scale":"ord", "value":"Horsepower"},
       "properties": {"labels": {"fill": "none"}}
     },
-    { "type":"y", "scale":"acc",  "tickSize":0, 
-      "offset":{"scale":"ord", "value":"acc"},
+    { 
+      "type":"y",
+      "scale":"Acceleration",
+      "tickSize":0, 
+      "offset":{"scale":"ord", "value":"Acceleration"},
       "properties": {"labels": {"fill": "none"}}
     },
-    { "type":"y", "scale":"mpg",  "tickSize":0, 
-      "offset":{"scale":"ord", "value":"mpg"},
+    { 
+      "type":"y",
+      "scale":"Miles_per_Gallon",
+      "tickSize":0, 
+      "offset":{"scale":"ord", "value":"Miles_per_Gallon"},
       "properties": {"labels": {"fill": "none"}}
     },
-    { "type":"y", "scale":"year", "tickSize":0, 
-      "offset":{"scale":"ord", "value":"year"},
+    { 
+      "type":"y",
+      "scale":"Year",
+      "tickSize":0, 
+      "offset":{"scale":"ord", "value":"Year"},
       "properties": {"labels": {"fill": "none"}}
     }
   ],
+  
   "marks": [
     {
       "type": "group",
@@ -557,126 +433,55 @@
                 "field": {"parent": {"datum": "data"}}
               },
               "strokeWidth": {"value": 1},
-              "strokeOpacity": {"value": 0.3}
+              "strokeOpacity": {"value": 0.3},
+              "stroke": {"value": "black"}
             },
-            "update": {
-              "stroke": {
-                "rule": [
-                  {
-                    "predicate": {
-                      "name": "inRangeCyl",
-                      "cylValue": {"field": {"parent": "cyl"}},
-                      "dspValue": {"field": {"parent": "dsp"}},
-                      "lbsValue": {"field": {"parent": "lbs"}},
-                      "hpValue":  {"field": {"parent": "hp"}},
-                      "accValue": {"field": {"parent": "acc"}},
-                      "mpgValue": {"field": {"parent": "mpg"}},
-                      "yearValue": {"field": {"parent": "year"}},
-                      "id": {"signal": "brushedScale"}
-                    },
-                    "r": {"value": 128},
-                    "g": {"value": 0},
-                    "b": {"scale": "cylColor", "field": {"parent": {"signal": "brushedScale"}}}
-                  },
-                  {
-                    "predicate": {
-                      "name": "inRangeDsp",
-                      "cylValue": {"field": {"parent": "cyl"}},
-                      "dspValue": {"field": {"parent": "dsp"}},
-                      "lbsValue": {"field": {"parent": "lbs"}},
-                      "hpValue":  {"field": {"parent": "hp"}},
-                      "accValue": {"field": {"parent": "acc"}},
-                      "mpgValue": {"field": {"parent": "mpg"}},
-                      "yearValue": {"field": {"parent": "year"}},
-                      "id": {"signal": "brushedScale"}
-                    },
-                    "r": {"value": 128},
-                    "g": {"value": 0},
-                    "b": {"scale": "dspColor", "field": {"parent": {"signal": "brushedScale"}}}
-                  },
-                  {
-                    "predicate": {
-                      "name": "inRangeLbs",
-                      "cylValue": {"field": {"parent": "cyl"}},
-                      "dspValue": {"field": {"parent": "dsp"}},
-                      "lbsValue": {"field": {"parent": "lbs"}},
-                      "hpValue":  {"field": {"parent": "hp"}},
-                      "accValue": {"field": {"parent": "acc"}},
-                      "mpgValue": {"field": {"parent": "mpg"}},
-                      "yearValue": {"field": {"parent": "year"}},
-                      "id": {"signal": "brushedScale"}
-                    },
-                    "r": {"value": 128},
-                    "g": {"value": 0},
-                    "b": {"scale": "lbsColor", "field": {"parent": {"signal": "brushedScale"}}}
-                  },
-                  {
-                    "predicate": {
-                      "name": "inRangeHp",
-                      "cylValue": {"field": {"parent": "cyl"}},
-                      "dspValue": {"field": {"parent": "dsp"}},
-                      "lbsValue": {"field": {"parent": "lbs"}},
-                      "hpValue":  {"field": {"parent": "hp"}},
-                      "accValue": {"field": {"parent": "acc"}},
-                      "mpgValue": {"field": {"parent": "mpg"}},
-                      "yearValue": {"field": {"parent": "year"}},
-                      "id": {"signal": "brushedScale"}
-                    },
-                    "r": {"value": 128},
-                    "g": {"value": 0},
-                    "b": {"scale": "hpColor", "field": {"parent": {"signal": "brushedScale"}}}
-                  },
-                  {
-                    "predicate": {
-                      "name": "inRangeAcc",
-                      "cylValue": {"field": {"parent": "cyl"}},
-                      "dspValue": {"field": {"parent": "dsp"}},
-                      "lbsValue": {"field": {"parent": "lbs"}},
-                      "hpValue":  {"field": {"parent": "hp"}},
-                      "accValue": {"field": {"parent": "acc"}},
-                      "mpgValue": {"field": {"parent": "mpg"}},
-                      "yearValue": {"field": {"parent": "year"}},
-                      "id": {"signal": "brushedScale"}
-                    },
-                    "r": {"value": 128},
-                    "g": {"value": 0},
-                    "b": {"scale": "accColor", "field": {"parent": {"signal": "brushedScale"}}}
-                  },
-                  {
-                    "predicate": {
-                      "name": "inRangeMpg",
-                      "cylValue": {"field": {"parent": "cyl"}},
-                      "dspValue": {"field": {"parent": "dsp"}},
-                      "lbsValue": {"field": {"parent": "lbs"}},
-                      "hpValue":  {"field": {"parent": "hp"}},
-                      "accValue": {"field": {"parent": "acc"}},
-                      "mpgValue": {"field": {"parent": "mpg"}},
-                      "yearValue": {"field": {"parent": "year"}},
-                      "id": {"signal": "brushedScale"}
-                    },
-                    "r": {"value": 128},
-                    "g": {"value": 0},
-                    "b": {"scale": "mpgColor", "field": {"parent": {"signal": "brushedScale"}}}
-                  },
-                  {
-                    "predicate": {
-                      "name": "inRangeYear",
-                      "cylValue": {"field": {"parent": "cyl"}},
-                      "dspValue": {"field": {"parent": "dsp"}},
-                      "lbsValue": {"field": {"parent": "lbs"}},
-                      "hpValue":  {"field": {"parent": "hp"}},
-                      "accValue": {"field": {"parent": "acc"}},
-                      "mpgValue": {"field": {"parent": "mpg"}},
-                      "yearValue": {"field": {"parent": "year"}},
-                      "id": {"signal": "brushedScale"}
-                    },
-                    "r": {"value": 128},
-                    "g": {"value": 0},
-                    "b": {"scale": "yearColor", "field": {"parent": {"signal": "brushedScale"}}}
-                  },
-                  {"value": "gray"}
-                ]
-              }
+            "update":{
+              "stroke": [
+                {
+                  "test": "brushedScale == 'Cylinders' && parent.Cylinders <= cylMin && parent.Cylinders >= cylMax",
+                  "r": {"value": 128},
+                  "g": {"value": 0},
+                  "b": {"scale": "cylColor", "field": {"parent": "Cylinders"}}
+                },
+                {
+                  "test": "brushedScale == 'Displacement' && parent.Displacement <= dspMin && parent.Displacement >= dspMax",
+                  "r": {"value": 128},
+                  "g": {"value": 0},
+                  "b": {"scale": "dspColor", "field": {"parent": "Displacement"}}
+                },
+                {
+                  "test": "brushedScale == 'Weight_in_lbs' && parent.Weight_in_lbs <= lbsMin && parent.Weight_in_lbs >= lbsMax",
+                  "r": {"value": 128},
+                  "g": {"value": 0},
+                  "b": {"scale": "lbsColor", "field": {"parent": "Weight_in_lbs"}}
+                },
+                {
+                  "test": "brushedScale == 'Horsepower' && parent.Horsepower <= hpMin && parent.Horsepower >= hpMax",
+                  "r": {"value": 128},
+                  "g": {"value": 0},
+                  "b": {"scale": "hpColor", "field": {"parent": "Horsepower"}}
+                },
+                {
+                  "test": "brushedScale == 'Acceleration' && parent.Acceleration <= accMin && parent.Acceleration >= accMax",
+                  "r": {"value": 128},
+                  "g": {"value": 0},
+                  "b": {"scale": "accColor", "field": {"parent": "Acceleration"}}
+                },
+                {
+                  "test": "brushedScale == 'Miles_per_Gallon' && parent.Miles_per_Gallon <= mpgMin && parent.Miles_per_Gallon >= mpgMax",
+                  "r": {"value": 128},
+                  "g": {"value": 0},
+                  "b": {"scale": "mpgColor", "field": {"parent": "Miles_per_Gallon"}}
+                },
+                {
+                  "test": "brushedScale == 'Year' && parent.Year <= yearMin && parent.Year >= yearMax",
+                  "r": {"value": 128},
+                  "g": {"value": 0},
+                  "b": {"scale": "yearColor", "field": {"parent": "Year"}}
+                },
+                {"value": "grey"}
+              ]
             }
           }
         }
@@ -708,70 +513,24 @@
           "baseline": {"value": "bottom"}
         },
         "update": {
-          "text": {
-            "rule": [
-              {
-                "predicate": {"name": "isCyl", "id": {"field": "id"}},
-                "template": "{{cylMin|number:'.0f'}}{{datum.unit}}"
-              },
-              {
-                "predicate": {"name": "isDsp", "id": {"field": "id"}},
-                "template": "{{dspMin|number:'.0f'}}{{datum.unit}}"
-              },
-              {
-                "predicate": {"name": "isLbs", "id": {"field": "id"}},
-                "template": "{{lbsMin|number:'.0f'}}{{datum.unit}}"
-              },
-              {
-                "predicate": {"name": "isHp", "id": {"field": "id"}},
-                "template": "{{hpMin|number:'.0f'}}{{datum.unit}}"
-              },
-              {
-                "predicate": {"name": "isAcc", "id": {"field": "id"}},
-                "template": "{{accMin|number:'.0f'}}{{datum.unit}}"
-              },
-              {
-                "predicate": {"name": "isMpg", "id": {"field": "id"}},
-                "template": "{{mpgMin|number:'.0f'}}{{datum.unit}}"
-              },
-              {
-                "predicate": {"name": "isYear", "id": {"field": "id"}},
-                "template": "{{yearMin|number:'.0f'}}{{datum.unit}}"
-              }
-            ]
-          },
-          "y": {
-            "rule": [
-              {
-                "predicate": {"name": "isCyl", "id": {"field": "id"}},
-                "scale": "cyl", "signal": "cylMin"
-              },
-              {
-                "predicate": {"name": "isDsp", "id": {"field": "id"}},
-                "scale": "dsp", "signal": "dspMin"
-              },
-              {
-                "predicate": {"name": "isLbs", "id": {"field": "id"}},
-                "scale": "lbs", "signal": "lbsMin"
-              },
-              {
-                "predicate": {"name": "isHp", "id": {"field": "id"}},
-                "scale": "hp", "signal": "hpMin"
-              },
-              {
-                "predicate": {"name": "isAcc", "id": {"field": "id"}},
-                "scale": "acc", "signal": "accMin"
-              },
-              {
-                "predicate": {"name": "isMpg", "id": {"field": "id"}},
-                "scale": "mpg", "signal": "mpgMin"
-              },
-              {
-                "predicate": {"name": "isYear", "id": {"field": "id"}},
-                "scale": "year", "signal": "yearMin"
-              }
-            ]
-          }
+          "text": [
+            {"test": "datum.id == 'Cylinders'", "template": "{{cylMin|number:'.0f'}}{{datum.unit}}"},
+            {"test": "datum.id == 'Displacement'", "template": "{{dspMin|number:'.0f'}}{{datum.unit}}"},
+            {"test": "datum.id == 'Weight_in_lbs'", "template": "{{lbsMin|number:'.0f'}}{{datum.unit}}"},
+            {"test": "datum.id == 'Horsepower'", "template": "{{hpMin|number:'.0f'}}{{datum.unit}}"},
+            {"test": "datum.id == 'Acceleration'", "template": "{{accMin|number:'.0f'}}{{datum.unit}}"},
+            {"test": "datum.id == 'Miles_per_Gallon'", "template": "{{mpgMin|number:'.0f'}}{{datum.unit}}"},
+            {"test": "datum.id == 'Year'", "template": "{{yearMin|time:'%Y'}}{{datum.unit}}"}
+          ],
+          "y": [
+            {"test": "datum.id == 'Cylinders'", "scale": "Cylinders", "signal": "cylMin"},
+            {"test": "datum.id == 'Displacement'", "scale": "Displacement", "signal": "dspMin"},
+            {"test": "datum.id == 'Weight_in_lbs'", "scale": "Weight_in_lbs", "signal": "lbsMin"},
+            {"test": "datum.id == 'Horsepower'", "scale": "Horsepower", "signal": "hpMin"},
+            {"test": "datum.id == 'Acceleration'", "scale": "Acceleration", "signal": "accMin"},
+            {"test": "datum.id == 'Miles_per_Gallon'", "scale": "Miles_per_Gallon", "signal": "mpgMin"},
+            {"test": "datum.id == 'Year'", "scale": "Year", "signal": "yearMin"}
+          ]
         }
       }
     },
@@ -786,70 +545,24 @@
           "baseline": {"value": "top"}
         },
         "update": {
-          "text": {
-            "rule": [
-              {
-                "predicate": {"name": "isCyl", "id": {"field": "id"}},
-                "template": "{{cylMax|number:'.0f'}}{{datum.unit}}"
-              },
-              {
-                "predicate": {"name": "isDsp", "id": {"field": "id"}},
-                "template": "{{dspMax|number:'.0f'}}{{datum.unit}}"
-              },
-              {
-                "predicate": {"name": "isLbs", "id": {"field": "id"}},
-                "template": "{{lbsMax|number:'.0f'}}{{datum.unit}}"
-              },
-              {
-                "predicate": {"name": "isHp", "id": {"field": "id"}},
-                "template": "{{hpMax|number:'.0f'}}{{datum.unit}}"
-              },
-              {
-                "predicate": {"name": "isAcc", "id": {"field": "id"}},
-                "template": "{{accMax|number:'.0f'}}{{datum.unit}}"
-              },
-              {
-                "predicate": {"name": "isMpg", "id": {"field": "id"}},
-                "template": "{{mpgMax|number:'.0f'}}{{datum.unit}}"
-              },
-              {
-                "predicate": {"name": "isYear", "id": {"field": "id"}},
-                "template": "{{yearMax|number:'.0f'}}{{datum.unit}}"
-              }
-            ]
-          },
-          "y": {
-            "rule": [
-              {
-                "predicate": {"name": "isCyl", "id": {"field": "id"}},
-                "scale": "cyl", "signal": "cylMax"
-              },
-              {
-                "predicate": {"name": "isDsp", "id": {"field": "id"}},
-                "scale": "dsp", "signal": "dspMax"
-              },
-              {
-                "predicate": {"name": "isLbs", "id": {"field": "id"}},
-                "scale": "lbs", "signal": "lbsMax"
-              },
-              {
-                "predicate": {"name": "isHp", "id": {"field": "id"}},
-                "scale": "hp", "signal": "hpMax"
-              },
-              {
-                "predicate": {"name": "isAcc", "id": {"field": "id"}},
-                "scale": "acc", "signal": "accMax"
-              },
-              {
-                "predicate": {"name": "isMpg", "id": {"field": "id"}},
-                "scale": "mpg", "signal": "mpgMax"
-              },
-              {
-                "predicate": {"name": "isYear", "id": {"field": "id"}},
-                "scale": "year", "signal": "yearMax"
-              }
-            ]
-          }
+          "text": [
+            {"test": "datum.id == 'Cylinders'", "template": "{{cylMax|number:'.0f'}}{{datum.unit}}"},
+            {"test": "datum.id == 'Displacement'", "template": "{{dspMax|number:'.0f'}}{{datum.unit}}"},
+            {"test": "datum.id == 'Weight_in_lbs'", "template": "{{lbsMax|number:'.0f'}}{{datum.unit}}"},
+            {"test": "datum.id == 'Horsepower'", "template": "{{hpMax|number:'.0f'}}{{datum.unit}}"},
+            {"test": "datum.id == 'Acceleration'", "template": "{{accMax|number:'.0f'}}{{datum.unit}}"},
+            {"test": "datum.id == 'Miles_per_Gallon'", "template": "{{mpgMax|number:'.0f'}}{{datum.unit}}"},
+            {"test": "datum.id == 'Year'", "template": "{{yearMax|time:'%Y'}}{{datum.unit}}"}
+          ],
+          "y": [
+            {"test": "datum.id == 'Cylinders'", "scale": "Cylinders", "signal": "cylMax"},
+            {"test": "datum.id == 'Displacement'", "scale": "Displacement", "signal": "dspMax"},
+            {"test": "datum.id == 'Weight_in_lbs'", "scale": "Weight_in_lbs", "signal": "lbsMax"},
+            {"test": "datum.id == 'Horsepower'", "scale": "Horsepower", "signal": "hpMax"},
+            {"test": "datum.id == 'Acceleration'", "scale": "Acceleration", "signal": "accMax"},
+            {"test": "datum.id == 'Miles_per_Gallon'", "scale": "Miles_per_Gallon", "signal": "mpgMax"},
+            {"test": "datum.id == 'Year'", "scale": "Year", "signal": "yearMax"}
+          ]
         }
       }
     },
@@ -863,7 +576,8 @@
           "width": {"value": 50},
           "y": {"value": 0},
           "y2": {"field": {"group": "height"}},
-          "fill": {"value": "transparent"}
+          "fill": {"value": "transparent"},
+          "cursor": {"value": "crosshair"}
         }
       }
     },
@@ -879,126 +593,73 @@
           "strokeWidth": {"value": 1.5}
         },
         "update": {
-          "y": {
-            "rule": [
-              {
-                "predicate": {"name": "isCyl", "id": {"field": "id"}},
-                "scale": "cyl", "signal": "cylMin"
-              },
-              {
-                "predicate": {"name": "isDsp", "id": {"field": "id"}},
-                "scale": "dsp", "signal": "dspMin"
-              },
-              {
-                "predicate": {"name": "isLbs", "id": {"field": "id"}},
-                "scale": "lbs", "signal": "lbsMin"
-              },
-              {
-                "predicate": {"name": "isHp", "id": {"field": "id"}},
-                "scale": "hp", "signal": "hpMin"
-              },
-              {
-                "predicate": {"name": "isAcc", "id": {"field": "id"}},
-                "scale": "acc", "signal": "accMin"
-              },
-              {
-                "predicate": {"name": "isMpg", "id": {"field": "id"}},
-                "scale": "mpg", "signal": "mpgMin"
-              },
-              {
-                "predicate": {"name": "isYear", "id": {"field": "id"}},
-                "scale": "year", "signal": "yearMin"
-              }
-            ]
-          },
-          "y2": {
-            "rule": [
-              {
-                "predicate": {"name": "isCyl", "id": {"field": "id"}},
-                "scale": "cyl", "signal": "cylMax"
-              },
-              {
-                "predicate": {"name": "isDsp", "id": {"field": "id"}},
-                "scale": "dsp", "signal": "dspMax"
-              },
-              {
-                "predicate": {"name": "isLbs", "id": {"field": "id"}},
-                "scale": "lbs", "signal": "lbsMax"
-              },
-              {
-                "predicate": {"name": "isHp", "id": {"field": "id"}},
-                "scale": "hp", "signal": "hpMax"
-              },
-              {
-                "predicate": {"name": "isAcc", "id": {"field": "id"}},
-                "scale": "acc", "signal": "accMax"
-              },
-              {
-                "predicate": {"name": "isMpg", "id": {"field": "id"}},
-                "scale": "mpg", "signal": "mpgMax"
-              },
-              {
-                "predicate": {"name": "isYear", "id": {"field": "id"}},
-                "scale": "year", "signal": "yearMax"
-              }
-            ]
-          },
-          "fill": {
-            "rule": [
-              {
-                "predicate": {"name": "isBrushedCyl", "id": {"field": "id"}},
-                "r": {"value": 128},
-                "g": {"value": 0},
-                "b": {"scale": "cylColor", "signal": "cylMiddle"}
-              },
-              {
-                "predicate": {"name": "isBrushedDsp", "id": {"field": "id"}},
-                "r": {"value": 128},
-                "g": {"value": 0},
-                "b": {"scale": "dspColor", "signal": "dspMiddle"}
-              },
-              {
-                "predicate": {"name": "isBrushedLbs", "id": {"field": "id"}},
-                "r": {"value": 128},
-                "g": {"value": 0},
-                "b": {"scale": "lbsColor", "signal": "lbsMiddle"}
-              },
-              {
-                "predicate": {"name": "isBrushedHp", "id": {"field": "id"}},
-                "r": {"value": 128},
-                "g": {"value": 0},
-                "b": {"scale": "hpColor", "signal": "hpMiddle"}
-              },
-              {
-                "predicate": {"name": "isBrushedAcc", "id": {"field": "id"}},
-                "r": {"value": 128},
-                "g": {"value": 0},
-                "b": {"scale": "accColor", "signal": "accMiddle"}
-              },
-              {
-                "predicate": {"name": "isBrushedMpg", "id": {"field": "id"}},
-                "r": {"value": 128},
-                "g": {"value": 0},
-                "b": {"scale": "mpgColor", "signal": "mpgMiddle"}
-              },
-              {
-                "predicate": {"name": "isBrushedYear", "id": {"field": "id"}},
-                "r": {"value": 128},
-                "g": {"value": 0},
-                "b": {"scale": "yearColor", "signal": "yearMiddle"}
-              },
-              {"value": "grey"}
-            ]
-          },
-          "opacity": {
-            "rule": [
-              {
-                "predicate": {"name": "isBrushed", "id": {"field": "id"}},
-                "value": 1
-              },
-              {"value": 0.75}
-            ]
-          }
+          "y": [
+            {"test": "datum.id == 'Cylinders'", "scale": "Cylinders", "signal": "cylMin"},
+            {"test": "datum.id == 'Displacement'", "scale": "Displacement", "signal": "dspMin"},
+            {"test": "datum.id == 'Weight_in_lbs'", "scale": "Weight_in_lbs", "signal": "lbsMin"},
+            {"test": "datum.id == 'Horsepower'", "scale": "Horsepower", "signal": "hpMin"},
+            {"test": "datum.id == 'Acceleration'", "scale": "Acceleration", "signal": "accMin"},
+            {"test": "datum.id == 'Miles_per_Gallon'", "scale": "Miles_per_Gallon", "signal": "mpgMin"},
+            {"test": "datum.id == 'Year'", "scale": "Year", "signal": "yearMin"}
+          ],
+          "y2": [
+            {"test": "datum.id == 'Cylinders'", "scale": "Cylinders", "signal": "cylMax"},
+            {"test": "datum.id == 'Displacement'", "scale": "Displacement", "signal": "dspMax"},
+            {"test": "datum.id == 'Weight_in_lbs'", "scale": "Weight_in_lbs", "signal": "lbsMax"},
+            {"test": "datum.id == 'Horsepower'", "scale": "Horsepower", "signal": "hpMax"},
+            {"test": "datum.id == 'Acceleration'", "scale": "Acceleration", "signal": "accMax"},
+            {"test": "datum.id == 'Miles_per_Gallon'", "scale": "Miles_per_Gallon", "signal": "mpgMax"},
+            {"test": "datum.id == 'Year'", "scale": "Year", "signal": "yearMax"}
+          ],
+          "fill": [
+            {
+              "test": "datum.id == 'Cylinders' && datum.id == brushedScale",
+              "r": {"value": 128},
+              "g": {"value": 0},
+              "b": {"scale": "cylColor", "signal": "cylMiddle"}
+            },
+            {
+              "test": "datum.id == 'Displacement' && datum.id == brushedScale",
+              "r": {"value": 128},
+              "g": {"value": 0},
+              "b": {"scale": "dspColor", "signal": "dspMiddle"}
+            },
+            {
+              "test": "datum.id == 'Weight_in_lbs' && datum.id == brushedScale",
+              "r": {"value": 128},
+              "g": {"value": 0},
+              "b": {"scale": "lbsColor", "signal": "lbsMiddle"}
+            },
+            {
+              "test": "datum.id == 'Horsepower' && datum.id == brushedScale",
+              "r": {"value": 128},
+              "g": {"value": 0},
+              "b": {"scale": "hpColor", "signal": "hpMiddle"}
+            },
+            {
+              "test": "datum.id == 'Acceleration' && datum.id == brushedScale",
+              "r": {"value": 128},
+              "g": {"value": 0},
+              "b": {"scale": "accColor", "signal": "accMiddle"}
+            },
+            {
+              "test": "datum.id == 'Miles_per_Gallon' && datum.id == brushedScale",
+              "r": {"value": 128},
+              "g": {"value": 0},
+              "b": {"scale": "mpgColor", "signal": "mpgMiddle"}
+            },
+            {
+              "test": "datum.id == 'Year' && datum.id == brushedScale",
+              "r": {"value": 128},
+              "g": {"value": 0},
+              "b": {"scale": "yearColor", "signal": "yearMiddle"}
+            },
+            {"value": "grey"}
+          ],
+          "opacity": [
+            {"test": "datum.id == brushedScale", "value": 1},
+            {"value": 0.5}
+          ]
         }
       }
     }
